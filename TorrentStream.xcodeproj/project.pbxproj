@@ -22,6 +22,9 @@
 		548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9661C78630900C572E1 /* Alamofire+Rx.swift */; };
 		548DF9691C78675C00C572E1 /* TorrentServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */; };
 		548DF96B1C786AD200C572E1 /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF96A1C786AD200C572E1 /* APIResult.swift */; };
+		548DF96F1C786E6400C572E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF96E1C786E6400C572E1 /* SearchViewController.swift */; };
+		548DF9731C786EA000C572E1 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9721C786EA000C572E1 /* SearchResultCell.swift */; };
+		548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9741C786FC100C572E1 /* SearchViewModel.swift */; };
 		54DF91C11C7758B800577EDD /* JXcore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DF91C01C7758B800577EDD /* JXcore.m */; };
 		54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */; };
 		54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91C71C7775AC00577EDD /* libcares.a */; };
@@ -70,6 +73,9 @@
 		548DF9661C78630900C572E1 /* Alamofire+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Rx.swift"; sourceTree = "<group>"; };
 		548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentServiceAPI.swift; sourceTree = "<group>"; };
 		548DF96A1C786AD200C572E1 /* APIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		548DF96E1C786E6400C572E1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		548DF9721C786EA000C572E1 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		548DF9741C786FC100C572E1 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
 				548DF9541C78403F00C572E1 /* Services */,
+				548DF96D1C786E5700C572E1 /* ViewControllers */,
 				547C00B21C7619FB00425CD7 /* AppDelegate.swift */,
 				547C00B91C7619FB00425CD7 /* Assets.xcassets */,
 				54DF91E71C77762B00577EDD /* Header.h */,
@@ -223,6 +230,32 @@
 				548DF9661C78630900C572E1 /* Alamofire+Rx.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		548DF96D1C786E5700C572E1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				548DF9701C786E9100C572E1 /* Search */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		548DF9701C786E9100C572E1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				548DF9711C786E9600C572E1 /* Views */,
+				548DF96E1C786E6400C572E1 /* SearchViewController.swift */,
+				548DF9741C786FC100C572E1 /* SearchViewModel.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		548DF9711C786E9600C572E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				548DF9721C786EA000C572E1 /* SearchResultCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		54DF91BE1C7758B800577EDD /* JXcore */ = {
@@ -477,14 +510,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				548DF9641C785F2600C572E1 /* JXcore+Extension.swift in Sources */,
+				548DF96F1C786E6400C572E1 /* SearchViewController.swift in Sources */,
 				548DF96B1C786AD200C572E1 /* APIResult.swift in Sources */,
 				548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */,
 				548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */,
+				548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */,
 				54DF91C11C7758B800577EDD /* JXcore.m in Sources */,
 				547C00B51C7619FB00425CD7 /* ViewController.swift in Sources */,
 				548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */,
 				548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */,
 				548DF9691C78675C00C572E1 /* TorrentServiceAPI.swift in Sources */,
+				548DF9731C786EA000C572E1 /* SearchResultCell.swift in Sources */,
 				547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

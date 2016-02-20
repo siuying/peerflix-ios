@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MarqueeLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxOptional.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +57,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2EAADACF49295528D58FD430B3BFDAA1</key>
+		<key>06EB828772675FF6BF9BF1F9165F2E4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>235565B4925ED5531DC7FAD2CF1195B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>69528D0D652B56A26D1AA920CAB10B27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>763B7994A4E900016A74399C78BF3E96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,22 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>894DEE65856EF268D9F18CBE3ACBBBCF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8D8235958A976CCB57E6F7C86BCB001E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA63CD41F161C5E467E035B4101AA8B6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C927018965CC5F776A825EB3F485BB9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D116045EDD645A33467738CE1D8098AC</key>
+		<key>D55CA5C52C73EF7F1CE7BF694A86B7EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF7DAE3AC3C95BE5697F03661BA1DC14</key>
+		<key>F0EA0DBE4CC14BB311124892C749C9B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

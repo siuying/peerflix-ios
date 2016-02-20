@@ -65,6 +65,3 @@ PLATFORMS
 DEPENDENCIES
   cocoapods
   synx
-
-BUNDLED WITH
-   1.11.2
