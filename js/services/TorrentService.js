@@ -1,11 +1,11 @@
-import peerflix from 'peerflix'
-import address from 'network-address'
-import process from 'process'
-import readTorrent from 'read-torrent'
-import _ from 'lodash'
+var peerflix = require('peerflix')
+var address = require('network-address')
+var process = require('process')
+var readTorrent = require('read-torrent')
+var _ = require('lodash')
 
-import TorrentStates from '../constants/TorrentStates'
-import Constants from '../constants/Constants'
+var TorrentStates = require('../constants/TorrentStates')
+var Constants = require('../constants/Constants')
 
 // Streaming torrent to client
 class TorrentService {

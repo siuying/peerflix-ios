@@ -1,10 +1,10 @@
-import url from 'url'
-import address from 'network-address'
-import FileStream from 'file-stream'
-import http from 'http'
+var url = require('url')
+var address = require('network-address')
+var FileStream = require('file-stream')
+var http = require('http')
 
-import StreamingState from '../constants/StreamingState'
-import Constants from '../constants/Constants'
+var StreamingState = require('../constants/StreamingState')
+var Constants = require('../constants/Constants')
 
 // Streaming video file to client
 class StreamingService {
