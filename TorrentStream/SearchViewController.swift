@@ -16,6 +16,7 @@ import RxOptional
 class SearchViewController: UIViewController {
     var tableView : UITableView!
     var searchBar: UISearchBar!
+    var initIndicator: UIActivityIndicatorView!
 
     var viewModel: SearchViewModelType!
     var torrent: TorrentService!
@@ -32,7 +33,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView = UITableView(frame: self.view.bounds)
         self.tableView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -48,6 +49,14 @@ class SearchViewController: UIViewController {
         self.searchBar.widthAnchor.constraintEqualToAnchor(self.tableView.widthAnchor).active = true
         self.searchBar.heightAnchor.constraintEqualToConstant(40).active = true
         
+        self.initIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.initIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.initIndicator.hidden = false
+        self.initIndicator.startAnimating()
+        self.view.addSubview(self.initIndicator)
+        self.initIndicator.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        self.initIndicator.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
+
         let query: Observable<String> = self.searchBar
             .rx_text
             .asObservable()
@@ -60,7 +69,15 @@ class SearchViewController: UIViewController {
 
         self.viewModel = SearchViewModel(input: (query: query, openItem: openItem), torrent: self.torrent)
         
+        // Show loading indicator until service is loaded
         
+        self.viewModel
+            .loaded
+            .map({!$0})
+            .observeOn(MainScheduler.instance)
+            .bindTo(self.initIndicator.rx_hidden)
+            .addDisposableTo(self.disposeBag)
+
         // Convert Sections into table view data source
         
         let datasource = RxTableViewSectionedAnimatedDataSource<SearchResultSection>()

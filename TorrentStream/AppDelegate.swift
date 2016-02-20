@@ -17,24 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        DefaultTorrentService.instance.getState()
-            .subscribeNext { (state) -> Void in
-                switch state.status {
-                case .Init:
-                    print("Loading")
-                case .Idle:
-                    print("READY")
-                case .LoadingMetadata:
-                    print("LoadingMetadata")
-                case .Listening:
-                    print("Stream Server Listening")
-                case .Finished:
-                    print("Finished Streaming")
-                }
-            }
-            .addDisposableTo(self.disposeBag)
-        
-        
         let searchViewController = SearchViewController(torrent: DefaultTorrentService.instance)
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window.rootViewController = UINavigationController(rootViewController: searchViewController)

@@ -59,7 +59,8 @@ class SearchViewModel: SearchViewModelType {
     init(input: (query: Observable<String>, openItem: Observable<NSURL>), torrent: TorrentService) {
         let (query, openItem) = input
         let state = torrent.getState()
-        self.loaded = state.map({ $0.status != .Init }).filter({ $0 })
+
+        self.loaded = state.map({ $0.status != .Init }).shareReplay(1)
         self.sections = self.configureSection(loaded: self.loaded, query: query, torrent: torrent)
     }
     
