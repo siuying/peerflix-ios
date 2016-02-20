@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         let searchViewController = SearchViewController(torrent: DefaultTorrentService.instance)
+        let navController = UINavigationController(rootViewController: searchViewController)
+        navController.edgesForExtendedLayout = .None
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window.rootViewController = UINavigationController(rootViewController: searchViewController)
+        window.rootViewController = navController
         window.makeKeyAndVisible()
         self.window = window
         
