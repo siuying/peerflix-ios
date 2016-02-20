@@ -19,12 +19,15 @@ class SearchViewController: UIViewController {
     var initIndicator: UIActivityIndicatorView!
 
     var viewModel: SearchViewModelType!
+    
     var torrent: TorrentService!
+    var router: Router!
     let disposeBag = DisposeBag()
 
-    init(torrent: TorrentService) {
+    init(torrent: TorrentService, router: Router) {
         super.init(nibName: nil, bundle: nil)
         self.torrent = torrent
+        self.router = router
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -67,13 +70,15 @@ class SearchViewController: UIViewController {
             .map({ $0.URL })
             .filterNil()
 
-        self.viewModel = SearchViewModel(input: (query: query, openItem: openItem), torrent: self.torrent)
+        self.viewModel = SearchViewModel(
+            input: (query: query, openItem: openItem),
+            dependency: (torrent: self.torrent, router: self.router)
+        )
         
         // Show loading indicator until service is loaded
         
         self.viewModel
             .loaded
-            .observeOn(MainScheduler.instance)
             .subscribeNext({ (loaded) -> Void in
                 if loaded {
                     self.initIndicator.stopAnimating()

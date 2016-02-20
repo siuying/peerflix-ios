@@ -56,16 +56,22 @@ class SearchViewModel: SearchViewModelType {
 
     private let disposeBag = DisposeBag()
 
-    init(input: (query: Observable<String>, openItem: Observable<NSURL>), torrent: TorrentService) {
+    init(
+        input: (query: Observable<String>, openItem: Observable<NSURL>),
+        dependency: (torrent: TorrentService, router: Router)
+    ) {
         let (query, openItem) = input
+        let (torrent, router) = dependency
         let state = torrent.getState()
 
         self.loaded = state.map({ $0.status != .Init })
             .distinctUntilChanged()
-            .shareReplay(1)
+            .shareReplay(1)            
+            .observeOn(MainScheduler.instance)
+
         self.sections = self.configureSection(loaded: self.loaded, query: query, torrent: torrent)
         
-        self.configActions(openItem, torrent: torrent)
+        self.configActions(openItem, torrent: torrent, router: router)
     }
     
     func configureSection(loaded loaded: Observable<Bool>, query: Observable<String>, torrent: TorrentService) -> Observable<[SearchResultSection]>  {
@@ -97,10 +103,18 @@ class SearchViewModel: SearchViewModelType {
             .shareReplay(1)
     }
     
-    func configActions(openItem: Observable<NSURL>, torrent: TorrentService) {
+    func configActions(openItem: Observable<NSURL>, torrent: TorrentService, router: Router) {
+
+        openItem
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { (url) -> Void in
+                router.openTorrent()
+            }
+            .addDisposableTo(self.disposeBag)
+
         let request = openItem
             .flatMapLatest({ torrent.playTorrent($0.absoluteString) })
-        
+
         request
             .subscribeError({ (error) -> Void in
                 print("ERROR: \(error)")

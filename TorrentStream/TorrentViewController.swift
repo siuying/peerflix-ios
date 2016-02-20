@@ -56,7 +56,7 @@ class TorrentViewController: UIViewController {
         self.titleLabel.text = "Loading"
         self.titleLabel.setContentHuggingPriority(750, forAxis: .Vertical)
         stack.addArrangedSubview(self.titleLabel)
-        self.titleLabel.heightAnchor.constraintLessThanOrEqualToConstant(80.0).active = true
+        self.titleLabel.heightAnchor.constraintLessThanOrEqualToConstant(200).active = true
 
         self.downloadedLabel = UILabel()
         self.downloadedLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -78,14 +78,28 @@ class TorrentViewController: UIViewController {
         spacer.setContentHuggingPriority(250, forAxis: .Vertical)
         stack.addArrangedSubview(spacer)
 
-        self.playButton = UIButton(type: .Custom)
+        self.playButton = UIButton(type: .System)
         self.playButton.translatesAutoresizingMaskIntoConstraints = false
         self.playButton.setTitle("Play", forState: .Normal)
         self.playButton.contentHorizontalAlignment = .Center
-        self.playButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.playButton.setContentHuggingPriority(751, forAxis: .Vertical)
         stack.addArrangedSubview(self.playButton)
 
-        //self.viewModel = TorrentViewModel(torrent: self.torrent)
+        self.viewModel = TorrentViewModel(torrent: self.torrent)
+        self.viewModel.name
+            .bindTo(self.titleLabel.rx_text)
+            .addDisposableTo(self.disposeBag)
+
+        self.viewModel.downloaded
+            .bindTo(self.downloadedLabel.rx_text)
+            .addDisposableTo(self.disposeBag)
+        
+        self.viewModel.downloadSpeed
+            .bindTo(self.downloadSpeedLabel.rx_text)
+            .addDisposableTo(self.disposeBag)
+        
+        self.viewModel.playable
+            .bindTo(self.playButton.rx_enabled)
+            .addDisposableTo(self.disposeBag)
    }
 }
