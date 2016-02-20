@@ -73,9 +73,14 @@ class SearchViewController: UIViewController {
         
         self.viewModel
             .loaded
-            .map({!$0})
             .observeOn(MainScheduler.instance)
-            .bindTo(self.initIndicator.rx_hidden)
+            .subscribeNext({ (loaded) -> Void in
+                if loaded {
+                    self.initIndicator.stopAnimating()
+                } else {
+                    self.initIndicator.startAnimating()
+                }
+            })
             .addDisposableTo(self.disposeBag)
 
         // Convert Sections into table view data source
