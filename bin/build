@@ -3,5 +3,5 @@
 ./node_modules/.bin/babel js -d dist
 
 jx package dist/main.js ./dist/torrent-stream-jxcore \
-  --slim 'TorrentStream,torrent-stream-jxcore.jx,torrent-stream-jxcore.jxp,Pods,./index.js,js,fsevents,vendor,babel-plugin-*,output-file-sync,babel-preset-*,babylon,babel-messages,babel-cli,babel-core*,babel-generator,babel-code-frame,babel-register,babel-helper-*'\
+  --slim 'TorrentStream,./dist/torrent-stream-jxcore.jx,./dist/torrent-stream-jxcore.jxp,Pods,./index.js,js,fsevents,vendor,babel-plugin-*,output-file-sync,babel-preset-*,babylon,babel-messages,babel-cli,babel-core*,babel-generator,babel-code-frame,babel-register,babel-helper-*'\
   --extract-what '*.node' --extract-app-root './dist'

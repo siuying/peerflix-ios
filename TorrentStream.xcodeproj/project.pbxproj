@@ -17,7 +17,7 @@
 		548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9561C78409C00C572E1 /* TorrentService.swift */; };
 		548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9591C78425500C572E1 /* TorrentState.swift */; };
 		548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF95B1C78452F00C572E1 /* SearchResult.swift */; };
-		54AC60F61C78170D0088E6D3 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 54AC60F51C78170D0088E6D3 /* index.js */; };
+		548DF9621C78547D00C572E1 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 548DF9611C78547D00C572E1 /* index.js */; };
 		54DF91C11C7758B800577EDD /* JXcore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DF91C01C7758B800577EDD /* JXcore.m */; };
 		54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */; };
 		54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91C71C7775AC00577EDD /* libcares.a */; };
@@ -61,7 +61,7 @@
 		548DF9561C78409C00C572E1 /* TorrentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentService.swift; sourceTree = "<group>"; };
 		548DF9591C78425500C572E1 /* TorrentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
 		548DF95B1C78452F00C572E1 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		54AC60F51C78170D0088E6D3 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = SOURCE_ROOT; };
+		548DF9611C78547D00C572E1 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 		547C00A61C7619FB00425CD7 = {
 			isa = PBXGroup;
 			children = (
+				548DF9611C78547D00C572E1 /* index.js */,
 				54DF91E81C77769E00577EDD /* dist */,
-				54AC60F51C78170D0088E6D3 /* index.js */,
 				547C00B11C7619FB00425CD7 /* TorrentStream */,
 				547C00C61C7619FB00425CD7 /* TorrentStreamTests */,
 				547C00B01C7619FB00425CD7 /* Products */,
@@ -344,7 +344,7 @@
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
 				548DF9531C783A3800C572E1 /* torrent-stream-jxcore.jx in Resources */,
-				54AC60F61C78170D0088E6D3 /* index.js in Resources */,
+				548DF9621C78547D00C572E1 /* index.js in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
 			);

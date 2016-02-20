@@ -1,1 +1,1 @@
-require("torrent-stream-jxcore.jx")
+require('torrent-stream-jxcore.jx')

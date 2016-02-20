@@ -2,4 +2,4 @@ require('babel-register')({
   'presets': ['es2015']
 })
 
-require('./js/main')
+require('./app')

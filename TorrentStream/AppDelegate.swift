@@ -7,22 +7,23 @@
 //
 
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let disposeBag = DisposeBag()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        JXcore.useSubThreading()
-        JXcore.startEngine("index")
-
-        // Add IPC from node to ios
-        JXcore.addNativeBlock({ (params, callbackId) -> Void in
-        }, withName: "IPCToNative")
-
+        DefaultTorrentService.instance.setup()
+        
+        DefaultTorrentService.instance.state
+            .subscribeNext { (state) -> Void in
+                print("state: \(state)")
+            }
+            .addDisposableTo(self.disposeBag)
         
         // Override point for customization after application launch.
         return true

@@ -4,6 +4,8 @@ import http from 'http'
 import ApiServer from 'apiserver'
 import _ from 'lodash'
 
+var Mobile = require('./helpers/Mobile')
+
 import Commands from './constants/Commands'
 import MetadataService from './services/MetadataService'
 import TorrentService from './services/TorrentService'
@@ -66,10 +68,11 @@ class TvApiServer {
     // Setup Torrent Service
     // boardcast change of torrent state, throttled to at max 1s per update
     let torrentOnEmit = _.throttle((data) => {
-      this.boardcast({type: Commands.Outgoing.TorrentState, data: data})
+      this.boardcast(data)
     }, 1000)
     this.torrentService = new TorrentService(torrentOnEmit)
     this.streamingService = new StreamingService()
+    this.boardcast(this.torrentService.state)
   }
 
   // Stop servers
@@ -101,39 +104,14 @@ class TvApiServer {
     }
   }
 
-  // boardcast a message to all clients
   boardcast (message) {
     if (typeof message === 'undefined') {
       console.warn('message cannot be null!')
       return
     }
-  }
 
-  // On Received a message
-  received (message) {
-    // switch (message.type) {
-    //   case WebSocketCommands.Incoming.Testing:
-    //     console.log('Testing')
-    //     break
-    //
-    //   case WebSocketCommands.Incoming.Play:
-    //     console.log('Play', message.data.url)
-    //     this.torrentService.openTorrentUrl(message.data.url)
-    //     break
-    //
-    //   case WebSocketCommands.Incoming.Stop:
-    //     console.log('Stop')
-    //     this.torrentService.closeTorrent()
-    //     break
-    //
-    //   case WebSocketCommands.Incoming.SelectFile:
-    //     console.log('SelectFile', message.data.filename)
-    //     this.torrentService.selectFile(message.data.filename)
-    //     break
-    //
-    //   default:
-    //     console.log('UNKNOWN command: ', message.type)
-    // }
+    var update = Mobile('UpdateTorrentState')
+    update.call.apply(update, [JSON.stringify(message)])
   }
 }
 

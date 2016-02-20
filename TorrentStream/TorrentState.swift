@@ -11,6 +11,7 @@ import Freddy
 
 struct TorrentState {
     enum Status : String {
+        case Init
         case Idle
         case LoadingMetadata
         case Listening
@@ -25,9 +26,9 @@ struct TorrentState {
         let size : Double
         
         init(json: JSON) throws {
-            self.name = try json.string("name")
-            self.size = try json.double("length")
-            self.URL = try json.string("url", ifNotFound: true).flatMap({ NSURL(string: $0) })
+            self.name = try json.string("name", ifNull: true) ?? ""
+            self.size = try json.double("length", ifNull: true) ?? 0
+            self.URL = try json.string("url", ifNull: true).flatMap({ NSURL(string: $0) })
         }
         
         // return true if the file looks like a video file
@@ -38,8 +39,7 @@ struct TorrentState {
     
     var torrentURL : NSURL?
     var videoURL : NSURL?
-    var status = Status.Idle
-    var name : String?
+    var status = Status.Init
     var filename : String?
     var size : Double?
     var downloaded : Double?
@@ -47,16 +47,20 @@ struct TorrentState {
     var downloadSpeed : Double?
     var files : [File]?
     
-    mutating func updateWithJSON(json: JSON) throws {
-        self.videoURL = try json.string("videoUrl", ifNotFound: true).flatMap({ NSURL(string: $0) })
+    init() {
+    }
+    
+    init(json: JSON) throws {
+        self.torrentURL = try json.string("torrentUrl", ifNull: true).flatMap({ NSURL(string: $0) })
+        self.videoURL = try json.string("videoUrl", ifNull: true).flatMap({ NSURL(string: $0) })
         self.status = Status(rawValue: try json.string("status")) ?? Status.Idle
-        self.name = try json.string("name")
-        self.filename = try json.string("filename")
-        self.size = try json.double("size")
+
+        self.filename = try json.string("filename", ifNull: true)
+        self.size = try json.double("filelength", ifNull: true)
         
-        self.downloadSpeed = try json.double("downloadSpeed")
-        self.uploaded = try json.double("uploaded")
-        self.downloaded = try json.double("downloaded")
-        self.files = try json.array("files").map(File.init)
+        self.downloadSpeed = try json.double("downloadSpeed", ifNull: true)
+        self.uploaded = try json.double("uploaded", ifNull: true)
+        self.downloaded = try json.double("downloaded", ifNull: true)
+        self.files = try json.array("files", ifNull: true).flatMap({ try $0.map({try File(json: $0)}) })
     }
 }

@@ -336,7 +336,7 @@ static float delay = 0;
   
   NSUInteger location = [filePath rangeOfString:[NSString stringWithFormat:@"/%@.js", fileName]].location;
   if (location > 0) {
-    fileDir = [NSString stringWithFormat:@"%@/JS/jxcore/",[filePath substringToIndex:location]];
+    fileDir = [NSString stringWithFormat:@"%@/",[filePath substringToIndex:location]];
   }
   
   if (error) {
