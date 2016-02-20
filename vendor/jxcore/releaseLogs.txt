@@ -1,0 +1,566 @@
+JXcore (http://jxcore.io)
+
+----JXcore 3.1.1
+
+- npm updated to 3.3.12
+- native packages: ignore jxp.library GH #784
+- manifest file: releases.json GH #686
+- jx packaging: preserve chmod GH #770
+- jx packaging: fixed fs.exists/stat/etc. against __filename GH #783
+- fixed GH #780
+- fix EventEmitter with fake ReadStream GH #775
+- android build: compress internals by default for embedded
+- android: fixes SIGSEGV after calling CWD
+- skip reading jx.config when process._eval is set GH #756
+- jxcore.utils: add linaro to getOS list
+- chakra: Enable Async/Await GH #741
+- chakra: fix console.trace
+- chakra: fixed mt errors GH #737
+- remove executable bit from non-executable files (@jsonkarns)
+- jx-ni: JX_CallFunction support for function param GH #745
+
+----JXcore 3.1.0
+
+- Crypto publicEncrypt and privateDecrypt (ported from 0.12)
+- stream._writev method added (ported from 0.12) GH #571
+- Reset event added to repl (ported from 0.12) GH #571
+- Lookup event added to net (ported from 0.12) GH #571
+- path.isAbsolute method added (ported from 0.12) GH #571
+- setDefaultEncoding method added to writable stream (ported from 0.12) GH #571
+- cork and uncork methods added in writable stream (ported from 0.12) GH #571
+- ECDH support (ported from 0.12) GH #619
+- Shared Memory Store, Buffer Type Support GH #716
+- Additional engines supported: V8 3.28 and Microsoft Chakra 
+- Packaging format changed to binary GH #508
+- Windows UWP support
+- Windows IOT and Mobile support
+- Sqlite is updated to 3.9.1.0
+- Added arch build scripts (@Marc McIntosh)
+- jx-ni: Log to VS debugger and file system support
+- jx-ni: add JXEngine reference for internal sub instances
+- jx-ni: New Method - JX_SetNativeMethod
+- jx-ni: fix GetGlobal and GetProcess scoping
+- jx-ni: handle zero-length Buffer(0) (@Zsolt Szatmari)
+- SM: Error tooling compatibility updates GH #728
+  With this commit, SM Error tooling should be fairly compatible with v8
+- deprecate jx-ni: JX_Initialize GH #723
+- SM: ghost cannot start due to sqlite error GH #540
+- Segfault (asm.js + spidermonkey) GH #624
+- HTTP IncomingMessage constructor not recognized GH #681
+- Subthreads waiting for package to load. Fixes GH #709
+- Remove max compression ratio limit GH #703
+- allow --prefix to be both relative and absolute. Applies to GH #657. Closes GH #675
+- async readFile catches sync exception. Closes GH #634
+- Fix when stdout and stderr don't use file descriptors 1 & 2, issue GH #608. (Dustin Long)
+- More detailed stack traces from threads GH #655
+- SM: fixes unicode issue GH #641
+- Android warning for global modules installation as root. Applies to GH #628
+- ~/.jx and ~/.npm proper ownership with `sudo jx install`. Closes GH #645
+- Fix finding jx.config / node.config on Windows. Closes GH #642
+- Fix for jx --debug GH #623
+- _cmp() accept buffer GH #508
+- Efficiently repair reading of signed files GH #583 (@Gray1989)
+- Test: handle error message from new V8 engine in test-domain.js (ref: GH #585) (Christopher J. Brody)
+- src: fix possible crash in node_crypto.cc:EIO_PBKDF2After() variants (GH #585) (Christopher J. Brody)
+- src: fix TCPWrap::InstantiateCOM() in case of NULL argument (ref: GH #585) (Christopher J. Brody)
+- Command line --sign support restored. Applies to GH #583
+- net-tcp test much improved. Applies to GH #205
+- uv: assert for a wrongly initialized instance
+- v8: use isolate from commons
+- module: minor perf. update
+    - proxy debug output to console.error
+    - do not pre-compile(JSON.stringify) the arguments
+- Remove customLogInterface from console
+- fix leaking nanosecond issue on Posix
+- omit space in version string (@Jason Karns)
+- define CC and CCX explicitly from node 4.x
+- v8-328: Use prime type index for indexedProperties
+- jx-ni: add assert message (initialize after shutdown)
+- Add Android ARM64 compilation option
+- SM build no longer needs `which` installation
+- uv-unix: implement proxy uv_run for ABI compatibility
+- Windows: log to temp folder if no std or debugger available
+- Prevent crash WinIOT failing to get processor name
+    double check the result for GetLastError
+- WinOneCore: interface compatibility for logging
+- Chakra: Enable debugger [initial]
+- SM: force static JS API [for method signatures on Windows]
+- SM: win-onecore use trampoline-none
+- SM: do not force char16_t redefinition for VS2015+ [fix condition]
+- Add leveldown-mobile to win-onecore builds by default
+- Update test_rsa_privkey_encrypted.pem (@Kakhaber)
+- v8-328: Debugger support
+- Use char pointer for memory store
+- jx install: support spaces in HOME_PATH
+- open-wrt: simplify apt-get install
+- open-wrt: use exec() instead of cmdSync() for git clone
+- v8: fix isolate deadlock
+- Windows: share path conf. with WinRT
+- WinRT: module boost resolve
+- WinRT: fs basic simulate realpathSync
+- WinRT: redirect core.console to debug window
+- vcbuilt.bat: win-onecore, —engine-chakra, arm command line switches
+- jxcore now has built-in uwp interface
+- uv-pipe: prevent assert crash for winonecore not supported
+- Run simple test suite on both engines in Travis CI (@Christopher J. Brody)
+    Skip a couple of troublesome tests in Travis CI
+    NOTE: A shell trick is used here since Travis CI only seems to check the result
+    of the last command in the script: section.
+- added JX_GetBuffer() to native interface for accessing Buffers directly (@Zsolt Szatmari)
+- jxcore runs on WindowsARM
+- vcbuild: WinARM doesn't support openssl-asm
+- uv: force define __arm__ for WinARM
+- uv: winthreads pthread force cancel sync form ARM
+- lib: cleanup trailing whitespace in lib/jx/_jx_incoming.js (@Christopher J. Brody)
+- lib: fix jslint errors (also exclude lib/jx/_jx_marker.js from jslint again) (@Christopher J. Brody)
+
+----JXcore 3.0.7
+
+- npm handling for prebuilt node binaries
+- IncomingMessage compatibility improvement
+- options support for console.dir
+
+----JXcore 3.0.6
+
+- jx packages extraction enhancements:
+  partial extraction, verbosity, pre/post actions, async execution
+- fix compilation of core for compilers that use C89 (@dustmop)
+- new Buffer methods: compare() and indexOf()
+- packaging extraction enabled also for native packages
+- add new embedding API for stopping the main loop (@gcampax)
+- jslint source code fixes
+- dns lookup optimizations
+- fixed piping of createReadStream() for packages
+- ios enable_bitcode support
+- ios 9.x support
+- android: fix samsung galaxy cpu info issue
+- android: fix 4.0.3 kernel bug
+- reduced memory consumption
+
+----JXcore 3.0.5
+
+- performance fixes for sqlite
+- fixed V8 error/column number for jx packages
+- native packages fork() enabled
+- create ~/.jx on proper partition on Windows
+- --autoremove works with -g and moved into npm sources
+- SpiderMonkey performance updates
+- Windows setup: removing from PATH on uninstall
+
+----JXcore 3.0.4
+
+- SpiderMonkey build now supports jxcore addons on Windows
+- new crypto API extensions: generateHKDF and pkcs12
+- multiple monitor improvements e.g. better apps respawn/kill tracking
+- `typeof process` fix for SpiderMonkey
+- jx package can sign native packages on windows
+- optional sqlite embedding (enabled by default)
+- openwrt support
+- node.js cleanup: moved out jx install/jx package
+- much faster jx compile for SM
+- monitor run for native packages
+- new api method: jxcore.utils.console.clear()
+
+----JXcore 3.0.3
+
+- improved ARM support
+- fixed `jx install` command for SM
+- --autoremove option for cleanup after `jx install`
+- jxcore.utils.argv namespace for parsing argv
+- jx_install.sh enhancements: SM engine + local installation
+
+----JXcore 3.0.2
+
+- General stability and performance updates
+- SpiderMonkey fixes and multiple stability improvements
+- Installation bash script FreeBSD support and --force option
+- Monitor improvements: better kill output, html formatted web access
+
+----JXcore 3.0.1
+
+- SpiderMonkey SM BSD build support 
+- 'jx install' uses npm settings if any available
+- Stat.ino, Stat.dev support on Windows
+- Express apps can be packaged now
+- JXP.Stat now complies to fs.Stat
+- new 'jx npm' command for accessing 'npm'
+- jxcore.tasks : Conform to node-style callbacks (special thanks to @zamb3zi)
+- native interface stability updates
+- http.setMaxHeaderLength fixes for SM
+- tasking helpers removed from function prototype (runTask/runOnce)
+- monitor restart command fixed
+
+----JXcore 3.0.0
+
+- openssl, node core, libuv updates bug fixes
+- SpiderMonkey support
+- ES6 support with SM builds
+- Android and iOS support
+- Android standalone binary release
+- Packaging bug fixes and improvements
+- Multithreading bug fixes
+- Performance improvements
+- Embeddable interface
+- MIPS support
+- HTTP header size default limit removed 
+- Monitoring bug fixes
+- getOSInfo supports additional platforms
+- cmdSync return value is fixed
+- Multiple engine node-gyp support
+
+----JXcore Beta 2.3.7
+
+- improvement for getOSInfo (debian ovh.net) https://github.com/jxcore/jxcore/issues/133
+- monitor followMe casing fix
+- jx package slim file names
+- NODE_PATH casing improvements for Windows
+
+
+----JXcore Beta 2.3.6
+
+- Now JXP run from subfolder mimics the exact location in path
+- JX monitor now considers embedded apps
+- JX monitor with packages app path issue is fixed
+- jxcore.utils.cmdSync (handle exitCode < 0 && > -255)
+
+----JXcore Beta 2.3.5
+
+- Windows MT, MT-KEEP fix
+- JXP resolve as a folder when the path explicitly targets a folder
+- Node 10.32 update
+
+
+----JXcore Beta 2.3.4
+
+- Crypto, ZIP and FS  - Improved exception management, recovery and performance
+
+
+----JXcore Beta 2.3.3
+
+- Compiler update!!! - Update to this version is highly recommended due to problems with persistent v8 memory cleanup 
+- JXP multiple require for the entry file issue is fixed
+- JXP NODE_PATH issue is fixed
+- Multithreading - Performance, Thread recovery memory cleanup improvements
+- JXcore wide performance update
+- JX Install - native package installation updates
+- FreeBSD x64 v10.X
+
+----JXcore Beta 2.3.2
+
+- JX osx, process.platform 'mac' -> 'darwin'
+- utils -> logMessage, replace removed
+- utils -> log, write NO_COLOR don't print the color
+- utils -> log, write arguments -> toString
+- JX Embedded process.argv missing for the main thread
+- JX Embedded child fork warning
+
+----JXcore Beta 2.3.0
+
+- !!!! JXP protection system is changed, previous JX packages needs re-compilation
+- !!!! utils.hideMethod deprecated. use /*_jx_protected_*/
+- NEW: Package JXP as an executable ('native':true)
+- SmartRequire exposed 
+- JX packaging performance improvements
+- JX packaging mt / mt-keep uses memory only once
+- JX packaging require.resolve - fs compatibility problem is fixed (package socket.io)
+- node.js 0.10.31 updates (apart from the broken v8 update)
+- timers update now included
+
+----JXcore Beta 2.2.5
+
+- NEW: ARM RH/Fedora 
+- ARM optimizations (v7+)
+- FIX: require('config') fails - https://github.com/jxcore/jxcore/issues/105
+
+----JXcore Beta 2.2.4
+
+- jx.config also applies to eval mode
+- file name change: node.exe.config -> node.config due to native Windows executable config support mismatches 
+- remove Node.JS 10.30 broken timers
+
+----JXcore Beta 2.2.2
+
+- NEW: Pause && Continue JavaScript execution
+- Thread recovery improvements
+- Task unhandled exception details
+- Node.JS 10.30 merge
+
+----JXcore Beta 2.2.0 
+
+- MT'ed application main thread debugging support
+- Auto correction for binding.gyp when only jx is installed
+- 'jx install' doesn't require node/npm installed
+- jx.config enable/disable monitoring per process {allowMonitoringAPI (default true)}
+- improved error notification for sub threads
+
+----JXcore Beta 2.1.9
+
+- JX compile, package, and install commands will be skipped in case there is a 'js' file on the current folder
+- jx.tasks.runOnThread's method parameter now calls JSON.stringify automatically
+- Native .node module loader file resolution fix
+
+----JXcore Beta 2.1.8
+
+- monitor API HTTPS support
+- monitor log file split
+
+
+----JXcore Beta 2.1.7
+
+- JX_PERSISTENT_STORE is updated -> Fix for MT'ed SQLite and other embedded modules 
+- Fix: JXP reaching assets when the parameter for reaching sources is not defined
+- Performance: Package uncompress performance improved.
+- Fix: JXP extract - run fixed
+
+
+----JXcore Beta 2.1.6
+
+- Fix: JXP stream finish event - https://github.com/jxcore/jxcore/issues/86
+- Fix: Memory limit abort message now shows the memory used.
+- Security: Prevent overflow when Monitor respawn_id  > 1e5
+
+
+----JXcore Beta 2.1.5 (http://jxcore.com)
+
+- JXP now compatible most popular NPM packages 
+- JXP: JS files can be accessible from 'fs' -> new property : fs_reach_sources
+- process.jxversion returns the JX binary version
+- when using jx install to install node cli modules, it configures them to use jx binary automatically
+- jx.config { portTCP, portTCPS, maxMemory, maxCPU .... } - check jx.config docs
+
+- jx install now supports module versions from npm repository. Use jx install module@version
+- jx.config file, 'globalModulePath' sets the system wide node module path for all the processes and module installer
+
+
+npm like commands:
+- "jx install" instead "npm install"
+- in case the "globalModulePath option defined inside jx.config file", "jx install -g" uses the defined path as global
+
+- other npm commands
+- "jx install -[npm command]" 
+ex:  "jx install -start" instead "npm start"
+ex:  "jx install -ls" instead "npm ls"
+ex:  "jx install -help install" instead "npm help install"
+
+
+
+----JXcore Beta 2.1.4 (http://jxcore.com)
+
+Changes
+
+- JXP now collects all type of files
+- JXP doesn't change assets
+- JX install now installs/compiles native modules with JXcore uv-headers
+- JX monitor configuration (list of admin users)
+- fs monkey patching compatibility for some node modules
+- fix: FileWatcher missing
+
+----JXcore Beta 2.1.2 (http://jxcore.com)
+
+Changes
+- JXP stream pipe chaining - https://github.com/jxcore/jxcore/issues/83
+- JXP binary file support
+- MT now waits for the events from sub threads - https://github.com/jxcore/jxcore/issues/88
+- jxcore.config - restrict application wide http/https ports / and memory on hosting environments
+
+----JXcore Beta 2.1.1 (http://jxcore.com)
+
+Changes
+- JXP feature improvements - reverse discovery inside a package
+- JXP streams - destroy 
+- Node 0.10.29 Security patches
+
+----JXcore Beta 2.1.0 (http://jxcore.com)
+
+Fixes
+- Windows native modules - https://github.com/jxcore/jxcore/issues/66
+- JXP stream on-data - https://github.com/jxcore/jxcore/issues/77
+- JXP windows folder resolution - https://github.com/jxcore/jxcore/issues/79
+- jx monitor kill prevents re-run
+
+----JXcore Beta 2.0.9 (http://jxcore.com)
+
+Please visit (https://github.com/jxcore/jxcore/issues) to report issues or request a feature
+
+New
+- process.sendToThread  - Send an individual thread message 
+- jxcore.tasks.runOnThread - Run a task on an individual thread only
+- process monitor kill path - kills the processes on given path and stop monitoring them 
+
+Improvement
+- thread messaging is up to 5X faster
+- process.unloadThread now restarts the thread itself regardless from the operations on the thread
+
+Fix
+- store shared/in-thread non-string values
+- jxp-require full path resolution issue is fixed
+- jxp-dotted paths discovery fix
+- error recovery recursive message blocking
+- send to main-thread delay
+- wrong main thread counter on multiple thread kill & restart issue is fixed
+- jxcore.tasks.getThreadCount returns the correct number under the sub-threads
+
+
+----JXcore Beta 2.0.8 (http://jxcore.com)
+
+New
+- JXP pre installation steps - https://github.com/jxcore/jxcore/issues/64
+
+Change
+- JX package assets array now public
+
+Fix
+- JX install <package> from npm first time installs into npm folder
+
+
+----JXcore Beta 2.07 (http://jxcore.com)
+
+Fixes
+- jx monitor run - https://github.com/jxcore/jxcore/issues/56
+- jx project files cross platform locations
+
+New
+- fs.exists(Sync) JXP 
+- fs.(l)stat(Sync) JXP
+- fs.createReadStream JXP
+
+Patches
+- Node 10.27, 10.28 (version number is 10.28)
+
+
+----JXcore Beta 2.06 (http://jxcore.com)
+
+Please visit (https://github.com/jxcore/jxcore/issues) to report issues or request a feature
+
+Fixes
+- cli compatibility - https://github.com/jxcore/jxcore/issues/48
+
+New
+- async fs support for JXP (SYNC methods were already supported) (readdir, readFile) - https://github.com/jxcore/jxcore/issues/50
+- command line mt / mt-keep max number is 16.
+- files & assets are not part of the final $JXP anymore. 
+
+Messaging
+- added multiple options for rabbitmq connection (e.g. user authentication)
+- added loading assets error handling 
+
+----JXcore Beta 2.05 (http://jxcore.com)
+
+Features
+- Pipe'd MT support
+
+Fix
+- http status code list - https://github.com/jxcore/jxcore/issues/42
+- unix sockets after a task - https://github.com/jxcore/jxcore/issues/45
+- JXP __dirname difference
+
+from b2.04
+- VM multi-context under MT
+- Thread restart counter under mt-keep
+
+
+
+----JXcore Beta 2.03 (http://jxcore.com)
+
+Bug Fix
+- JXP __dirname problem is fixed. - https://github.com/jxcore/jxcore/issues/35
+
+Structural
+- sqlite version updated to 3.8.4.3 and FTS3, FTS4 are enabled
+- Single threaded performance update  
+- V8 JavaScript protection - commentLocker patch
+- V8 Fast String, Object,and Array initialization patch
+
+
+New
+- Easy multithreaded tasking for all the methods. - <Function>.runTask & <Function>.runOnce
+- Gentoo ia32 && X64
+- Separate Debian X64 package
+- DTRACE is disabled by default. To enable - process.enableDTRACE = true 
+- http.setMaxHeaderLength (Default 32768, to disable set 0)
+
+
+Messaging
+- Server-side channel subscription/unsubscription
+- Middle layer for client-side subscription/unsubscription
+- Added new client-side event: OnSubscription
+- Java client fix for OnClientConnected event
+- More samples inside download package
+
+
+
+----JXcore Beta 2.02 (http://jxcore.com)
+
+Bug Fixes
+- Internal BSON issue - https://github.com/jxcore/jxcore/issues/31
+- JXP reader improvements
+- RH/Centos/Fedora64 ThreadKill issue is fixed 
+
+
+New
+- 'jx --jxv' shows JXcore version
+
+
+
+
+
+----JXcore Beta 2.01 (http://jxcore.com)
+
+Bug Fixes
+- JXP /index.js issue - https://github.com/jxcore/jxcore/issues/23
+- Unicode thread messaging - https://github.com/jxcore/jxcore/issues/24
+- JXP reverse coverage problem
+- KillThread - force removal async operations - https://github.com/jxcore/jxcore/issues/25
+- Missing Callback when a thread returns false
+- JXP embed error message improved - https://github.com/jxcore/jxcore/issues/28
+- JX Monitor on Windows - https://github.com/jxcore/jxcore/issues/29
+- Task (define) __dirname location is fixed
+
+Improvements
+- Partial memory pool for http server
+- Performance improvements
+
+New
+-Multithreading - waitLogic(with timeout) - https://github.com/jxcore/jxcore/issues/21
+
+
+
+
+
+----JXcore Beta 2.00 (http://jxcore.com)
+
+Stability
+- Node v10 Stable
+- Open SSL bug fixes (update to latest)
+- libUV bug fixes and multithreading patches
+- Node.JS internals (fixes, stability and multithreading patches)
+- JX packaging improvements
+- V8 JXP patch
+
+Performance
+- Windows release high performance update
+- Lock free internal thread switching
+- Task manager replacement - hot swappers
+- Task manager status aware libUV loops
+
+Platforms
+- NEW-Platform: Raspberry PI Raspbian release
+- NEW-Platform: FREEBSD x64 release
+- NEW-Platform: RH/CENTOS/FEDORA ia32 release
+- Windows Installer
+
+Feature Updates
+- Built-in package manager (jx install)
+- Embedded SQLite Database Engine & sqlite3 native module
+- Embedded bignum, bson, weakref, and contextify native modules
+- Native module automatic MT compatibility (automatic libuv loop switcher)
+- Native module wrapper for static members (jx_persistent_store.h)
+- Internal thread and process recovery
+- Process monitoring service - jxcore.monitor
+- Shared memory store -safe block operations, ttl, new atomic operations
+- Multithreading - cross-thread messaging / threadkill
+- Messaging API - first release (Browser, and Java clients)
+
+Changes
+- jxcore.env.setThreadCount moved to jxcore.tasks.setThreadCount
+- jx package now creates the jx file under the active path

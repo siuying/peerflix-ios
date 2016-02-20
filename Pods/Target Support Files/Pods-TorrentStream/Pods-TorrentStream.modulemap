@@ -1,0 +1,6 @@
+framework module Pods_TorrentStream {
+  umbrella header "Pods-TorrentStream-umbrella.h"
+
+  export *
+  module * { export * }
+}
