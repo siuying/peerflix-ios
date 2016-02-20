@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   Idle: 'Idle',                         // torrent idle
   LoadingMetadata: 'LoadingMetadata',   // torrent loading metadata
   Listening: 'Listening',               // streaming server listening

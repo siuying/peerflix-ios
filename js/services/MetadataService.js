@@ -1,7 +1,7 @@
-import TorrentFinder from 'torrent-finder'
-import MetadataHelper from '../helpers/MetadataHelper'
+var TorrentFinder = require('torrent-finder')
+var MetadataHelper = require('../helpers/MetadataHelper')
 
-let SearchEngines = [
+var SearchEngines = [
   new TorrentFinder.Piratebay({baseUrl: 'https://thepiratebay.la/'}),
   new TorrentFinder.Kickass(),
   new TorrentFinder.Dmhy(),
@@ -9,7 +9,7 @@ let SearchEngines = [
 ]
 
 // RESTful API Modules
-let MetadataService = {
+var MetadataService = {
   search: {
     get: function (request, response) {
       let engineCode = request.querystring.engine
@@ -42,4 +42,4 @@ let MetadataService = {
   }
 }
 
-export default MetadataService
+module.exports = MetadataService

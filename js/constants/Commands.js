@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   // Incoming Command
   Incoming: {
     Testing: "Testing",

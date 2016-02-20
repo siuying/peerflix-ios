@@ -1,7 +1,7 @@
-import alt from '../alt'
-import subtitler from 'subtitler'
+var alt = require('../alt')
+var subtitler = require('subtitler')
 
-class SubtitleStore {
+var SubtitleStore = {
 }
 
-module.exports = new SubtitleStore()
+module.exports = SubtitleStore

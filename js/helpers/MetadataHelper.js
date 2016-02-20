@@ -1,8 +1,8 @@
-import MovieDB from 'moviedb'
+var MovieDB = require('moviedb')
 //import TVDB from 'node-tvdb'
 
-const MovieNameWithYearRegexp = /^(.+)((19|20)[0-9]{2})/
-const TvNameRegexp = /^(.+)(S|s)([0-9]{1,2})(E|e)([0-9]{1,2})/
+var MovieNameWithYearRegexp = /^(.+)((19|20)[0-9]{2})/
+var TvNameRegexp = /^(.+)(S|s)([0-9]{1,2})(E|e)([0-9]{1,2})/
 
 try {
   // check if the api key file is defined
@@ -96,8 +96,8 @@ function fetchMovieData (metadata, callback) {
 //   })
 // }
 
-class MetadataHelper {
-  search (name, callback) {
+var MetadataHelper = {
+  search: function (name, callback) {
     var metadata = parseFilename(name)
 
     if (metadata.type === 'movie') {
@@ -110,4 +110,4 @@ class MetadataHelper {
   }
 }
 
-module.exports = new MetadataHelper()
+module.exports = MetadataHelper
