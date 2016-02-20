@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+synx ./TorrentStream.xcodeproj -e /dist -e /Pods
