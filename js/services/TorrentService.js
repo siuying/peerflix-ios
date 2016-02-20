@@ -166,8 +166,6 @@ class TorrentService {
       store.state.downloaded = swarm.downloaded
       store.state.uploaded = swarm.uploaded
       store.emitChange()
-
-      console.log(`refreshTorrent: ${swarm.downloadSpeed()} ${swarm.downloaded}`)
     }, 1000)
 
     // setup a remove callback on exit
