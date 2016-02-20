@@ -14,8 +14,8 @@
 		547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547C00B91C7619FB00425CD7 /* Assets.xcassets */; };
 		547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */; };
 		547C00C81C7619FB00425CD7 /* TorrentStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */; };
+		548DF9531C783A3800C572E1 /* torrent-stream-jxcore.jx in Resources */ = {isa = PBXBuildFile; fileRef = 548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */; };
 		54AC60F61C78170D0088E6D3 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 54AC60F51C78170D0088E6D3 /* index.js */; };
-		54AC60F81C782AFB0088E6D3 /* torrent-stream-jxcore.jx in Resources */ = {isa = PBXBuildFile; fileRef = 54AC60F71C782ABC0088E6D3 /* torrent-stream-jxcore.jx */; };
 		54DF91C11C7758B800577EDD /* JXcore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DF91C01C7758B800577EDD /* JXcore.m */; };
 		54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */; };
 		54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91C71C7775AC00577EDD /* libcares.a */; };
@@ -56,8 +56,8 @@
 		547C00C31C7619FB00425CD7 /* TorrentStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TorrentStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentStreamTests.swift; sourceTree = "<group>"; };
 		547C00C91C7619FB00425CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "torrent-stream-jxcore.jx"; sourceTree = "<group>"; };
 		54AC60F51C78170D0088E6D3 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = SOURCE_ROOT; };
-		54AC60F71C782ABC0088E6D3 /* torrent-stream-jxcore.jx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "torrent-stream-jxcore.jx"; sourceTree = SOURCE_ROOT; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		54DF91E81C77769E00577EDD /* dist */ = {
 			isa = PBXGroup;
 			children = (
-				54AC60F71C782ABC0088E6D3 /* torrent-stream-jxcore.jx */,
+				548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */,
 				54AC60F51C78170D0088E6D3 /* index.js */,
 			);
 			path = dist;
@@ -321,7 +321,7 @@
 			files = (
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
-				54AC60F81C782AFB0088E6D3 /* torrent-stream-jxcore.jx in Resources */,
+				548DF9531C783A3800C572E1 /* torrent-stream-jxcore.jx in Resources */,
 				547C00B81C7619FB00425CD7 /* Main.storyboard in Resources */,
 				54AC60F61C78170D0088E6D3 /* index.js in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
