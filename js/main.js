@@ -10,13 +10,12 @@ var loadMainFile = function (filePath) {
 };
 
 if (process.natives) {
+  // for some reason the path here is relative to path of the app, not the actual file
   var Mobile = require('./js/helpers/Mobile')
 
   // see jxcore.java - jxcore.m
-  if (process.setPath) {
-    process.setPaths();
-    jxcore.tasks.register(process.setPaths);
-  }
+  process.setPaths();
+  jxcore.tasks.register(process.setPaths);
 
   process.on('uncaughtException', function (e) {
     Error.captureStackTrace(e);
