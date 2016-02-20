@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8C401D98361017E8562BCD10'
-               BlueprintName = 'Pods-TorrentStream'
+               BlueprintIdentifier = 'A1AFF08F1E555E6CA21B6DCD'
+               BlueprintName = 'Pods-Peerflix'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_TorrentStream.framework'>
+               BuildableName = 'Pods_Peerflix.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -1,6 +1,0 @@
-framework module Pods_TorrentStreamTests {
-  umbrella header "Pods-TorrentStreamTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

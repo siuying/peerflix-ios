@@ -84,8 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-TorrentStreamTests/Nimble.framework"
+  install_framework "Pods-Peerflix/Alamofire.framework"
+  install_framework "Pods-Peerflix/Freddy.framework"
+  install_framework "Pods-Peerflix/MarqueeLabel.framework"
+  install_framework "Pods-Peerflix/RxCocoa.framework"
+  install_framework "Pods-Peerflix/RxDataSources.framework"
+  install_framework "Pods-Peerflix/RxOptional.framework"
+  install_framework "Pods-Peerflix/RxSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-TorrentStreamTests/Nimble.framework"
+  install_framework "Pods-Peerflix/Alamofire.framework"
+  install_framework "Pods-Peerflix/Freddy.framework"
+  install_framework "Pods-Peerflix/MarqueeLabel.framework"
+  install_framework "Pods-Peerflix/RxCocoa.framework"
+  install_framework "Pods-Peerflix/RxDataSources.framework"
+  install_framework "Pods-Peerflix/RxOptional.framework"
+  install_framework "Pods-Peerflix/RxSwift.framework"
 fi

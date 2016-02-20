@@ -24,12 +24,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TorrentStream.xcscheme</key>
+		<key>Pods-Peerflix.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TorrentStreamTests.xcscheme</key>
+		<key>Pods-PeerflixTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,22 +57,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06EB828772675FF6BF9BF1F9165F2E4E</key>
+		<key>3308F93E19986F56FE1B15A400098953</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>235565B4925ED5531DC7FAD2CF1195B2</key>
+		<key>435EE32BCE0840D49376E33524E98B6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69528D0D652B56A26D1AA920CAB10B27</key>
+		<key>45B96BAABC238FAA2D3AF14A9B71C0CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>763B7994A4E900016A74399C78BF3E96</key>
+		<key>72FD542B51DCCB6A8EFAED471BE26BF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,17 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>894DEE65856EF268D9F18CBE3ACBBBCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8D8235958A976CCB57E6F7C86BCB001E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D55CA5C52C73EF7F1CE7BF694A86B7EB</key>
+		<key>AA045BC8C1180917EB73F097B8508A20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB97EA2F980304473975859362507CD6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

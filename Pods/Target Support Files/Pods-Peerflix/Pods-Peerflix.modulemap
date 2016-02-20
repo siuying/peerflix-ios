@@ -1,0 +1,6 @@
+framework module Pods_Peerflix {
+  umbrella header "Pods-Peerflix-umbrella.h"
+
+  export *
+  module * { export * }
+}
