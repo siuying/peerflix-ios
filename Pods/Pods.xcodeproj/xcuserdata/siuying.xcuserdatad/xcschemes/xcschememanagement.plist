@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Freddy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +47,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>032200698EE9DC499622E3715B0E9B43</key>
+		<key>2EAADACF49295528D58FD430B3BFDAA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E943D7840F74C3D615EE0C764CF8C7F</key>
+		<key>AA63CD41F161C5E467E035B4101AA8B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91216169ED070B957BB347EB40A79D85</key>
+		<key>C927018965CC5F776A825EB3F485BB9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADC7B7316AF5536EB1F6F3218DC86B5D</key>
+		<key>D116045EDD645A33467738CE1D8098AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

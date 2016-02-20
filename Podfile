@@ -6,6 +6,7 @@ target 'TorrentStream' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   
+  pod 'Alamofire'
   pod 'Freddy'
 end
 
