@@ -40,6 +40,8 @@
 		54DF91DE1C7775AC00577EDD /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91D11C7775AC00577EDD /* libuv.a */; };
 		54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 54DF91D21C7775AC00577EDD /* releaseLogs.txt */; };
 		54DF91E11C7775D200577EDD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91E01C7775D200577EDD /* libstdc++.6.tbd */; };
+		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
+		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		FC60EDE1AA6543278D0C6DEA /* Pods_TorrentStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA583B92E66B076F9F1840C /* Pods_TorrentStream.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		54DF91E01C7775D200577EDD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		54DF91E71C77762B00577EDD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		54E0905FFE830CC39157912A /* Pods-TorrentStreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
+		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		710B8578C9D7766619E61B1B /* Pods_TorrentStreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorrentStreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6696AA798E8D75D4E651D7B /* Pods-TorrentStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0651D18E9436B6DCBF1493D /* Pods-TorrentStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStream/Pods-TorrentStream.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 		548DF96D1C786E5700C572E1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				54F7F8D71C78969200FB3530 /* Torrent */,
 				548DF9701C786E9100C572E1 /* Search */,
 			);
 			name = ViewControllers;
@@ -305,6 +310,15 @@
 			);
 			path = dist;
 			sourceTree = SOURCE_ROOT;
+		};
+		54F7F8D71C78969200FB3530 /* Torrent */ = {
+			isa = PBXGroup;
+			children = (
+				54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */,
+				54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */,
+			);
+			name = Torrent;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -510,9 +524,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				548DF9641C785F2600C572E1 /* JXcore+Extension.swift in Sources */,
+				54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */,
 				548DF96F1C786E6400C572E1 /* SearchViewController.swift in Sources */,
 				548DF96B1C786AD200C572E1 /* APIResult.swift in Sources */,
 				548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */,
+				54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */,
 				548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */,
 				548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */,
 				54DF91C11C7758B800577EDD /* JXcore.m in Sources */,

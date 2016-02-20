@@ -60,8 +60,12 @@ class SearchViewModel: SearchViewModelType {
         let (query, openItem) = input
         let state = torrent.getState()
 
-        self.loaded = state.map({ $0.status != .Init }).shareReplay(1)
+        self.loaded = state.map({ $0.status != .Init })
+            .distinctUntilChanged()
+            .shareReplay(1)
         self.sections = self.configureSection(loaded: self.loaded, query: query, torrent: torrent)
+        
+        self.configActions(openItem, torrent: torrent)
     }
     
     func configureSection(loaded loaded: Observable<Bool>, query: Observable<String>, torrent: TorrentService) -> Observable<[SearchResultSection]>  {
@@ -91,5 +95,16 @@ class SearchViewModel: SearchViewModelType {
             .asObservable()
             .map({ [SearchResultSection(id: "1", torrents: $0)] })
             .shareReplay(1)
+    }
+    
+    func configActions(openItem: Observable<NSURL>, torrent: TorrentService) {
+        let request = openItem
+            .flatMapLatest({ torrent.playTorrent($0.absoluteString) })
+        
+        request
+            .subscribeError({ (error) -> Void in
+                print("ERROR: \(error)")
+            })
+            .addDisposableTo(self.disposeBag)
     }
 }
