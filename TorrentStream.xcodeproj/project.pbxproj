@@ -20,6 +20,7 @@
 		548DF9621C78547D00C572E1 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 548DF9611C78547D00C572E1 /* index.js */; };
 		548DF9641C785F2600C572E1 /* JXcore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9631C785F2600C572E1 /* JXcore+Extension.swift */; };
 		548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9661C78630900C572E1 /* Alamofire+Rx.swift */; };
+		548DF9691C78675C00C572E1 /* TorrentServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */; };
 		54DF91C11C7758B800577EDD /* JXcore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DF91C01C7758B800577EDD /* JXcore.m */; };
 		54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */; };
 		54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91C71C7775AC00577EDD /* libcares.a */; };
@@ -66,6 +67,7 @@
 		548DF9611C78547D00C572E1 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		548DF9631C785F2600C572E1 /* JXcore+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JXcore+Extension.swift"; sourceTree = "<group>"; };
 		548DF9661C78630900C572E1 /* Alamofire+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Rx.swift"; sourceTree = "<group>"; };
+		548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentServiceAPI.swift; sourceTree = "<group>"; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				548DF9561C78409C00C572E1 /* TorrentService.swift */,
+				548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				547C00B51C7619FB00425CD7 /* ViewController.swift in Sources */,
 				548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */,
 				548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */,
+				548DF9691C78675C00C572E1 /* TorrentServiceAPI.swift in Sources */,
 				547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

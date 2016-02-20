@@ -66,9 +66,8 @@ class DefaultTorrentService: TorrentService {
         return state
     }
     
-    func search(query: String, engine: String) -> Observable<SearchResult> {
-        let url = "http://localhost:9870/search"
-        return Alamofire.request(.GET, url, parameters: ["query": query, "engine": engine])
+    func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult> {
+        return Alamofire.request(TorrentServiceAPI.Search(query, engine))
             .rx_reponseJSON()
             .map { (json) -> SearchResult in
                 return try json.decode(type: SearchResult.self)
