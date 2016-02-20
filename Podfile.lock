@@ -1,12 +1,27 @@
 PODS:
+  - Freddy (2.0.2)
   - Nimble (3.1.0)
+  - RxCocoa (2.2.0):
+    - RxSwift (~> 2.2)
+  - RxDataSources (0.5):
+    - RxCocoa (~> 2.2)
+    - RxSwift (~> 2.2)
+  - RxSwift (2.2.0)
 
 DEPENDENCIES:
+  - Freddy
   - Nimble
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
 
 SPEC CHECKSUMS:
+  Freddy: e53713b8d5be02dbf5f4132c44d899d99eb09a6b
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
+  RxCocoa: 42efb7a7145a8d1d5878e94ce48a580d29e0c796
+  RxDataSources: dc37b814dd4efd761e1e65521b977677e4197614
+  RxSwift: b8a749f2204c6c7a5c29b306a9c3bc11d5b87c5b
 
-PODFILE CHECKSUM: d7e3b1c3d0d353e0d2a16f144e77ecf5f34c4097
+PODFILE CHECKSUM: 2ef3844bda011976d77ef27ed7c7f5089f7081b3
 
 COCOAPODS: 1.0.0.beta.3

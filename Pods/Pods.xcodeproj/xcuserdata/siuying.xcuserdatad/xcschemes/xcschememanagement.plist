@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Freddy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,15 +24,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxDataSources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2F41F268162490ADF6DF5CD3F09295CF</key>
+		<key>032200698EE9DC499622E3715B0E9B43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8D8235958A976CCB57E6F7C86BCB001E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8E943D7840F74C3D615EE0C764CF8C7F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91216169ED070B957BB347EB40A79D85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ADC7B7316AF5536EB1F6F3218DC86B5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE9FE67AC40EE5B7DE1003B43536DBE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

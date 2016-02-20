@@ -82,3 +82,16 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-TorrentStream/Freddy.framework"
+  install_framework "Pods-TorrentStream/RxCocoa.framework"
+  install_framework "Pods-TorrentStream/RxDataSources.framework"
+  install_framework "Pods-TorrentStream/RxSwift.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-TorrentStream/Freddy.framework"
+  install_framework "Pods-TorrentStream/RxCocoa.framework"
+  install_framework "Pods-TorrentStream/RxDataSources.framework"
+  install_framework "Pods-TorrentStream/RxSwift.framework"
+fi
