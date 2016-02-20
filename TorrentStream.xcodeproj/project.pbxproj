@@ -152,13 +152,14 @@
 		547C00A61C7619FB00425CD7 = {
 			isa = PBXGroup;
 			children = (
-				548DF9611C78547D00C572E1 /* index.js */,
-				54DF91E81C77769E00577EDD /* dist */,
+				1D3C152D0B33FF848E2FD63B /* Frameworks */,
+				2CA3C24EF44BBE591CE8F797 /* Pods */,
+				547C00B01C7619FB00425CD7 /* Products */,
 				547C00B11C7619FB00425CD7 /* TorrentStream */,
 				547C00C61C7619FB00425CD7 /* TorrentStreamTests */,
-				547C00B01C7619FB00425CD7 /* Products */,
-				2CA3C24EF44BBE591CE8F797 /* Pods */,
-				1D3C152D0B33FF848E2FD63B /* Frameworks */,
+				54DF91E81C77769E00577EDD /* dist */,
+				54DF91C21C77759200577EDD /* vendor */,
+				548DF9611C78547D00C572E1 /* index.js */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,12 +180,11 @@
 				548DF9581C78424D00C572E1 /* Models */,
 				548DF9541C78403F00C572E1 /* Services */,
 				547C00B21C7619FB00425CD7 /* AppDelegate.swift */,
-				547C00B41C7619FB00425CD7 /* ViewController.swift */,
 				547C00B91C7619FB00425CD7 /* Assets.xcassets */,
-				547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */,
-				547C00BE1C7619FB00425CD7 /* Info.plist */,
-				54DF91C21C77759200577EDD /* vendor */,
 				54DF91E71C77762B00577EDD /* Header.h */,
+				547C00BE1C7619FB00425CD7 /* Info.plist */,
+				547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */,
+				547C00B41C7619FB00425CD7 /* ViewController.swift */,
 			);
 			path = TorrentStream;
 			sourceTree = "<group>";
@@ -192,8 +192,8 @@
 		547C00C61C7619FB00425CD7 /* TorrentStreamTests */ = {
 			isa = PBXGroup;
 			children = (
-				547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */,
 				547C00C91C7619FB00425CD7 /* Info.plist */,
+				547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */,
 			);
 			path = TorrentStreamTests;
 			sourceTree = "<group>";
@@ -204,17 +204,17 @@
 				548DF9561C78409C00C572E1 /* TorrentService.swift */,
 				548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */,
 			);
-			name = Services;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		548DF9581C78424D00C572E1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				548DF9591C78425500C572E1 /* TorrentState.swift */,
-				548DF95B1C78452F00C572E1 /* SearchResult.swift */,
 				548DF96A1C786AD200C572E1 /* APIResult.swift */,
+				548DF95B1C78452F00C572E1 /* SearchResult.swift */,
+				548DF9591C78425500C572E1 /* TorrentState.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		548DF9651C78630100C572E1 /* Extensions */ = {
@@ -222,33 +222,33 @@
 			children = (
 				548DF9661C78630900C572E1 /* Alamofire+Rx.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		54DF91BE1C7758B800577EDD /* JXcore */ = {
 			isa = PBXGroup;
 			children = (
+				548DF9631C785F2600C572E1 /* JXcore+Extension.swift */,
 				54DF91BF1C7758B800577EDD /* JXcore.h */,
 				54DF91C01C7758B800577EDD /* JXcore.m */,
-				548DF9631C785F2600C572E1 /* JXcore+Extension.swift */,
 			);
 			path = JXcore;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		54DF91C21C77759200577EDD /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				54DF91C31C7775AC00577EDD /* jxcore */,
 			);
-			name = vendor;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		54DF91C31C7775AC00577EDD /* jxcore */ = {
 			isa = PBXGroup;
 			children = (
+				54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */,
 				54DF91C41C7775AC00577EDD /* jx.h */,
 				54DF91C51C7775AC00577EDD /* jx_result.h */,
-				54DF91C61C7775AC00577EDD /* JXCORE_LICENSE */,
 				54DF91C71C7775AC00577EDD /* libcares.a */,
 				54DF91C81C7775AC00577EDD /* libchrome_zlib.a */,
 				54DF91C91C7775AC00577EDD /* libhttp_parser.a */,
@@ -262,9 +262,8 @@
 				54DF91D11C7775AC00577EDD /* libuv.a */,
 				54DF91D21C7775AC00577EDD /* releaseLogs.txt */,
 			);
-			name = jxcore;
-			path = vendor/jxcore;
-			sourceTree = SOURCE_ROOT;
+			path = jxcore;
+			sourceTree = "<group>";
 		};
 		54DF91E81C77769E00577EDD /* dist */ = {
 			isa = PBXGroup;
@@ -515,6 +514,7 @@
 				547C00BC1C7619FB00425CD7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
