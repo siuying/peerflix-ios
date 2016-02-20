@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-./node_modules/.bin/babel js -d dist
-
-jx package dist/main.js ./dist/torrent-stream-jxcore \
-  --slim 'TorrentStream,Pods,./index.js,js,fsevents,vendor,babel-plugin-*,output-file-sync,babel-preset-*,babylon,babel-messages,babel-cli,babel-core*,babel-generator,babel-code-frame,babel-register,babel-helper-*'\
+jx package js/main.js ./dist/torrent-stream-jxcore \
+  --slim 'TorrentStream,Pods,./index.js,dist,*fsevents*,vendor'\
   --extract-what '*.node' --extract-app-root './dist'

@@ -7,13 +7,10 @@
   "author": "Francis Chong <francis@ignition.hk> (http://reality.hk/)",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-preset-es2015": "^6.5.0"
   },
   "dependencies": {
     "apiserver": "^0.3.1",
     "apiserver-router": "^0.2.2",
-    "babel-runtime": "^6.5.0",
     "es6-promise": "^3.1.2",
     "file-stream": "0.0.0",
     "lodash": "^3.10.1",

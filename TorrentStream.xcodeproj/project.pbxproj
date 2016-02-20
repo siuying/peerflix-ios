@@ -13,7 +13,6 @@
 		547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547C00B91C7619FB00425CD7 /* Assets.xcassets */; };
 		547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */; };
 		547C00C81C7619FB00425CD7 /* TorrentStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */; };
-		548DF9531C783A3800C572E1 /* torrent-stream-jxcore.jx in Resources */ = {isa = PBXBuildFile; fileRef = 548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */; };
 		548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9561C78409C00C572E1 /* TorrentService.swift */; };
 		548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9591C78425500C572E1 /* TorrentState.swift */; };
 		548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF95B1C78452F00C572E1 /* SearchResult.swift */; };
@@ -42,6 +41,8 @@
 		54DF91E11C7775D200577EDD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF91E01C7775D200577EDD /* libstdc++.6.tbd */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
+		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
+		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
 		FC60EDE1AA6543278D0C6DEA /* Pods_TorrentStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA583B92E66B076F9F1840C /* Pods_TorrentStream.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +67,6 @@
 		547C00C31C7619FB00425CD7 /* TorrentStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TorrentStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00C71C7619FB00425CD7 /* TorrentStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentStreamTests.swift; sourceTree = "<group>"; };
 		547C00C91C7619FB00425CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "torrent-stream-jxcore.jx"; sourceTree = "<group>"; };
 		548DF9561C78409C00C572E1 /* TorrentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentService.swift; sourceTree = "<group>"; };
 		548DF9591C78425500C572E1 /* TorrentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
 		548DF95B1C78452F00C572E1 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -100,6 +100,8 @@
 		54E0905FFE830CC39157912A /* Pods-TorrentStreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
+		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
+		54F7F8DF1C78B25800FB3530 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
 		710B8578C9D7766619E61B1B /* Pods_TorrentStreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorrentStreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6696AA798E8D75D4E651D7B /* Pods-TorrentStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0651D18E9436B6DCBF1493D /* Pods-TorrentStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStream/Pods-TorrentStream.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,12 +164,13 @@
 		547C00A61C7619FB00425CD7 = {
 			isa = PBXGroup;
 			children = (
+				54F7F8DF1C78B25800FB3530 /* js */,
+				54F7F8DD1C78B25100FB3530 /* node_modules */,
 				1D3C152D0B33FF848E2FD63B /* Frameworks */,
 				2CA3C24EF44BBE591CE8F797 /* Pods */,
 				547C00B01C7619FB00425CD7 /* Products */,
 				547C00B11C7619FB00425CD7 /* TorrentStream */,
 				547C00C61C7619FB00425CD7 /* TorrentStreamTests */,
-				54DF91E81C77769E00577EDD /* dist */,
 				54DF91C21C77759200577EDD /* vendor */,
 				548DF9611C78547D00C572E1 /* index.js */,
 			);
@@ -303,14 +306,6 @@
 			path = jxcore;
 			sourceTree = "<group>";
 		};
-		54DF91E81C77769E00577EDD /* dist */ = {
-			isa = PBXGroup;
-			children = (
-				548DF9521C783A1B00C572E1 /* torrent-stream-jxcore.jx */,
-			);
-			path = dist;
-			sourceTree = SOURCE_ROOT;
-		};
 		54F7F8D71C78969200FB3530 /* Torrent */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,7 +404,8 @@
 			files = (
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
-				548DF9531C783A3800C572E1 /* torrent-stream-jxcore.jx in Resources */,
+				54F7F8E01C78B25800FB3530 /* js in Resources */,
+				54F7F8DE1C78B25100FB3530 /* node_modules in Resources */,
 				548DF9621C78547D00C572E1 /* index.js in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
