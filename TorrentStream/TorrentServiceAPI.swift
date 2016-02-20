@@ -36,6 +36,9 @@ enum TorrentServiceAPI: URLRequestConvertible {
     }
     
     case Search(String, SearchEngine)
+    case Play(String)
+    case Stop()
+    case Select(String)
     
     var method: Alamofire.Method {
         return .GET
@@ -45,6 +48,12 @@ enum TorrentServiceAPI: URLRequestConvertible {
         switch self {
         case .Search:
             return "/search"
+        case .Play:
+            return "/torrent/play"
+        case .Stop:
+            return "/torrent/stop"
+        case .Select:
+            return "/torrent/select"
         }
     }
     
@@ -54,6 +63,25 @@ enum TorrentServiceAPI: URLRequestConvertible {
         let URL = NSURL(string: TorrentServiceAPI.baseURLString)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
-        return mutableURLRequest
+        
+        switch self {
+        case .Search(let query, let engine):
+            return Alamofire.ParameterEncoding
+                .URL
+                .encode(mutableURLRequest, parameters: ["query": query, "engine": engine.rawValue])
+                .0
+        case .Play(let url):
+            return Alamofire.ParameterEncoding
+                .URL
+                .encode(mutableURLRequest, parameters: ["url": url])
+                .0
+        case .Select(let filename):
+            return Alamofire.ParameterEncoding
+                .URL
+                .encode(mutableURLRequest, parameters: ["filename": filename])
+                .0            
+        default:
+            return mutableURLRequest
+        }
     }
 }

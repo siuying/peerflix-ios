@@ -40,20 +40,35 @@ class TvApiServer {
       play: {
         get: (request, response) => {
           let url = request.querystring.url
-          this.torrentService.openTorrentUrl(url)
+          try {
+            this.torrentService.openTorrentUrl(url)
+            response.serveJSON({success: true})
+          } catch (error) {
+            response.serveJSON({success: false, error: error})
+          }
         }
       },
 
       stop: {
         get: (request, response) => {
-          this.torrentService.closeTorrent()
+          try {
+            this.torrentService.closeTorrent()
+            response.serveJSON({success: true})
+          } catch (error) {
+            response.serveJSON({success: false, error: error})
+          }
         }
       },
 
       select: {
         get: (request, response) => {
-          let filename = request.querystring.filename
-          this.torrentService.selectFile(filename)
+          try {
+            let filename = request.querystring.filename
+            this.torrentService.selectFile(filename)
+            response.serveJSON({success: true})
+          } catch (error) {
+            response.serveJSON({success: false, error: error})
+          }
         }
       }
     })

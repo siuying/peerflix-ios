@@ -16,9 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let disposeBag = DisposeBag()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        DefaultTorrentService.instance.setup()
-        
+
         DefaultTorrentService.instance.getState()
             .subscribeNext { (state) -> Void in
                 switch state.status {
@@ -28,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("READY")
                     let search = DefaultTorrentService
                         .instance
-                        .search("GATE", engine: "dmhy")
+                        .search("GATE", engine: .DMHY)
                         .shareReplay(1)
                         
                     search.subscribeError({ (errno) -> Void in

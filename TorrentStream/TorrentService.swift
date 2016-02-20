@@ -15,13 +15,13 @@ import Alamofire
 protocol TorrentService {
     func getState() -> Observable<TorrentState>
 
-    func search(query: String, engine: String) -> Observable<SearchResult>
+    func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult>
 
-    func selectFile(filename: String)
+    func selectFile(filename: String) -> Observable<APIResult>
 
-    func playTorrent(url: String)
+    func playTorrent(url: String) -> Observable<APIResult>
     
-    func stopTorrent()
+    func stopTorrent() -> Observable<APIResult>
 }
 
 class DefaultTorrentService: TorrentService {
@@ -31,9 +31,6 @@ class DefaultTorrentService: TorrentService {
     var error: Observable<ErrorType?>!
     
     init() {
-    }
-
-    func setup() {
         let state: Variable<TorrentState> = Variable(TorrentState())
         let error: Variable<ErrorType?> = Variable(nil)
         self.state = state.asObservable().shareReplay(1)
@@ -74,12 +71,21 @@ class DefaultTorrentService: TorrentService {
             }
     }
     
-    func selectFile(filename: String) {
+    func selectFile(filename: String) -> Observable<APIResult> {
+        return Alamofire.request(TorrentServiceAPI.Select(filename))
+            .rx_reponseJSON()
+            .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func playTorrent(url: String) {
+    func playTorrent(url: String) -> Observable<APIResult> {
+        return Alamofire.request(TorrentServiceAPI.Play(url))
+            .rx_reponseJSON()
+            .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func stopTorrent() {
+    func stopTorrent() -> Observable<APIResult> {
+        return Alamofire.request(TorrentServiceAPI.Stop())
+            .rx_reponseJSON()
+            .map({ try $0.decode(type: APIResult.self) })
     }
 }
