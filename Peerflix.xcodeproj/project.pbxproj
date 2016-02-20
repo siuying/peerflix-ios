@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		35191E8A591CE3FF84F15B57 /* Pods_Peerflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B356BED76B201761CF59DE93 /* Pods_Peerflix.framework */; };
-		3F3F5C1937DCCEB9894D3BD0 /* Pods_TorrentStreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710B8578C9D7766619E61B1B /* Pods_TorrentStreamTests.framework */; };
 		547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00B21C7619FB00425CD7 /* AppDelegate.swift */; };
 		547C00B51C7619FB00425CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00B41C7619FB00425CD7 /* ViewController.swift */; };
 		547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547C00B91C7619FB00425CD7 /* Assets.xcassets */; };
@@ -44,9 +43,11 @@
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
 		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
 		54F7F8E21C78B6B500FB3530 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8E11C78B6B500FB3530 /* Router.swift */; };
-		54F7F9051C78C1E200FB3530 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F7F9021C78C1CF00FB3530 /* IJKMediaFramework.framework */; };
+		54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */; };
+		54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */; };
+		54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */; };
+		54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */; };
 		89F019D749DADFE50946619A /* Pods_PeerflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF587F4FC43D90BD6BB35DFA /* Pods_PeerflixTests.framework */; };
-		FC60EDE1AA6543278D0C6DEA /* Pods_TorrentStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA583B92E66B076F9F1840C /* Pods_TorrentStream.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,18 +114,18 @@
 		54DF91D21C7775AC00577EDD /* releaseLogs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseLogs.txt; sourceTree = "<group>"; };
 		54DF91E01C7775D200577EDD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		54DF91E71C77762B00577EDD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		54E0905FFE830CC39157912A /* Pods-TorrentStreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
 		54F7F8DF1C78B25800FB3530 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
 		54F7F8E11C78B6B500FB3530 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		54F7F8FC1C78C1CF00FB3530 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = vendor/ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
+		54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.debug.xcconfig"; sourceTree = "<group>"; };
+		54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
+		54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
+		54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.release.xcconfig"; sourceTree = "<group>"; };
 		710B8578C9D7766619E61B1B /* Pods_TorrentStreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorrentStreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6696AA798E8D75D4E651D7B /* Pods-TorrentStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStreamTests/Pods-TorrentStreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		B356BED76B201761CF59DE93 /* Pods_Peerflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peerflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0651D18E9436B6DCBF1493D /* Pods-TorrentStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStream/Pods-TorrentStream.debug.xcconfig"; sourceTree = "<group>"; };
-		F3D287C31B665E9EDF4935A3 /* Pods-TorrentStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorrentStream.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorrentStream/Pods-TorrentStream.release.xcconfig"; sourceTree = "<group>"; };
 		FF587F4FC43D90BD6BB35DFA /* Pods_PeerflixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerflixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,7 +134,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F7F9051C78C1E200FB3530 /* IJKMediaFramework.framework in Frameworks */,
 				54DF91E11C7775D200577EDD /* libstdc++.6.tbd in Frameworks */,
 				54DF91DE1C7775AC00577EDD /* libuv.a in Frameworks */,
 				54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */,
@@ -146,7 +146,6 @@
 				54DF91DB1C7775AC00577EDD /* libopenssl.a in Frameworks */,
 				54DF91DD1C7775AC00577EDD /* libsqlite3.a in Frameworks */,
 				54DF91D81C7775AC00577EDD /* libleveldb.a in Frameworks */,
-				FC60EDE1AA6543278D0C6DEA /* Pods_TorrentStream.framework in Frameworks */,
 				35191E8A591CE3FF84F15B57 /* Pods_Peerflix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,7 +154,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3F5C1937DCCEB9894D3BD0 /* Pods_TorrentStreamTests.framework in Frameworks */,
 				89F019D749DADFE50946619A /* Pods_PeerflixTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,10 +177,10 @@
 		2CA3C24EF44BBE591CE8F797 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0651D18E9436B6DCBF1493D /* Pods-TorrentStream.debug.xcconfig */,
-				F3D287C31B665E9EDF4935A3 /* Pods-TorrentStream.release.xcconfig */,
-				54E0905FFE830CC39157912A /* Pods-TorrentStreamTests.debug.xcconfig */,
-				A6696AA798E8D75D4E651D7B /* Pods-TorrentStreamTests.release.xcconfig */,
+				54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */,
+				54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */,
+				54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */,
+				54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -468,12 +466,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */,
+				54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */,
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
 				54F7F8E01C78B25800FB3530 /* js in Resources */,
 				54F7F8DE1C78B25100FB3530 /* node_modules in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
+				54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */,
+				54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +721,7 @@
 		};
 		547C00CD1C7619FB00425CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0651D18E9436B6DCBF1493D /* Pods-TorrentStream.debug.xcconfig */;
+			baseConfigurationReference = 54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "";
@@ -737,7 +739,7 @@
 		};
 		547C00CE1C7619FB00425CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3D287C31B665E9EDF4935A3 /* Pods-TorrentStream.release.xcconfig */;
+			baseConfigurationReference = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "";
@@ -755,7 +757,7 @@
 		};
 		547C00D01C7619FB00425CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54E0905FFE830CC39157912A /* Pods-TorrentStreamTests.debug.xcconfig */;
+			baseConfigurationReference = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PeerflixTests/Info.plist;
@@ -768,7 +770,7 @@
 		};
 		547C00D11C7619FB00425CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6696AA798E8D75D4E651D7B /* Pods-TorrentStreamTests.release.xcconfig */;
+			baseConfigurationReference = 54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PeerflixTests/Info.plist;
