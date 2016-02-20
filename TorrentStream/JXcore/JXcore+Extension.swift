@@ -14,7 +14,7 @@ extension JXcore {
     static func setup() {
         JXcore.useSubThreading()
         JXcore.startEngine("index")
-        JXcore.callEventCallback("StartApplication", withParams: ["app.js"])
+        JXcore.callEventCallback("StartApplication", withParams: ["./dist/app.js"])
         JXcore.addNativeBlock({ (messages, _) -> Void in
             // log error
         }, withName: "OnError")
