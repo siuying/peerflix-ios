@@ -24,20 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Loading")
                 case .Idle:
                     print("READY")
-                    let search = DefaultTorrentService
-                        .instance
-                        .search("GATE", engine: .DMHY)
-                        .shareReplay(1)
-                        
-                    search.subscribeError({ (errno) -> Void in
-                            print("errno: \(errno)")
-                        })
-                        .addDisposableTo(self.disposeBag)
-
-                    search.subscribeNext({ (result) -> Void in
-                            print("result: \(result)")
-                        })
-                        .addDisposableTo(self.disposeBag)
                 case .LoadingMetadata:
                     print("LoadingMetadata")
                 case .Listening:
@@ -47,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             .addDisposableTo(self.disposeBag)
+        
+        
+        let searchViewController = SearchViewController(torrent: DefaultTorrentService.instance)
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.rootViewController = UINavigationController(rootViewController: searchViewController)
+        window.makeKeyAndVisible()
+        self.window = window
         
         // Override point for customization after application launch.
         return true

@@ -22,6 +22,8 @@ struct SearchResult {
         let leechers : Int
         let URL : NSURL?
     }
+    
+    static let error = SearchResult(engine: "", query: "", torrents: [], success: false)
 }
 
 extension SearchResult: JSONDecodable {
@@ -42,4 +44,11 @@ extension SearchResult.Torrent: JSONDecodable {
         self.leechers = try json.int("leechers", ifNotFound: true) ?? 0
         self.URL = try json.string("link", ifNotFound: true).flatMap({ NSURL(string: $0) })
     }
+}
+
+extension SearchResult.Torrent: Equatable {
+}
+
+func==(lhs: SearchResult.Torrent, rhs: SearchResult.Torrent) -> Bool {
+    return lhs.URL == rhs.URL
 }
