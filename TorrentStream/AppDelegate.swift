@@ -19,9 +19,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DefaultTorrentService.instance.setup()
         
-        DefaultTorrentService.instance.state
+        DefaultTorrentService.instance.getState()
             .subscribeNext { (state) -> Void in
-                print("state: \(state)")
+                switch state.status {
+                case .Init:
+                    print("Loading")
+                case .Idle:
+                    print("READY")
+                    let search = DefaultTorrentService
+                        .instance
+                        .search("GATE", engine: "dmhy")
+                        .shareReplay(1)
+                        
+                    search.subscribeError({ (errno) -> Void in
+                            print("errno: \(errno)")
+                        })
+                        .addDisposableTo(self.disposeBag)
+
+                    search.subscribeNext({ (result) -> Void in
+                            print("result: \(result)")
+                        })
+                        .addDisposableTo(self.disposeBag)
+                case .LoadingMetadata:
+                    print("LoadingMetadata")
+                case .Listening:
+                    print("Stream Server Listening")
+                case .Finished:
+                    print("Finished Streaming")
+                }
             }
             .addDisposableTo(self.disposeBag)
         

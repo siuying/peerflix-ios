@@ -8,12 +8,14 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import Freddy
+import Alamofire
 
 protocol TorrentService {
     func getState() -> Observable<TorrentState>
 
-    func search(query: String, service: String) -> Observable<[SearchResult]>
+    func search(query: String, engine: String) -> Observable<SearchResult>
 
     func selectFile(filename: String)
 
@@ -37,19 +39,13 @@ class DefaultTorrentService: TorrentService {
         self.state = state.asObservable().shareReplay(1)
         self.error = error.asObservable().shareReplay(1)
 
-        JXcore.useSubThreading()
-        JXcore.startEngine("index")
-        JXcore.callEventCallback("StartApplication", withParams: ["app.js"])
-        JXcore.addNativeBlock({ (messages, _) -> Void in
-            // log error
-        }, withName: "OnError")
-        
+        JXcore.setup()
         JXcore.addNativeBlock({ (params, callbackId) -> Void in
             if params.count < 1 {
                 print("unexpected params count: \(params)")
                 return
             }
-
+            
             guard let jsonStr = params[0] as? String else {
                 print("unexpected params: \(params)")
                 return
@@ -63,17 +59,20 @@ class DefaultTorrentService: TorrentService {
                 print("JSON parsing error: \(e)")
                 error.value = e
             }
-            
         }, withName: "UpdateTorrentState")
-
     }
     
     func getState() -> Observable<TorrentState> {
         return state
     }
     
-    func search(query: String, service: String) -> Observable<[SearchResult]> {
-        return Observable.empty()
+    func search(query: String, engine: String) -> Observable<SearchResult> {
+        let url = "http://localhost:9870/search"
+        return Alamofire.request(.GET, url, parameters: ["query": query, "engine": engine])
+            .rx_reponseJSON()
+            .map { (json) -> SearchResult in
+                return try json.decode(type: SearchResult.self)
+            }
     }
     
     func selectFile(filename: String) {
