@@ -42,6 +42,7 @@ extension SearchResult.Torrent: JSONDecodable {
         do {
             self.size = try json.string("size") ?? ""
         } catch _ as JSON.Error {
+            // todo: change the kickass search engine parser which will return Int size instead of String
             let size = try json.int("size")
             self.size = formatFileSize(Double(size)) + " M"
         }
