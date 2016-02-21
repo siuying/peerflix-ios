@@ -27,12 +27,16 @@ class VideoPlayerController: UIViewController {
         super.viewDidLoad()
 
         IJKFFMoviePlayerController.checkIfFFmpegVersionMatch(true)
+        
         let options = IJKFFOptions.optionsByDefault()
+        options.setPlayerOptionIntValue(1, forKey: "videotoolbox")
+        options.setFormatOptionIntValue(1, forKey: "auto_convert")
         self.player = IJKFFMoviePlayerController(contentURL: self.videoURL, withOptions: options)
         self.player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.player.view.frame = self.videoView.bounds
         self.player.shouldAutoplay = true
         self.player.scalingMode = .AspectFit
+        self.player.allowsMediaAirPlay = true
         self.videoView.addSubview(self.player.view)
         self.mediaControl.delegatePlayer = self.player
         

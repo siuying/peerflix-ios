@@ -36,18 +36,22 @@ func configureTorrentState(torrent: TorrentService, torrentState: Observable<Tor
             }
             .observeOn(MainScheduler.instance)
 
-        let size = Observable.just("")
-        let files:Observable<[String]> = Observable.just([])
+        let size = torrentState
+            .map({ $0.size ?? 0 })
+            .map({ "\(formatFileSize(Double($0))) M" })
+            .observeOn(MainScheduler.instance)
+
+        let files = torrentState.map({ $0.files.flatMap({ $0.map({$0.name}) }) }).filterNil()
         let downloadSpeed = torrentState
             .map({ $0.downloadSpeed ?? 0 })
-            .map({ "\(formatFileSize($0)) M/s" })
+            .map({ "\(formatFileSize(Double($0))) M/s" })
             .observeOn(MainScheduler.instance)
         let downloaded = torrentState
             .map({ ($0.downloaded, $0.size) })
             .map({ (downloaded, size) -> String in
                 if let downloaded = downloaded, let size = size {
-                    let completion = size == 0 ? 0 : downloaded / size
-                    return "\(formatFileSize(completion))M \(formatPercent(completion))"
+                    let completion = size == 0 ? 0 : (downloaded * 100.0 / size)
+                    return "\(formatFileSize(downloaded))M \(formatPercent(completion))%"
                 } else {
                     return ""
                 }
@@ -76,7 +80,7 @@ class TorrentViewModel {
     private let disposeBag = DisposeBag()
 
     init(play: Observable<Void>, torrent: TorrentService) {
-        let torrentState = torrent.getState()
+        let torrentState = torrent.getState().shareReplay(1)
 
         // setup states
         (self.name, self.size, self.files, self.downloadSpeed, self.downloaded, self.playable, self.URL) = configureTorrentState(torrent, torrentState: torrentState)

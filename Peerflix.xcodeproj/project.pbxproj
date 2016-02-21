@@ -44,6 +44,7 @@
 		54E409CE1C79916800B6704D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CD1C79916800B6704D /* VideoToolbox.framework */; };
 		54E409D01C79918E00B6704D /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CF1C79918E00B6704D /* libbz2.tbd */; };
 		54E409D31C799CB900B6704D /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D21C799CB900B6704D /* Segue.swift */; };
+		54E409D51C799DCF00B6704D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D41C799DCF00B6704D /* App.swift */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
@@ -128,6 +129,7 @@
 		54E409CD1C79916800B6704D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		54E409CF1C79918E00B6704D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		54E409D21C799CB900B6704D /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
+		54E409D41C799DCF00B6704D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				54E409D11C799CAF00B6704D /* Constants */,
 				548DF9651C78630100C572E1 /* Extensions */,
+				54E409D61C799DD200B6704D /* Helpers */,
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
 				54A8D04D1C795AA7009D2D85 /* Playgrounds */,
@@ -381,6 +384,14 @@
 				54E409D21C799CB900B6704D /* Segue.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		54E409D61C799DD200B6704D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				54E409D41C799DCF00B6704D /* App.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		54F7F8D71C78969200FB3530 /* Torrent */ = {
@@ -643,6 +654,7 @@
 				548DF9641C785F2600C572E1 /* JXcore+Extension.swift in Sources */,
 				54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */,
 				548DF96F1C786E6400C572E1 /* SearchViewController.swift in Sources */,
+				54E409D51C799DCF00B6704D /* App.swift in Sources */,
 				548DF96B1C786AD200C572E1 /* APIResult.swift in Sources */,
 				548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */,
 				54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */,

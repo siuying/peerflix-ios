@@ -45,16 +45,6 @@ class TorrentViewController: UIViewController {
         self.viewModel.playable
             .bindTo(self.playButton.rx_enabled)
             .addDisposableTo(self.disposeBag)
-        
-        Observable
-            .combineLatest(play, self.viewModel.videoURL.asObservable().filterNil().distinctUntilChanged()) { (play, URL) -> NSURL in
-                return URL
-            }
-            .observeOn(MainScheduler.instance)
-            .subscribeNext { (URL) -> Void in
-//                self.router.openVideo(URL)
-            }
-            .addDisposableTo(self.disposeBag)
    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

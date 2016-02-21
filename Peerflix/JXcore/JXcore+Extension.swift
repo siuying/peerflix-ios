@@ -16,8 +16,9 @@ extension JXcore {
         JXcore.startEngine("js/main")
 
         JXcore.callEventCallback("StartApplication", withParams: ["./js/app.js"])
-        
-        let temp = NSTemporaryDirectory().stringByAppendingString("torrent-stream")
+
+        App.prepareTemporaryDirectory()
+        let temp = App.temporaryDirectory()
         JXcore.callEventCallback("SetTemp", withParams: [temp])
 
         JXcore.addNativeBlock({ (messages, _) -> Void in

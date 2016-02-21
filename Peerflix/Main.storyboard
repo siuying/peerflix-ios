@@ -154,12 +154,12 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZF-b8-7ko">
                                         <rect key="frame" x="0.0" y="488" width="560" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Play"/>
                                         <connections>
                                             <segue destination="yD0-T0-G0G" kind="show" identifier="PlayVideo" id="T1l-St-D5o"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-fV-vUE">
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-fV-vUE">
                                         <rect key="frame" x="0.0" y="526" width="560" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>

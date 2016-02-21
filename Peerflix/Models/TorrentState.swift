@@ -27,7 +27,7 @@ struct TorrentState {
         
         init(json: JSON) throws {
             self.name = try json.string("name", ifNull: true) ?? ""
-            self.size = try json.double("length", ifNull: true) ?? 0
+            self.size = (try? json.double("length")) ?? 0
             self.URL = try json.string("url", ifNotFound: true).flatMap({ NSURL(string: $0) })
         }
         
@@ -56,11 +56,12 @@ struct TorrentState {
         self.status = Status(rawValue: try json.string("status")) ?? Status.Idle
 
         self.filename = try json.string("filename", ifNull: true)
-        self.size = try json.double("filelength", ifNull: true)
-        
-        self.downloadSpeed = try json.double("downloadSpeed", ifNull: true)
-        self.uploaded = try json.double("uploaded", ifNull: true)
-        self.downloaded = try json.double("downloaded", ifNull: true)
+
+        self.size = try? json.double("filelength")
+        self.downloadSpeed = try? json.double("downloadSpeed")
+        self.uploaded = try? json.double("uploaded")
+        self.downloaded = try? json.double("downloaded")
         self.files = try json.array("files", ifNull: true).flatMap({ try $0.map({try File(json: $0)}) })
+        print("downloaded: \(self.downloaded), size: \(self.size)")
     }
 }
