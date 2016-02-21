@@ -23,6 +23,10 @@ class VideoPlayerController: UIViewController {
     
     var player: IJKMediaPlayback!
     
+    deinit {
+        print("deinit VideoPlayerController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +46,7 @@ class VideoPlayerController: UIViewController {
         
         let player = self.player
         let mediacontrol = self.mediaControl
+
         mediaControl.mediaProgressSlider
             .rx_controlEvent(.TouchDown)
             .subscribeNext { [weak mediacontrol] (_) -> Void in
@@ -77,6 +82,15 @@ class VideoPlayerController: UIViewController {
             .rx_value
             .subscribeNext {  [weak mediaControl] (_) -> Void in
                 mediaControl?.continueDragMediaSlider()
+            }
+            .addDisposableTo(self.disposeBag)
+        
+        mediaControl.doneButton
+            .rx_tap
+            .subscribeNext { [weak self] _ in
+                if let vc = self {
+                    vc.navigationController?.popViewControllerAnimated(true)
+                }
             }
             .addDisposableTo(self.disposeBag)
     }

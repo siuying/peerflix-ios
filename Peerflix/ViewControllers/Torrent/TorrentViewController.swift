@@ -23,6 +23,10 @@ class TorrentViewController: UIViewController {
     @IBOutlet var downloadedLabel : UILabel!
     @IBOutlet var downloadSpeedLabel : UILabel!
     @IBOutlet var playButton : UIButton!
+
+    deinit {
+        print("deinit TorrentViewController")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +59,6 @@ class TorrentViewController: UIViewController {
         if segueId == Segue.PlayVideo.rawValue {
             let vc = segue.destinationViewController as! VideoPlayerController
             vc.videoURL = self.viewModel.videoURL.value
-            print("video URL = \(vc.videoURL!)")
         }
     }
 }
