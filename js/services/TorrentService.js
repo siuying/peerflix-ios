@@ -35,7 +35,7 @@ function TorrentService (callback) {
       verified: 0,
       invalid: 0,
       filename: null,
-      filelength: 0,
+      size: 0,
       downloadSpeed: 0,
       downloaded: 0,
       uploaded: 0
@@ -222,7 +222,7 @@ function TorrentService (callback) {
       state.verified = 0
       state.invalid = 0
       state.filename = null
-      state.filelength = 0
+      state.size = 0
       state.downloadSpeed = 0
       state.downloaded = 0
       state.uploaded = 0

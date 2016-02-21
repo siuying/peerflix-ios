@@ -50,7 +50,7 @@ func configureTorrentState(torrent: TorrentService, torrentState: Observable<Tor
             .map({ ($0.downloaded, $0.size) })
             .map({ (downloaded, size) -> String in
                 if let downloaded = downloaded, let size = size {
-                    let completion = size == 0 ? 0 : (downloaded * 100.0 / size)
+                    let completion = size == 0 ? 0 : [100, (downloaded / size)].minElement()!
                     return "\(formatFileSize(downloaded))M \(formatPercent(completion))%"
                 } else {
                     return ""

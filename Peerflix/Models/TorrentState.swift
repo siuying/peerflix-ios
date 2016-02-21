@@ -57,11 +57,10 @@ struct TorrentState {
 
         self.filename = try json.string("filename", ifNull: true)
 
-        self.size = try? json.double("filelength")
+        self.size = try? json.double("size")
         self.downloadSpeed = try? json.double("downloadSpeed")
         self.uploaded = try? json.double("uploaded")
         self.downloaded = try? json.double("downloaded")
         self.files = try json.array("files", ifNull: true).flatMap({ try $0.map({try File(json: $0)}) })
-        print("downloaded: \(self.downloaded), size: \(self.size)")
     }
 }
