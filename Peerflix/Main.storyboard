@@ -95,7 +95,11 @@
                             <constraint firstItem="K5l-DM-r2o" firstAttribute="centerX" secondItem="LBa-a6-Xhm" secondAttribute="centerX" id="Y7r-KC-5MU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Mka-A0-FxT"/>
+                    <navigationItem key="navigationItem" id="xAW-h4-t8A">
+                        <connections>
+                            <outlet property="titleView" destination="20G-MZ-Z9F" id="OoX-Sy-M7J"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="initIndicator" destination="K5l-DM-r2o" id="tLS-QJ-FQo"/>
                         <outlet property="searchBar" destination="mXe-WV-AYg" id="qnY-Ew-nql"/>
@@ -108,6 +112,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="20G-MZ-Z9F">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="754" y="524"/>
         </scene>
@@ -311,4 +319,7 @@
             <point key="canvasLocation" x="2257" y="524"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="117" height="20"/>
+    </resources>
 </document>

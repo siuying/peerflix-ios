@@ -46,6 +46,8 @@
 		54E409D31C799CB900B6704D /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D21C799CB900B6704D /* Segue.swift */; };
 		54E409D51C799DCF00B6704D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D41C799DCF00B6704D /* App.swift */; };
 		54E409D91C79B2F500B6704D /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D81C79B2F500B6704D /* NetHelper.m */; };
+		54E409DF1C79CC8B00B6704D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E409DD1C79CC8B00B6704D /* logo.png */; };
+		54E409E01C79CC8B00B6704D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E409DE1C79CC8B00B6704D /* logo@2x.png */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
@@ -133,6 +135,8 @@
 		54E409D41C799DCF00B6704D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		54E409D71C79B2F500B6704D /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetHelper.h; sourceTree = "<group>"; };
 		54E409D81C79B2F500B6704D /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
+		54E409DD1C79CC8B00B6704D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		54E409DE1C79CC8B00B6704D /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		547C00B11C7619FB00425CD7 /* Peerflix */ = {
 			isa = PBXGroup;
 			children = (
+				54E409DC1C79CC8B00B6704D /* Resources */,
 				54E409D11C799CAF00B6704D /* Constants */,
 				548DF9651C78630100C572E1 /* Extensions */,
 				54E409D61C799DD200B6704D /* Helpers */,
@@ -399,6 +404,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		54E409DC1C79CC8B00B6704D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				54E409DD1C79CC8B00B6704D /* logo.png */,
+				54E409DE1C79CC8B00B6704D /* logo@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		54F7F8D71C78969200FB3530 /* Torrent */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */,
+				54E409E01C79CC8B00B6704D /* logo@2x.png in Resources */,
 				54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */,
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
@@ -543,6 +558,7 @@
 				54E409C61C796CFA00B6704D /* Main.storyboard in Resources */,
 				54F7F8DE1C78B25100FB3530 /* node_modules in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
+				54E409DF1C79CC8B00B6704D /* logo.png in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
 				54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */,
 				54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */,
