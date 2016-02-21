@@ -21,11 +21,20 @@ func formatPercent(value: Double) -> String {
     return numberFormatter.stringFromNumber(value * 100.0) ?? ""
 }
 
-func configureTorrentState(torrentState: Observable<TorrentState>)
+func configureTorrentState(torrent: TorrentService, torrentState: Observable<TorrentState>)
     -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
-        let name = torrentState
-            .map({ $0.filename ?? $0.torrentURL?.absoluteString ?? "" })
+        let torrentFilename = torrent
+            .getSelectedTorrent()
+            .map({ $0?.name })
+
+        let torrentUrl = torrentState
+            .map({ $0.torrentURL?.absoluteString ?? "" })
+
+        let name = Observable.combineLatest(torrentUrl, torrentFilename) { (torrentUrl, torrentFilename) -> String in
+                return torrentFilename ?? torrentUrl
+            }
             .observeOn(MainScheduler.instance)
+
         let size = Observable.just("")
         let files:Observable<[String]> = Observable.just([])
         let downloadSpeed = torrentState
@@ -69,7 +78,7 @@ class TorrentViewModel {
         let torrentState = torrent.getState()
 
         // setup states
-        (self.name, self.size, self.files, self.downloadSpeed, self.downloaded, self.playable, self.URL) = configureTorrentState(torrentState)
+        (self.name, self.size, self.files, self.downloadSpeed, self.downloaded, self.playable, self.URL) = configureTorrentState(torrent, torrentState: torrentState)
 
         self.configurePlay(play, URL: self.URL.filterNil(), router: router)
     }

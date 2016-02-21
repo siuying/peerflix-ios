@@ -15,11 +15,13 @@ import Alamofire
 protocol TorrentService {
     func getState() -> Observable<TorrentState>
 
+    func getSelectedTorrent() -> Observable<SearchResult.Torrent?>
+
     func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult>
 
     func selectFile(filename: String) -> Observable<APIResult>
 
-    func playTorrent(url: String) -> Observable<APIResult>
+    func selectTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
     
     func stopTorrent() -> Observable<APIResult>
 }
@@ -27,6 +29,7 @@ protocol TorrentService {
 class DefaultTorrentService: TorrentService {
     static let instance = DefaultTorrentService()
 
+    var selectedTorrent: Variable<SearchResult.Torrent?>
     var state: Observable<TorrentState>!
     var error: Observable<ErrorType?>!
     
@@ -35,6 +38,7 @@ class DefaultTorrentService: TorrentService {
         let error: Variable<ErrorType?> = Variable(nil)
         self.state = state.asObservable().shareReplay(1)
         self.error = error.asObservable().shareReplay(1)
+        self.selectedTorrent = Variable(nil)
 
         JXcore.setup()
         JXcore.addNativeBlock({ (params, callbackId) -> Void in
@@ -63,6 +67,10 @@ class DefaultTorrentService: TorrentService {
         return state
     }
     
+    func getSelectedTorrent() -> Observable<SearchResult.Torrent?> {
+        return self.selectedTorrent.asObservable()
+    }
+    
     func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult> {
         print("search: \(query), engine: \(engine.rawValue)")
         return Alamofire.request(TorrentServiceAPI.Search(query, engine))
@@ -78,8 +86,13 @@ class DefaultTorrentService: TorrentService {
             .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func playTorrent(url: String) -> Observable<APIResult> {
-        return Alamofire.request(TorrentServiceAPI.Play(url))
+    func selectTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult> {
+        guard let URL = torrent.URL else {
+            return Observable.empty()
+        }
+
+        self.selectedTorrent.value = torrent
+        return Alamofire.request(TorrentServiceAPI.Play(URL.absoluteString))
             .rx_reponseJSON()
             .map({ try $0.decode(type: APIResult.self) })
     }

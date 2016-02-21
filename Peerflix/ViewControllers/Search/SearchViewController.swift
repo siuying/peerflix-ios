@@ -45,9 +45,8 @@ class SearchViewController: UIViewController {
             .map({ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) })
             .shareReplay(1)
 
-        let openItem: Observable<NSURL> = self.tableView.rx_modelSelected(SearchResult.Torrent.self)
-            .map({ $0.URL })
-            .filterNil()
+        let openItem: Observable<SearchResult.Torrent> = self.tableView.rx_modelSelected(SearchResult.Torrent.self)
+            .asObservable()
 
         self.viewModel = SearchViewModel(
             input: (query: query, openItem: openItem),

@@ -57,7 +57,7 @@ class SearchViewModel: SearchViewModelType {
     private let disposeBag = DisposeBag()
 
     init(
-        input: (query: Observable<String>, openItem: Observable<NSURL>),
+        input: (query: Observable<String>, openItem: Observable<SearchResult.Torrent>),
         dependency: (torrent: TorrentService, router: Router)
     ) {
         let (query, openItem) = input
@@ -90,7 +90,8 @@ class SearchViewModel: SearchViewModelType {
             .filter({ $0.unicodeScalars.count > 3 })            // only search longer query
             .debounce(1.0, scheduler: MainScheduler.instance)   // prevent query too much
             .flatMapLatest({
-                torrent.search($0, engine: .DMHY)               // perform search
+                torrent
+                    .search($0, engine: .DMHY)               // perform search
                     .catchErrorJustReturn(SearchResult.error)   // ignore errors
             })
             .map({$0.torrents})                                 // map result
@@ -103,17 +104,17 @@ class SearchViewModel: SearchViewModelType {
             .shareReplay(1)
     }
     
-    func configActions(openItem: Observable<NSURL>, torrent: TorrentService, router: Router) {
+    func configActions(openItem: Observable<SearchResult.Torrent>, torrent: TorrentService, router: Router) {
 
         openItem
             .observeOn(MainScheduler.instance)
-            .subscribeNext { (url) -> Void in
+            .subscribeNext { (torrent) -> Void in
                 router.openTorrent()
             }
             .addDisposableTo(self.disposeBag)
 
         let request = openItem
-            .flatMapLatest({ torrent.playTorrent($0.absoluteString) })
+            .flatMapLatest({ torrent.selectTorrent($0) })
 
         request
             .subscribeError({ (error) -> Void in
