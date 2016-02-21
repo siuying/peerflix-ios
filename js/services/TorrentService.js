@@ -4,6 +4,7 @@ var process = require('process')
 var readTorrent = require('read-torrent')
 var _ = require('lodash')
 
+var Mobile = require('../helpers/Mobile')
 var TorrentStates = require('../constants/TorrentStates')
 var Constants = require('../constants/Constants')
 
@@ -13,6 +14,15 @@ function TorrentService (callback) {
   var _engine = null
   var _engineRemoveListener = null
   var _refreshTorrent = null
+  var _temp = "/tmp/torrent-stream"
+
+  var setTemp = Mobile('SetTemp')
+  if (setTemp.register) {
+    setTemp.register(function(path) {
+      console.log("temp folder:", path)
+      _temp = path
+    })
+  }
 
   var service = {
     state: {
@@ -133,7 +143,10 @@ function TorrentService (callback) {
     },
 
     onTorrent: function (torrent) {
-      var engine = peerflix(torrent, {port: Constants.TV_STREAM_TORRENT_SERVER_PORT})
+      var engine = peerflix(torrent, {
+        tmp: _temp,
+        port: Constants.TV_STREAM_TORRENT_SERVER_PORT
+      })
       console.log('start peerflix')
 
       var store = this

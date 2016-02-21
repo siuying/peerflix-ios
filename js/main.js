@@ -25,7 +25,6 @@ if (process.natives) {
 
   process.natives.defineEventCB("eventPing", Mobile.ping);
   Mobile('StartApplication').register(loadMainFile);
-
 } else {
   loadMainFile('./app.js');
 }

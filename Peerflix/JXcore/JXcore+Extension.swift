@@ -14,7 +14,12 @@ extension JXcore {
     static func setup() {
         JXcore.useSubThreading()
         JXcore.startEngine("js/main")
+
         JXcore.callEventCallback("StartApplication", withParams: ["./js/app.js"])
+        
+        let temp = NSTemporaryDirectory().stringByAppendingString("torrent-stream")
+        JXcore.callEventCallback("SetTemp", withParams: [temp])
+
         JXcore.addNativeBlock({ (messages, _) -> Void in
             // log error
         }, withName: "OnError")
