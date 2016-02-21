@@ -60,14 +60,14 @@
 			remoteGlobalIDString = 547C00AE1C7619FB00425CD7;
 			remoteInfo = TorrentStream;
 		};
-		54A8D0561C7960E7009D2D85 /* PBXContainerItemProxy */ = {
+		54A8D05F1C79636A009D2D85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFramework;
 		};
-		54A8D0581C7960E7009D2D85 /* PBXContainerItemProxy */ = {
+		54A8D0611C79636A009D2D85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
@@ -97,8 +97,8 @@
 		548DF96E1C786E6400C572E1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		548DF9721C786EA000C572E1 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		548DF9741C786FC100C572E1 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		54A8D04A1C795AA2009D2D85 /* Interface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interface.playground; sourceTree = SOURCE_ROOT; };
-		54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = vendor/ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
+		54A8D04A1C795AA2009D2D85 /* Interface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interface.playground; sourceTree = "<group>"; };
+		54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 		1D3C152D0B33FF848E2FD63B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */,
 				54DF91E01C7775D200577EDD /* libstdc++.6.tbd */,
 				CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */,
 				0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */,
@@ -212,10 +211,10 @@
 		547C00B11C7619FB00425CD7 /* Peerflix */ = {
 			isa = PBXGroup;
 			children = (
-				54A8D04D1C795AA7009D2D85 /* Playgrounds */,
 				548DF9651C78630100C572E1 /* Extensions */,
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
+				54A8D04D1C795AA7009D2D85 /* Playgrounds */,
 				548DF9541C78403F00C572E1 /* Services */,
 				548DF96D1C786E5700C572E1 /* ViewControllers */,
 				547C00B21C7619FB00425CD7 /* AppDelegate.swift */,
@@ -298,14 +297,14 @@
 			children = (
 				54A8D04A1C795AA2009D2D85 /* Interface.playground */,
 			);
-			name = Playgrounds;
+			path = Playgrounds;
 			sourceTree = "<group>";
 		};
-		54A8D0521C7960E7009D2D85 /* Products */ = {
+		54A8D05B1C79636A009D2D85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				54A8D0571C7960E7009D2D85 /* IJKMediaFramework.framework */,
-				54A8D0591C7960E7009D2D85 /* IJKMediaFrameworkTests.xctest */,
+				54A8D0601C79636A009D2D85 /* IJKMediaFramework.framework */,
+				54A8D0621C79636A009D2D85 /* IJKMediaFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -323,6 +322,7 @@
 		54DF91C21C77759200577EDD /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */,
 				54DF91C31C7775AC00577EDD /* jxcore */,
 			);
 			path = vendor;
@@ -365,7 +365,7 @@
 				54F7F9221C79510D00FB3530 /* Views */,
 				54F7F9201C79508300FB3530 /* VideoPlayerController.swift */,
 			);
-			name = Video;
+			path = Video;
 			sourceTree = "<group>";
 		};
 		54F7F9221C79510D00FB3530 /* Views */ = {
@@ -373,7 +373,7 @@
 			children = (
 				54F7F9231C79511F00FB3530 /* MediaControl.swift */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,7 +452,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 54A8D0521C7960E7009D2D85 /* Products */;
+					ProductGroup = 54A8D05B1C79636A009D2D85 /* Products */;
 					ProjectRef = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 				},
 			);
@@ -465,18 +465,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		54A8D0571C7960E7009D2D85 /* IJKMediaFramework.framework */ = {
+		54A8D0601C79636A009D2D85 /* IJKMediaFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = IJKMediaFramework.framework;
-			remoteRef = 54A8D0561C7960E7009D2D85 /* PBXContainerItemProxy */;
+			remoteRef = 54A8D05F1C79636A009D2D85 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		54A8D0591C7960E7009D2D85 /* IJKMediaFrameworkTests.xctest */ = {
+		54A8D0621C79636A009D2D85 /* IJKMediaFrameworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 54A8D0581C7960E7009D2D85 /* PBXContainerItemProxy */;
+			remoteRef = 54A8D0611C79636A009D2D85 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

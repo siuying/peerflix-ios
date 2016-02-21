@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-synx -e /dist -e /Pods ./TorrentStream.xcodeproj 
+synx -e /Pods -e /vendor ./Peerflix.xcodeproj
