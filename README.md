@@ -6,6 +6,10 @@ Streaming torrent client for iOS.
 
 ![Demo](https://github.com/siuying/peerflix-ios/blob/master/web/peerflix.gif?raw=true)
 
+## Why?
+
+There is a [blog post](http://reality.hk/2016/02/21/making-peerflix-for-ios-or-how-to-embed-any-nodejs-app-in-ios-app/) for that.
+
 ## Building
 
 1. Checkout project ``git clone project-url``
