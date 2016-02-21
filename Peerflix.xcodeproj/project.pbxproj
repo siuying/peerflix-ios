@@ -48,6 +48,7 @@
 		54E409D91C79B2F500B6704D /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D81C79B2F500B6704D /* NetHelper.m */; };
 		54E409DF1C79CC8B00B6704D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E409DD1C79CC8B00B6704D /* logo.png */; };
 		54E409E01C79CC8B00B6704D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E409DE1C79CC8B00B6704D /* logo@2x.png */; };
+		54E409E31C7A0B0800B6704D /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409E21C7A0B0800B6704D /* Wireframe.swift */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
@@ -137,6 +138,7 @@
 		54E409D81C79B2F500B6704D /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
 		54E409DD1C79CC8B00B6704D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		54E409DE1C79CC8B00B6704D /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		54E409E21C7A0B0800B6704D /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				548DF9561C78409C00C572E1 /* TorrentService.swift */,
 				548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */,
 				54E409C81C796D5B00B6704D /* ServiceFactory.swift */,
+				54E409E21C7A0B0800B6704D /* Wireframe.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */,
 				54E409D31C799CB900B6704D /* Segue.swift in Sources */,
 				54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */,
+				54E409E31C7A0B0800B6704D /* Wireframe.swift in Sources */,
 				54E409C91C796D5B00B6704D /* ServiceFactory.swift in Sources */,
 				548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */,
 				548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */,

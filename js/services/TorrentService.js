@@ -154,8 +154,7 @@ function TorrentService (callback) {
 
     onTorrent: function (torrent) {
       var engine = peerflix(torrent, {
-        tmp: _temp,
-        port: Constants.TV_STREAM_TORRENT_SERVER_PORT
+        tmp: _temp
       })
       console.log('start peerflix')
 
