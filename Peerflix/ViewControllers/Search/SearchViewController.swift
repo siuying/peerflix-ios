@@ -14,51 +14,30 @@ import RxDataSources
 import RxOptional
 
 class SearchViewController: UIViewController {
-    var tableView : UITableView!
-    var searchBar: UISearchBar!
-    var initIndicator: UIActivityIndicatorView!
+    @IBOutlet var tableView : UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var initIndicator: UIActivityIndicatorView!
 
     var viewModel: SearchViewModelType!
     
-    var torrent: TorrentService!
-    var router: Router!
+    var services: ServiceFactory = DefaultServiceFactory.instance
+    var torrent: TorrentService {
+        return self.services.torrent
+    }
+    var router: Router {
+        return self.services.router
+    }
+
     let disposeBag = DisposeBag()
-
-    init(torrent: TorrentService, router: Router) {
-        super.init(nibName: nil, bundle: nil)
-        self.torrent = torrent
-        self.router = router
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView = UITableView(frame: self.view.bounds)
-        self.tableView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.view.addSubview(self.tableView)
-        self.tableView.registerClass(SearchResultCell.self, forCellReuseIdentifier: SearchResultCell.CellID)
-
-        self.searchBar = UISearchBar()
-        self.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        // make search bar as table header
         self.tableView.tableHeaderView = self.searchBar
-        
-        self.searchBar.widthAnchor.constraintEqualToAnchor(self.tableView.widthAnchor).active = true
-        self.searchBar.heightAnchor.constraintEqualToConstant(40).active = true
-        
-        self.initIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        self.initIndicator.translatesAutoresizingMaskIntoConstraints = false
-        self.initIndicator.hidden = false
-        self.initIndicator.startAnimating()
-        self.view.addSubview(self.initIndicator)
-        self.initIndicator.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
-        self.initIndicator.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
 
         let query: Observable<String> = self.searchBar
             .rx_text
@@ -79,6 +58,7 @@ class SearchViewController: UIViewController {
         
         self.viewModel
             .loaded
+            .startWith(false)
             .subscribeNext({ (loaded) -> Void in
                 if loaded {
                     self.initIndicator.stopAnimating()

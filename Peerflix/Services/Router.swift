@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 
 protocol Router {
-    func setup() -> UIWindow
-
     func openTorrent()
-    
+
     func openVideo(URL: NSURL)
 }
 
@@ -26,16 +24,6 @@ class DefaultRouter: Router {
 
     init(torrent: TorrentService = DefaultTorrentService.instance) {
         self.torrent = torrent
-    }
-
-    func setup() -> UIWindow {
-        let searchViewController = SearchViewController(torrent: self.torrent, router: self)
-        self.navController = UINavigationController(rootViewController: searchViewController)
-        self.navController.edgesForExtendedLayout = .None
-        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window.rootViewController = self.navController
-        window.makeKeyAndVisible()
-        return window
     }
 
     func openTorrent() {
