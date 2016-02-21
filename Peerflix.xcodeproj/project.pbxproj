@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41255F59034F318094638487 /* Pods_Peerflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */; };
 		547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00B21C7619FB00425CD7 /* AppDelegate.swift */; };
 		547C00B51C7619FB00425CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00B41C7619FB00425CD7 /* ViewController.swift */; };
 		547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547C00B91C7619FB00425CD7 /* Assets.xcassets */; };
@@ -46,7 +47,9 @@
 		54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */; };
 		54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */; };
 		54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */; };
-		54F7F91D1C7942F900FB3530 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F7F91A1C793D0D00FB3530 /* IJKMediaFramework.framework */; };
+		54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9201C79508300FB3530 /* VideoPlayerController.swift */; };
+		54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9231C79511F00FB3530 /* MediaControl.swift */; };
+		C361897D172135CA4569CD3C /* Pods_PeerflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,16 +60,16 @@
 			remoteGlobalIDString = 547C00AE1C7619FB00425CD7;
 			remoteInfo = TorrentStream;
 		};
-		54F7F9191C793D0D00FB3530 /* PBXContainerItemProxy */ = {
+		54A8D0561C7960E7009D2D85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 54F7F9141C793D0D00FB3530 /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFramework;
 		};
-		54F7F91B1C793D0D00FB3530 /* PBXContainerItemProxy */ = {
+		54A8D0581C7960E7009D2D85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 54F7F9141C793D0D00FB3530 /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFrameworkTests;
@@ -74,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerflixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00AF1C7619FB00425CD7 /* Peerflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peerflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00B21C7619FB00425CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		547C00B41C7619FB00425CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 		548DF96E1C786E6400C572E1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		548DF9721C786EA000C572E1 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		548DF9741C786FC100C572E1 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		54A8D04A1C795AA2009D2D85 /* Interface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interface.playground; sourceTree = SOURCE_ROOT; };
+		54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = vendor/ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
 		54DF91BF1C7758B800577EDD /* JXcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXcore.h; sourceTree = "<group>"; };
 		54DF91C01C7758B800577EDD /* JXcore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXcore.m; sourceTree = "<group>"; };
 		54DF91C41C7775AC00577EDD /* jx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jx.h; sourceTree = "<group>"; };
@@ -121,7 +127,9 @@
 		54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
 		54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.release.xcconfig"; sourceTree = "<group>"; };
-		54F7F9141C793D0D00FB3530 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = vendor/ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
+		54F7F9201C79508300FB3530 /* VideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
+		54F7F9231C79511F00FB3530 /* MediaControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaControl.swift; sourceTree = "<group>"; };
+		CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peerflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F7F91D1C7942F900FB3530 /* IJKMediaFramework.framework in Frameworks */,
 				54DF91E11C7775D200577EDD /* libstdc++.6.tbd in Frameworks */,
 				54DF91DE1C7775AC00577EDD /* libuv.a in Frameworks */,
 				54DF91D41C7775AC00577EDD /* libcares.a in Frameworks */,
@@ -142,6 +149,7 @@
 				54DF91DB1C7775AC00577EDD /* libopenssl.a in Frameworks */,
 				54DF91DD1C7775AC00577EDD /* libsqlite3.a in Frameworks */,
 				54DF91D81C7775AC00577EDD /* libleveldb.a in Frameworks */,
+				41255F59034F318094638487 /* Pods_Peerflix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C361897D172135CA4569CD3C /* Pods_PeerflixTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,8 +167,10 @@
 		1D3C152D0B33FF848E2FD63B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54F7F9141C793D0D00FB3530 /* IJKMediaPlayer.xcodeproj */,
+				54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */,
 				54DF91E01C7775D200577EDD /* libstdc++.6.tbd */,
+				CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */,
+				0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,6 +212,7 @@
 		547C00B11C7619FB00425CD7 /* Peerflix */ = {
 			isa = PBXGroup;
 			children = (
+				54A8D04D1C795AA7009D2D85 /* Playgrounds */,
 				548DF9651C78630100C572E1 /* Extensions */,
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
@@ -258,6 +270,7 @@
 			children = (
 				548DF9701C786E9100C572E1 /* Search */,
 				54F7F8D71C78969200FB3530 /* Torrent */,
+				54F7F91F1C79507600FB3530 /* Video */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -278,6 +291,23 @@
 				548DF9721C786EA000C572E1 /* SearchResultCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		54A8D04D1C795AA7009D2D85 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				54A8D04A1C795AA2009D2D85 /* Interface.playground */,
+			);
+			name = Playgrounds;
+			sourceTree = "<group>";
+		};
+		54A8D0521C7960E7009D2D85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54A8D0571C7960E7009D2D85 /* IJKMediaFramework.framework */,
+				54A8D0591C7960E7009D2D85 /* IJKMediaFrameworkTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		54DF91BE1C7758B800577EDD /* JXcore */ = {
@@ -329,13 +359,21 @@
 			path = Torrent;
 			sourceTree = "<group>";
 		};
-		54F7F9151C793D0D00FB3530 /* Products */ = {
+		54F7F91F1C79507600FB3530 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				54F7F91A1C793D0D00FB3530 /* IJKMediaFramework.framework */,
-				54F7F91C1C793D0D00FB3530 /* IJKMediaFrameworkTests.xctest */,
+				54F7F9221C79510D00FB3530 /* Views */,
+				54F7F9201C79508300FB3530 /* VideoPlayerController.swift */,
 			);
-			name = Products;
+			name = Video;
+			sourceTree = "<group>";
+		};
+		54F7F9221C79510D00FB3530 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				54F7F9231C79511F00FB3530 /* MediaControl.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,8 +452,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 54F7F9151C793D0D00FB3530 /* Products */;
-					ProjectRef = 54F7F9141C793D0D00FB3530 /* IJKMediaPlayer.xcodeproj */;
+					ProductGroup = 54A8D0521C7960E7009D2D85 /* Products */;
+					ProjectRef = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -427,18 +465,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		54F7F91A1C793D0D00FB3530 /* IJKMediaFramework.framework */ = {
+		54A8D0571C7960E7009D2D85 /* IJKMediaFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = IJKMediaFramework.framework;
-			remoteRef = 54F7F9191C793D0D00FB3530 /* PBXContainerItemProxy */;
+			remoteRef = 54A8D0561C7960E7009D2D85 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		54F7F91C1C793D0D00FB3530 /* IJKMediaFrameworkTests.xctest */ = {
+		54A8D0591C7960E7009D2D85 /* IJKMediaFrameworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 54F7F91B1C793D0D00FB3530 /* PBXContainerItemProxy */;
+			remoteRef = 54A8D0581C7960E7009D2D85 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -573,6 +611,8 @@
 				548DF96F1C786E6400C572E1 /* SearchViewController.swift in Sources */,
 				548DF96B1C786AD200C572E1 /* APIResult.swift in Sources */,
 				548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */,
+				54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */,
+				54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */,
 				54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */,
 				548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */,
 				548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */,

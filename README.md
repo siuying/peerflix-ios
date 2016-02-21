@@ -14,3 +14,7 @@ Streaming torrent client for iOS.
 - [JXcore](http://jxcore.com/home/)
 - [peerflix](https://github.com/mafintosh/peerflix)
 - [ijkplayer](https://github.com/Bilibili/ijkplayer)
+
+## License
+
+This is licensed under MIT License.
