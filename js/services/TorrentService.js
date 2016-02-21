@@ -105,7 +105,6 @@ function TorrentService (callback) {
       theFile.select()
       _engine.server.index = theFile
       this.state.filename = theFile.name.split('/').pop().replace(/\{|\}/g, '')
-      this.state.size = theFile.length
       this.emitChange()
     },
 
@@ -185,8 +184,11 @@ function TorrentService (callback) {
         console.log(`Listening at: ${videoUrl}, status=${store.state.status}`)
       })
       function onready () {
+        var totalLength = engine.files.reduce(function (prevFileLength, currFile) {
+          return prevFileLength + currFile.length
+        }, 0)
         store.state.filename = engine.server.index.name.split('/').pop().replace(/\{|\}/g, '')
-        store.state.size = engine.server.index.length
+        store.state.size = totalLength
         store.state.files = engine.files.map((file, index) => {
           return {name: file.name, length: file.length}
         })
