@@ -40,6 +40,9 @@
 		54E409C41C79641200B6704D /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A8D0601C79636A009D2D85 /* IJKMediaFramework.framework */; };
 		54E409C61C796CFA00B6704D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E409C51C796CFA00B6704D /* Main.storyboard */; };
 		54E409C91C796D5B00B6704D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409C81C796D5B00B6704D /* ServiceFactory.swift */; };
+		54E409CC1C79913900B6704D /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CB1C79913900B6704D /* libz.1.tbd */; };
+		54E409CE1C79916800B6704D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CD1C79916800B6704D /* VideoToolbox.framework */; };
+		54E409D01C79918E00B6704D /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CF1C79918E00B6704D /* libbz2.tbd */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
@@ -121,6 +124,9 @@
 		54DF91E71C77762B00577EDD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		54E409C51C796CFA00B6704D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		54E409C81C796D5B00B6704D /* ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		54E409CB1C79913900B6704D /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
+		54E409CD1C79916800B6704D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		54E409CF1C79918E00B6704D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E409D01C79918E00B6704D /* libbz2.tbd in Frameworks */,
+				54E409CE1C79916800B6704D /* VideoToolbox.framework in Frameworks */,
+				54E409CC1C79913900B6704D /* libz.1.tbd in Frameworks */,
 				54E409C41C79641200B6704D /* IJKMediaFramework.framework in Frameworks */,
 				54DF91E11C7775D200577EDD /* libstdc++.6.tbd in Frameworks */,
 				54DF91DE1C7775AC00577EDD /* libuv.a in Frameworks */,
@@ -171,6 +180,9 @@
 		1D3C152D0B33FF848E2FD63B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54E409CF1C79918E00B6704D /* libbz2.tbd */,
+				54E409CD1C79916800B6704D /* VideoToolbox.framework */,
+				54E409CB1C79913900B6704D /* libz.1.tbd */,
 				54DF91E01C7775D200577EDD /* libstdc++.6.tbd */,
 				CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */,
 				0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */,

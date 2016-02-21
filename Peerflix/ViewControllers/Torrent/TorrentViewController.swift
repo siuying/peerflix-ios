@@ -49,4 +49,15 @@ class TorrentViewController: UIViewController {
             .bindTo(self.playButton.rx_enabled)
             .addDisposableTo(self.disposeBag)
    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let segueId = segue.identifier else {
+            return
+        }
+        
+        if segueId == DefaultRouter.Segue.PlayVideo.rawValue {
+            let vc = segue.destinationViewController as! VideoPlayerController
+            vc.videoURL = self.viewModel.videoURL.value
+        }
+    }
 }

@@ -18,6 +18,7 @@ protocol Router {
 class DefaultRouter: Router {
     enum Segue: String {
         case OpenTorrent
+        case PlayVideo
     }
     
     static let instance = DefaultRouter()

@@ -21,6 +21,7 @@ func formatPercent(value: Double) -> String {
     return numberFormatter.stringFromNumber(value * 100.0) ?? ""
 }
 
+
 func configureTorrentState(torrent: TorrentService, torrentState: Observable<TorrentState>)
     -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
         let torrentFilename = torrent
@@ -70,8 +71,9 @@ class TorrentViewModel {
     let files: Observable<[String]>
     let playable: Observable<Bool>
     let URL: Observable<NSURL?>
-    
-    let disposeBag = DisposeBag()
+    let videoURL: Variable<NSURL?>
+
+    private let disposeBag = DisposeBag()
 
     init(play: Observable<Void>, dependency: (torrent: TorrentService, router: Router)) {
         let (torrent, router) = dependency
@@ -79,9 +81,17 @@ class TorrentViewModel {
 
         // setup states
         (self.name, self.size, self.files, self.downloadSpeed, self.downloaded, self.playable, self.URL) = configureTorrentState(torrent, torrentState: torrentState)
+        
+        // setup video URL
+        self.videoURL = Variable(nil)
+        torrentState.map({ $0.videoURL })
+            .bindTo(videoURL)
+            .addDisposableTo(self.disposeBag)
 
+        // setup play
         self.configurePlay(play, URL: self.URL.filterNil(), router: router)
     }
+
     
     
     func configurePlay(play: Observable<Void>, URL: Observable<NSURL>, router: Router) {

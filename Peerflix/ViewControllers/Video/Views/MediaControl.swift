@@ -8,106 +8,36 @@
 
 import UIKit
 
+private let LongFormatter : NSDateComponentsFormatter = {
+    let formatter = NSDateComponentsFormatter()
+    formatter.allowedUnits = [.Hour, .Minute, .Second]
+    formatter.zeroFormattingBehavior = [.Pad]
+    formatter.unitsStyle = .Positional
+    return formatter
+}()
+
+private let Formatter : NSDateComponentsFormatter = {
+    let formatter = NSDateComponentsFormatter()
+    formatter.allowedUnits = [.Minute, .Second]
+    formatter.zeroFormattingBehavior = [.Pad]
+    formatter.unitsStyle = .Positional
+    return formatter
+}()
+
 class MediaControl: UIControl {
     weak var delegatePlayer: IJKMediaPlayback?
-    var overlayPanel: UIView!
-    var topPanel: UIToolbar!
-    var bottomPanel: UIView!
+    @IBOutlet var overlayPanel: UIView!
+    @IBOutlet var bottomPanel: UIView!
     
-    var playButton: UIButton!
-    var pauseButton: UIButton!
-    var doneButton: UIBarButtonItem!
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var pauseButton: UIButton!
+    @IBOutlet var doneButton: UIBarButtonItem!
 
-    var currentTimeLabel: UILabel!
-    var totalDurationLabel: UILabel!
-    var mediaProgressSlider: UISlider!
+    @IBOutlet var currentTimeLabel: UILabel!
+    @IBOutlet var totalDurationLabel: UILabel!
+    @IBOutlet var mediaProgressSlider: UISlider!
     
     private var mediaSliderBeingDragged = false
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.overlayPanel = UIView(frame: self.bounds)
-        self.overlayPanel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.overlayPanel)
-        self.overlayPanel.leftAnchor.constraintEqualToAnchor(self.overlayPanel.leftAnchor).active = true
-        self.overlayPanel.rightAnchor.constraintEqualToAnchor(self.overlayPanel.rightAnchor).active = true
-        self.overlayPanel.topAnchor.constraintEqualToAnchor(self.overlayPanel.topAnchor).active = true
-        self.overlayPanel.bottomAnchor.constraintEqualToAnchor(self.overlayPanel.bottomAnchor).active = true
-        
-        self.topPanel = self.createTopPanel()
-        self.bottomPanel = self.createBottomPanel()
-    }
-    
-    func createTopPanel() -> UIToolbar {
-        let topPanel = UIToolbar()
-        topPanel.translatesAutoresizingMaskIntoConstraints = false
-
-        self.doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: nil)
-        let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        topPanel.items = [self.doneButton, flex]
-        
-        self.overlayPanel.addSubview(self.topPanel)
-        self.topPanel.heightAnchor.constraintEqualToConstant(44).active = true
-        self.topPanel.widthAnchor.constraintEqualToAnchor(self.overlayPanel.widthAnchor).active = true
-        self.topPanel.topAnchor.constraintEqualToAnchor(self.overlayPanel.topAnchor).active = true
-        self.topPanel.leftAnchor.constraintEqualToAnchor(self.overlayPanel.leftAnchor).active = true
-        
-        return topPanel
-    }
-    
-    func createBottomPanel() -> UIView {
-        let bottomPanel = UIView()
-        bottomPanel.translatesAutoresizingMaskIntoConstraints = false
-        self.overlayPanel.addSubview(bottomPanel)
-        bottomPanel.heightAnchor.constraintEqualToConstant(80).active = true
-        bottomPanel.widthAnchor.constraintEqualToAnchor(self.overlayPanel.widthAnchor).active = true
-        bottomPanel.bottomAnchor.constraintEqualToAnchor(self.overlayPanel.bottomAnchor).active = true
-        bottomPanel.leftAnchor.constraintEqualToAnchor(self.overlayPanel.leftAnchor).active = true
-
-        let backgroundView = UIView()
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        bottomPanel.addSubview(backgroundView)
-        bottomPanel.heightAnchor.constraintEqualToAnchor(backgroundView.heightAnchor).active = true
-        bottomPanel.widthAnchor.constraintEqualToAnchor(backgroundView.widthAnchor).active = true
-        bottomPanel.bottomAnchor.constraintEqualToAnchor(backgroundView.bottomAnchor).active = true
-        bottomPanel.leftAnchor.constraintEqualToAnchor(backgroundView.leftAnchor).active = true
-
-        self.playButton = UIButton(type: .System)
-        self.playButton.translatesAutoresizingMaskIntoConstraints = false
-        self.playButton.setTitle("Play", forState: .Normal)
-
-        self.pauseButton = UIButton(type: .System)
-        self.pauseButton.translatesAutoresizingMaskIntoConstraints = false
-        self.pauseButton.setTitle("Pause", forState: .Normal)
-        
-        let stack = UIStackView()
-        stack.axis = .Horizontal
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .Fill
-        stack.alignment = .Center
-        bottomPanel.addSubview(stack)
-
-        self.currentTimeLabel = UILabel()
-        self.currentTimeLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        self.currentTimeLabel.textColor = UIColor.whiteColor()
-        stack.addArrangedSubview(self.currentTimeLabel)
-
-        self.mediaProgressSlider = UISlider()
-        self.mediaProgressSlider.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(self.mediaProgressSlider)
-        
-        self.totalDurationLabel = UILabel()
-        self.totalDurationLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        self.totalDurationLabel.textColor = UIColor.whiteColor()
-        stack.addArrangedSubview(self.totalDurationLabel)
-        
-        return bottomPanel
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -130,8 +60,48 @@ class MediaControl: UIControl {
         self.cancelDelayedHide()
     }
     
-    func refresh() {
+    @objc func refresh() {
+        guard let player = self.delegatePlayer else {
+            self.currentTimeLabel.text = "--:--"
+            self.totalDurationLabel.text = "--:--"
+            self.mediaProgressSlider.value = 0
+            return
+        }
         
+        // duration
+        let duration = player.duration
+        let intDuration = Int(duration + 0.5)
+        if intDuration > 0 {
+            self.mediaProgressSlider.maximumValue = Float(duration)
+            if intDuration < 3600 {
+                self.totalDurationLabel.text = Formatter.stringFromTimeInterval(duration) ?? ""
+            } else {
+                self.totalDurationLabel.text = LongFormatter.stringFromTimeInterval(duration) ?? ""
+            }
+        } else {
+            self.mediaProgressSlider.maximumValue = 0
+            self.totalDurationLabel.text = "--:--"
+        }
+        
+        //position
+        let position = self.mediaSliderBeingDragged ? Double(self.mediaProgressSlider.value) : player.currentPlaybackTime
+        let intPosition = Int(position + 0.5)
+        if intPosition > 0 {
+            if intPosition < 3600 {
+                self.currentTimeLabel.text = Formatter.stringFromTimeInterval(duration) ?? ""
+            } else {
+                self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(duration) ?? ""
+            }
+            self.mediaProgressSlider.value = Float(position)
+        } else {
+            self.mediaProgressSlider.value = 0
+            self.currentTimeLabel.text = "--:--"
+        }
+
+        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "refresh", object: nil)
+        if !self.overlayPanel.hidden {
+            self.performSelector("refresh", withObject: nil, afterDelay: 0.5)
+        }
     }
     
     func beginDragMediaSlider() {

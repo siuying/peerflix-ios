@@ -8,19 +8,32 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class VideoPlayerController: UIViewController {
-    var videoURL: NSURL!
-    init(videoURL: NSURL) {
-        super.init(nibName: nil, bundle: nil)
-        self.videoURL = videoURL
+    @IBOutlet var mediaControl: MediaControl!
+    @IBOutlet var videoView: UIView!
+    
+    var videoURL: NSURL?
+    var services: ServiceFactory = DefaultServiceFactory.instance
+    private let disposeBag = DisposeBag()
+    private var torrent: TorrentService {
+        return self.services.torrent
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
+    var player: IJKMediaPlayback!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        IJKFFMoviePlayerController.checkIfFFmpegVersionMatch(true)
+        let options = IJKFFOptions.optionsByDefault()
+        self.player = IJKFFMoviePlayerController(contentURL: self.videoURL, withOptions: options)
+        self.player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.player.view.frame = self.videoView.bounds
+        self.player.shouldAutoplay = true
+        self.videoView.addSubview(self.player.view)
+        self.mediaControl.delegatePlayer = self.player
     }
 }
