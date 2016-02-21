@@ -242,13 +242,13 @@
 		547C00B11C7619FB00425CD7 /* Peerflix */ = {
 			isa = PBXGroup;
 			children = (
-				54E409DC1C79CC8B00B6704D /* Resources */,
 				54E409D11C799CAF00B6704D /* Constants */,
 				548DF9651C78630100C572E1 /* Extensions */,
 				54E409D61C799DD200B6704D /* Helpers */,
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
 				54A8D04D1C795AA7009D2D85 /* Playgrounds */,
+				54E409DC1C79CC8B00B6704D /* Resources */,
 				548DF9541C78403F00C572E1 /* Services */,
 				54E409C71C796CFE00B6704D /* Storyboards */,
 				548DF96D1C786E5700C572E1 /* ViewControllers */,
@@ -272,9 +272,9 @@
 		548DF9541C78403F00C572E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				54E409C81C796D5B00B6704D /* ServiceFactory.swift */,
 				548DF9561C78409C00C572E1 /* TorrentService.swift */,
 				548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */,
-				54E409C81C796D5B00B6704D /* ServiceFactory.swift */,
 				54E409E21C7A0B0800B6704D /* Wireframe.swift */,
 			);
 			path = Services;
@@ -390,7 +390,7 @@
 				547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */,
 				54E409C51C796CFA00B6704D /* Main.storyboard */,
 			);
-			name = Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		54E409D11C799CAF00B6704D /* Constants */ = {
@@ -398,7 +398,7 @@
 			children = (
 				54E409D21C799CB900B6704D /* Segue.swift */,
 			);
-			name = Constants;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		54E409D61C799DD200B6704D /* Helpers */ = {
@@ -409,7 +409,7 @@
 				54E409D81C79B2F500B6704D /* NetHelper.m */,
 				54D835BF1C7A1BFA003844A5 /* NumberHelpers.swift */,
 			);
-			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		54E409DC1C79CC8B00B6704D /* Resources */ = {
