@@ -34,7 +34,6 @@ class VideoPlayerController: UIViewController {
         
         let options = IJKFFOptions.optionsByDefault()
         options.setPlayerOptionIntValue(1, forKey: "videotoolbox")
-        options.setFormatOptionIntValue(1, forKey: "auto_convert")
         self.player = IJKFFMoviePlayerController(contentURL: self.videoURL, withOptions: options)
         self.player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.player.view.frame = self.videoView.bounds
@@ -45,12 +44,22 @@ class VideoPlayerController: UIViewController {
         self.mediaControl.delegatePlayer = self.player
         
         let player = self.player
-        let mediacontrol = self.mediaControl
+        let mediaControl = self.mediaControl
+        let gesture = UITapGestureRecognizer()
+        gesture.rx_event
+            .subscribeNext {[weak mediaControl] (g) -> Void in
+                if g.state == .Ended {
+                    mediaControl?.toggleVisibility()
+                }
+            }
+            .addDisposableTo(self.disposeBag)
+        self.mediaControl.userInteractionEnabled = true
+        self.mediaControl.addGestureRecognizer(gesture)
 
         mediaControl.mediaProgressSlider
             .rx_controlEvent(.TouchDown)
-            .subscribeNext { [weak mediacontrol] (_) -> Void in
-                mediacontrol?.beginDragMediaSlider()
+            .subscribeNext { [weak mediaControl] (_) -> Void in
+                mediaControl?.beginDragMediaSlider()
             }
             .addDisposableTo(self.disposeBag)
         
@@ -95,6 +104,10 @@ class VideoPlayerController: UIViewController {
             .addDisposableTo(self.disposeBag)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

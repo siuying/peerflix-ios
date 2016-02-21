@@ -50,15 +50,34 @@ class TorrentViewController: UIViewController {
             .bindTo(self.playButton.rx_enabled)
             .addDisposableTo(self.disposeBag)
    }
+
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       guard let segueId = segue.identifier else {
+           return
+       }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let segueId = segue.identifier else {
-            return
-        }
-        
-        if segueId == Segue.PlayVideo.rawValue {
-            let vc = segue.destinationViewController as! VideoPlayerController
-            vc.videoURL = self.viewModel.videoURL.value
+       if segueId == Segue.PlayVideo.rawValue {
+           let vc = segue.destinationViewController as! VideoPlayerController
+           vc.videoURL = self.viewModel.videoURL.value
+       }
+   }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.delegate = self
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.delegate = nil
+    }
+}
+
+extension TorrentViewController: UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        // when pop to SearchViewController, deselect any torrent
+        if viewController is SearchViewController {
+
         }
     }
 }

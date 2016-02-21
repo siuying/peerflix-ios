@@ -21,7 +21,7 @@ protocol TorrentService {
 
     func selectFile(filename: String) -> Observable<APIResult>
 
-    func selectTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
+    func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
     
     func stopTorrent() -> Observable<APIResult>
 }
@@ -86,7 +86,7 @@ class DefaultTorrentService: TorrentService {
             .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func selectTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult> {
+    func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult> {
         guard let URL = torrent.URL else {
             return Observable.empty()
         }

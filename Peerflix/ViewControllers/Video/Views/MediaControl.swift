@@ -38,6 +38,10 @@ class MediaControl: UIControl {
     @IBOutlet var totalDurationLabel: UILabel!
     @IBOutlet var mediaProgressSlider: UISlider!
     
+    var overlayHidden: Bool {
+        return self.overlayPanel.hidden
+    }
+
     private var mediaSliderBeingDragged = false
     
     override func awakeFromNib() {
@@ -59,6 +63,14 @@ class MediaControl: UIControl {
     func hide() {
         self.overlayPanel.hidden = true
         self.cancelDelayedHide()
+    }
+    
+    func toggleVisibility() {
+        if self.overlayPanel.hidden {
+            self.showAndFade()
+        } else {
+            self.hide()
+        }
     }
     
     @objc func refresh() {

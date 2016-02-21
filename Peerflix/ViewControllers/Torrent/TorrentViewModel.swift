@@ -38,20 +38,20 @@ func configureTorrentState(torrent: TorrentService, torrentState: Observable<Tor
 
         let size = torrentState
             .map({ $0.size ?? 0 })
-            .map({ "\(formatFileSize(Double($0))) M" })
+            .map({ "\(formatFileSize(Double($0)))M" })
             .observeOn(MainScheduler.instance)
 
         let files = torrentState.map({ $0.files.flatMap({ $0.map({$0.name}) }) }).filterNil()
         let downloadSpeed = torrentState
             .map({ $0.downloadSpeed ?? 0 })
-            .map({ "\(formatFileSize(Double($0))) M/s" })
+            .map({ "\(formatFileSize(Double($0)))M/s" })
             .observeOn(MainScheduler.instance)
         let downloaded = torrentState
             .map({ ($0.downloaded, $0.size) })
             .map({ (downloaded, size) -> String in
                 if let downloaded = downloaded, let size = size {
                     let completion = size == 0 ? 0 : [100, (downloaded / size)].minElement()!
-                    return "\(formatFileSize(downloaded))M \(formatPercent(completion))%"
+                    return "\(formatFileSize(downloaded))M (\(formatPercent(completion))%)"
                 } else {
                     return ""
                 }

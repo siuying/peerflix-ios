@@ -219,9 +219,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <subviews>
                                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsJ-Tl-8K3">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="54" id="02Q-Eo-tNp"/>
+                                                    <constraint firstAttribute="height" constant="44" id="02Q-Eo-tNp"/>
                                                 </constraints>
                                                 <items>
                                                     <barButtonItem title="Done" id="8Fy-HN-U3u"/>
