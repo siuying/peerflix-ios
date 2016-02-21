@@ -87,22 +87,5 @@ class TorrentViewModel {
         torrentState.map({ $0.videoURL })
             .bindTo(videoURL)
             .addDisposableTo(self.disposeBag)
-
-        // setup play
-        self.configurePlay(play, URL: self.URL.filterNil(), router: router)
-    }
-
-    
-    
-    func configurePlay(play: Observable<Void>, URL: Observable<NSURL>, router: Router) {
-        Observable
-            .combineLatest(play, URL) { (play, URL) -> NSURL in
-                return URL
-            }
-            .observeOn(MainScheduler.instance)
-            .subscribeNext { (URL) -> Void in
-                router.openVideo(URL)
-            }
-            .addDisposableTo(self.disposeBag)
     }
 }

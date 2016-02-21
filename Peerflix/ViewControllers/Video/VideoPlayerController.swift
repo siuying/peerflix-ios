@@ -26,14 +26,68 @@ class VideoPlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         IJKFFMoviePlayerController.checkIfFFmpegVersionMatch(true)
         let options = IJKFFOptions.optionsByDefault()
         self.player = IJKFFMoviePlayerController(contentURL: self.videoURL, withOptions: options)
         self.player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.player.view.frame = self.videoView.bounds
         self.player.shouldAutoplay = true
+        self.player.scalingMode = .AspectFit
         self.videoView.addSubview(self.player.view)
         self.mediaControl.delegatePlayer = self.player
+        
+        let player = self.player
+        let mediacontrol = self.mediaControl
+        mediaControl.mediaProgressSlider
+            .rx_controlEvent(.TouchDown)
+            .subscribeNext { [weak mediacontrol] (_) -> Void in
+                mediacontrol?.beginDragMediaSlider()
+            }
+            .addDisposableTo(self.disposeBag)
+        
+        mediaControl.mediaProgressSlider
+            .rx_controlEvent(.TouchCancel)
+            .subscribeNext { [weak mediaControl] (_) -> Void in
+                mediaControl?.endDragMediaSlider()
+            }
+            .addDisposableTo(self.disposeBag)
+
+        mediaControl.mediaProgressSlider
+            .rx_controlEvent(.TouchUpOutside)
+            .subscribeNext { [weak mediaControl] (_) -> Void in
+                mediaControl?.endDragMediaSlider()
+            }
+            .addDisposableTo(self.disposeBag)
+        
+        mediaControl.mediaProgressSlider
+            .rx_controlEvent(.TouchUpInside)
+            .subscribeNext { [weak mediaControl, weak player] (_) -> Void in
+                if let mediaControl = mediaControl, let player = player {
+                    player.currentPlaybackTime = Double(mediaControl.mediaProgressSlider.value)
+                    mediaControl.endDragMediaSlider()
+                }
+            }
+            .addDisposableTo(self.disposeBag)
+        
+        mediaControl.mediaProgressSlider
+            .rx_value
+            .subscribeNext {  [weak mediaControl] (_) -> Void in
+                mediaControl?.continueDragMediaSlider()
+            }
+            .addDisposableTo(self.disposeBag)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.player.prepareToPlay()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.player.shutdown()
+    }
+
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .All
     }
 }

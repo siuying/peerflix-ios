@@ -41,8 +41,6 @@ class DefaultRouter: Router {
     
     func openVideo(URL: NSURL) {
         print("openVideo \(URL.absoluteString)")
-        self.mediaPlayer = IJKAVMoviePlayerController(contentURL: URL)
-        self.mediaPlayer!.prepareToPlay()
     }
     
     func getRootViewController() -> UIViewController? {

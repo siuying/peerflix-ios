@@ -88,9 +88,9 @@ class MediaControl: UIControl {
         let intPosition = Int(position + 0.5)
         if intPosition > 0 {
             if intPosition < 3600 {
-                self.currentTimeLabel.text = Formatter.stringFromTimeInterval(duration) ?? ""
+                self.currentTimeLabel.text = Formatter.stringFromTimeInterval(position) ?? ""
             } else {
-                self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(duration) ?? ""
+                self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(position) ?? ""
             }
             self.mediaProgressSlider.value = Float(position)
         } else {
