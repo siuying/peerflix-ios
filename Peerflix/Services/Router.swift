@@ -16,8 +16,12 @@ protocol Router {
 }
 
 class DefaultRouter: Router {
-    static let instance = DefaultRouter()
+    enum Segue: String {
+        case OpenTorrent
+    }
     
+    static let instance = DefaultRouter()
+
     var navController: UINavigationController!
     var torrent: TorrentService
     var mediaPlayer: IJKMediaPlayback?
@@ -27,7 +31,11 @@ class DefaultRouter: Router {
     }
 
     func openTorrent() {
-        self.navController.pushViewController(TorrentViewController(torrent: self.torrent, router: self), animated: true)
+//        guard let searchViewController = self.getRootViewController() as? SearchViewController else {
+//            fatalError("must inside search view controller to open torrent")
+//        }
+//
+//        searchViewController.performSegueWithIdentifier(Segue.OpenTorrent.rawValue, sender: nil)
     }
     
     func openVideo(URL: NSURL) {
@@ -35,4 +43,19 @@ class DefaultRouter: Router {
         self.mediaPlayer = IJKAVMoviePlayerController(contentURL: URL)
         self.mediaPlayer!.prepareToPlay()
     }
+    
+    func getRootViewController() -> UIViewController? {
+        let topController = UIApplication.sharedApplication().keyWindow!.rootViewController
+        
+        guard var controller = topController else {
+            return nil
+        }
+        
+        while let vc = controller.presentedViewController {
+            controller = vc
+        }
+        
+        return controller
+    }
+    
 }

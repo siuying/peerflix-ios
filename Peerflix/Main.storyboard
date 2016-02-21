@@ -76,6 +76,7 @@
                                         <connections>
                                             <outlet property="detailLabel" destination="MOz-3p-2ZF" id="Yxg-da-qbC"/>
                                             <outlet property="titleLabel" destination="SO0-xN-D6i" id="LNQ-BE-fEO"/>
+                                            <segue destination="EwQ-9Q-0mO" kind="show" id="N4i-lA-RV9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -109,6 +110,81 @@
                 </searchBar>
             </objects>
             <point key="canvasLocation" x="754" y="524"/>
+        </scene>
+        <!--Torrent View Controller-->
+        <scene sceneID="eoT-eP-M4c">
+            <objects>
+                <viewController id="EwQ-9Q-0mO" customClass="TorrentViewController" customModule="Peerflix" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O0x-E4-4cu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wuq-4t-OWo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VPN-BA-vQa">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uqj-fF-ZzN">
+                                <rect key="frame" x="20" y="0.0" width="560" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the torrent" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPm-04-MVD">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="bv3-Fw-I43"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="800" constant="32.5" id="crf-0x-L4n"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="0.0 M/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfg-1I-xUX">
+                                        <rect key="frame" x="0.0" y="41" width="560" height="14"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="120M 0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-v7-mek">
+                                        <rect key="frame" x="0.0" y="63" width="560" height="14"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szp-Zt-oCK">
+                                        <rect key="frame" x="0.0" y="84" width="560" height="396"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZF-b8-7ko">
+                                        <rect key="frame" x="0.0" y="488" width="560" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-fV-vUE">
+                                        <rect key="frame" x="0.0" y="526" width="560" height="10"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="3mE-6a-8Ej"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uqj-fF-ZzN" secondAttribute="trailing" id="PUD-wZ-XLr"/>
+                            <constraint firstItem="Uqj-fF-ZzN" firstAttribute="leading" secondItem="VPN-BA-vQa" secondAttribute="leadingMargin" id="bN3-Rt-IYq"/>
+                            <constraint firstItem="Wuq-4t-OWo" firstAttribute="top" secondItem="Uqj-fF-ZzN" secondAttribute="bottom" id="nzt-ha-0k2"/>
+                            <constraint firstItem="Uqj-fF-ZzN" firstAttribute="top" secondItem="O0x-E4-4cu" secondAttribute="bottom" id="t5Q-iu-B2Z"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="downloadSpeedLabel" destination="Qfg-1I-xUX" id="rxi-OH-AZq"/>
+                        <outlet property="downloadedLabel" destination="zQg-v7-mek" id="RQY-El-LsL"/>
+                        <outlet property="playButton" destination="2ZF-b8-7ko" id="bX9-4C-bHD"/>
+                        <outlet property="titleLabel" destination="RPm-04-MVD" id="ZV9-Qa-E2K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pX4-Ra-lQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="524"/>
         </scene>
     </scenes>
 </document>
