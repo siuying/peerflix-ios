@@ -1,6 +1,10 @@
+![https://github.com/siuying/peerflix-ios/blob/master/web/logo_bigger.png?raw=true]()
+
 # Peerflix for iOS
 
 Streaming torrent client for iOS.
+
+![https://github.com/siuying/peerflix-ios/blob/master/web/peerflix.gif?raw=true]()
 
 ## Building
 
