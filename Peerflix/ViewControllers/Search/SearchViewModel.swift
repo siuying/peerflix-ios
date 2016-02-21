@@ -46,11 +46,13 @@ extension SearchResultSection: AnimatableSectionModelType {
 }
 
 protocol SearchViewModelType {
+    var engine: Observable<String> { get }
     var loaded: Observable<Bool>! { get }
     var sections: Observable<[SearchResultSection]>! { get }
 }
 
 class SearchViewModel: SearchViewModelType {
+    var engine: Observable<String>
     var loaded: Observable<Bool>!
     var sections: Observable<[SearchResultSection]>!
 
@@ -67,6 +69,10 @@ class SearchViewModel: SearchViewModelType {
             .distinctUntilChanged()
             .shareReplay(1)            
             .observeOn(MainScheduler.instance)
+
+        self.engine = torrent
+            .getSearchEngine()
+            .map({ $0.title })
 
         self.sections = self.configureSection(loaded: self.loaded, query: query, torrent: torrent)
         
@@ -90,12 +96,33 @@ class SearchViewModel: SearchViewModelType {
             .debounce(1.0, scheduler: MainScheduler.instance)   // prevent query too much
             .flatMapLatest({
                 torrent
-                    .search($0, engine: .DMHY)               // perform search
+                    .search($0)                                 // perform search
                     .catchErrorJustReturn(SearchResult.error)   // ignore errors
             })
             .map({$0.torrents})                                 // map result
             .bindTo(searchResult)                               // bind result
             .addDisposableTo(self.disposeBag)
+        
+        let currentQuery: Variable<String> = Variable("")
+        query.bindTo(currentQuery)
+            .addDisposableTo(self.disposeBag)
+        
+        Observable.combineLatest(currentQuery.asObservable(), torrent.getSearchEngine()
+            .distinctUntilChanged()) { (query, engine) -> String in
+                return query
+            }
+            .filter({ $0.unicodeScalars.count > 3 })
+            .distinctUntilChanged()
+            .asObservable()
+            .flatMapLatest({ _ -> Observable<SearchResult> in
+                torrent
+                    .search(currentQuery.value)                 // perform search
+                    .catchErrorJustReturn(SearchResult.error)   // ignore errors
+            })
+            .map({$0.torrents})                                 // map result
+            .bindTo(searchResult)                               // bind result
+            .addDisposableTo(self.disposeBag)
+
 
         return searchResult
             .asObservable()

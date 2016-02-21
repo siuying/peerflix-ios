@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var initIndicator: UIActivityIndicatorView!
+    @IBOutlet var settingButton: UIBarButtonItem!
 
     var viewModel: SearchViewModelType!
     
@@ -41,7 +42,7 @@ class SearchViewController: UIViewController {
             .asObservable()
             .map({ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) })
             .shareReplay(1)
-
+        
         let openItem: Observable<SearchResult.Torrent> = self.tableView.rx_modelSelected(SearchResult.Torrent.self)
             .asObservable()
 
@@ -49,6 +50,14 @@ class SearchViewController: UIViewController {
             input: (query: query, openItem: openItem),
             torrent: self.torrent
         )
+
+        // set search engine
+        self.viewModel
+            .engine
+            .subscribeNext({ (title) -> Void in
+                self.settingButton.title = title
+            })
+            .addDisposableTo(self.disposeBag)
         
         // Show loading indicator until service is loaded
         
@@ -77,5 +86,22 @@ class SearchViewController: UIViewController {
             .sections
             .bindTo(self.tableView.rx_itemsAnimatedWithDataSource(datasource))
             .addDisposableTo(self.disposeBag)
+        
+        // settings
+        
+        self.settingButton.rx_tap
+            .subscribeNext(self.showSearchOptions)
+            .addDisposableTo(self.disposeBag)
+    }
+    
+    private func showSearchOptions() {
+        let engines : [TorrentServiceAPI.SearchEngine] = [.DMHY, .PirateBay, .Nyaa, .Kickass]
+        let alert = UIAlertController(title: "Select a Search Engine", message: nil, preferredStyle: .Alert)
+        for engine in engines {
+            alert.addAction(UIAlertAction(title: engine.title, style: .Default, handler: { [weak self] (_) -> Void in
+                self?.torrent.setSearchEngine(engine)
+            }))
+        }
+        self.navigationController?.presentViewController(alert, animated: true, completion: nil)
     }
 }

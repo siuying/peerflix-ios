@@ -17,25 +17,31 @@ protocol TorrentService {
 
     func getSelectedTorrent() -> Observable<SearchResult.Torrent?>
 
-    func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult>
+    func getSearchEngine() -> Observable<TorrentServiceAPI.SearchEngine>
+
+    func search(query: String) -> Observable<SearchResult>
 
     func selectFile(filename: String) -> Observable<APIResult>
 
     func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
 
     func stopTorrent() -> Observable<APIResult>
+    
+    func setSearchEngine(engine: TorrentServiceAPI.SearchEngine)
 }
 
 class DefaultTorrentService: TorrentService {
     static let instance = DefaultTorrentService()
 
     var selectedTorrent: Variable<SearchResult.Torrent?>
+    var engine: Variable<TorrentServiceAPI.SearchEngine>
     var state: Observable<TorrentState>!
     var error: Observable<ErrorType?>!
     
     init() {
         let state: Variable<TorrentState> = Variable(TorrentState())
         let error: Variable<ErrorType?> = Variable(nil)
+        self.engine = Variable(TorrentServiceAPI.SearchEngine.Kickass)
         self.state = state.asObservable().shareReplay(1)
         self.error = error.asObservable().shareReplay(1)
         self.selectedTorrent = Variable(nil)
@@ -71,9 +77,13 @@ class DefaultTorrentService: TorrentService {
         return self.selectedTorrent.asObservable()
     }
     
-    func search(query: String, engine: TorrentServiceAPI.SearchEngine) -> Observable<SearchResult> {
-        print("search: \(query), engine: \(engine.rawValue)")
-        return Alamofire.request(TorrentServiceAPI.Search(query, engine))
+    func getSearchEngine() -> Observable<TorrentServiceAPI.SearchEngine> {
+        return self.engine.asObservable()
+    }
+    
+    func search(query: String) -> Observable<SearchResult> {
+        print("search: \(query), engine: \(self.engine.value.rawValue)")
+        return Alamofire.request(TorrentServiceAPI.Search(query, self.engine.value))
             .rx_reponseJSON()
             .map { (json) -> SearchResult in
                 return try json.decode(type: SearchResult.self)
@@ -101,5 +111,9 @@ class DefaultTorrentService: TorrentService {
         return Alamofire.request(TorrentServiceAPI.Stop())
             .rx_reponseJSON()
             .map({ try $0.decode(type: APIResult.self) })
+    }
+    
+    func setSearchEngine(engine: TorrentServiceAPI.SearchEngine) {
+        self.engine.value = engine
     }
 }
