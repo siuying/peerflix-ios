@@ -77,7 +77,7 @@ extension TorrentViewController: UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         // when pop to SearchViewController, deselect any torrent
         if viewController is SearchViewController {
-
+            torrent.stopTorrent()
         }
     }
 }

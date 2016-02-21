@@ -22,7 +22,7 @@ protocol TorrentService {
     func selectFile(filename: String) -> Observable<APIResult>
 
     func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
-    
+
     func stopTorrent() -> Observable<APIResult>
 }
 

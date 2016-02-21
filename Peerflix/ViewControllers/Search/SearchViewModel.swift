@@ -105,7 +105,7 @@ class SearchViewModel: SearchViewModelType {
     
     func configActions(openItem: Observable<SearchResult.Torrent>, torrent: TorrentService) {
         let request = openItem
-            .flatMapLatest({ torrent.selectTorrent($0) })
+            .flatMapLatest({ torrent.playTorrent($0) })
 
         request
             .subscribeError({ (error) -> Void in
