@@ -18,10 +18,7 @@ class TorrentViewController: UIViewController {
     private var torrent: TorrentService {
         return self.services.torrent
     }
-    private var router: Router {
-        return self.services.router
-    }
-    
+
     @IBOutlet var titleLabel : UILabel!
     @IBOutlet var downloadedLabel : UILabel!
     @IBOutlet var downloadSpeedLabel : UILabel!
@@ -32,7 +29,7 @@ class TorrentViewController: UIViewController {
 
         let play = self.playButton.rx_tap.asObservable()
 
-        self.viewModel = TorrentViewModel(play: play, dependency: (torrent: self.torrent, router: self.router))
+        self.viewModel = TorrentViewModel(play: play, torrent: self.torrent)
         self.viewModel.name
             .bindTo(self.titleLabel.rx_text)
             .addDisposableTo(self.disposeBag)
@@ -65,7 +62,7 @@ class TorrentViewController: UIViewController {
             return
         }
         
-        if segueId == DefaultRouter.Segue.PlayVideo.rawValue {
+        if segueId == Segue.PlayVideo.rawValue {
             let vc = segue.destinationViewController as! VideoPlayerController
             vc.videoURL = self.viewModel.videoURL.value
             print("video URL = \(vc.videoURL!)")

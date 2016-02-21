@@ -43,11 +43,11 @@
 		54E409CC1C79913900B6704D /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CB1C79913900B6704D /* libz.1.tbd */; };
 		54E409CE1C79916800B6704D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CD1C79916800B6704D /* VideoToolbox.framework */; };
 		54E409D01C79918E00B6704D /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CF1C79918E00B6704D /* libbz2.tbd */; };
+		54E409D31C799CB900B6704D /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D21C799CB900B6704D /* Segue.swift */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
 		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
-		54F7F8E21C78B6B500FB3530 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8E11C78B6B500FB3530 /* Router.swift */; };
 		54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */; };
 		54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */; };
 		54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */; };
@@ -127,11 +127,11 @@
 		54E409CB1C79913900B6704D /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		54E409CD1C79916800B6704D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		54E409CF1C79918E00B6704D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		54E409D21C799CB900B6704D /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
 		54F7F8DF1C78B25800FB3530 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
-		54F7F8E11C78B6B500FB3530 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.debug.xcconfig"; sourceTree = "<group>"; };
 		54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
 		54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +227,7 @@
 		547C00B11C7619FB00425CD7 /* Peerflix */ = {
 			isa = PBXGroup;
 			children = (
+				54E409D11C799CAF00B6704D /* Constants */,
 				548DF9651C78630100C572E1 /* Extensions */,
 				54DF91BE1C7758B800577EDD /* JXcore */,
 				548DF9581C78424D00C572E1 /* Models */,
@@ -254,7 +255,6 @@
 		548DF9541C78403F00C572E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				54F7F8E11C78B6B500FB3530 /* Router.swift */,
 				548DF9561C78409C00C572E1 /* TorrentService.swift */,
 				548DF9681C78675C00C572E1 /* TorrentServiceAPI.swift */,
 				54E409C81C796D5B00B6704D /* ServiceFactory.swift */,
@@ -373,6 +373,14 @@
 				54E409C51C796CFA00B6704D /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		54E409D11C799CAF00B6704D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				54E409D21C799CB900B6704D /* Segue.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		54F7F8D71C78969200FB3530 /* Torrent */ = {
@@ -639,11 +647,11 @@
 				548DF95A1C78425500C572E1 /* TorrentState.swift in Sources */,
 				54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */,
 				54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */,
+				54E409D31C799CB900B6704D /* Segue.swift in Sources */,
 				54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */,
 				54E409C91C796D5B00B6704D /* ServiceFactory.swift in Sources */,
 				548DF9671C78630900C572E1 /* Alamofire+Rx.swift in Sources */,
 				548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */,
-				54F7F8E21C78B6B500FB3530 /* Router.swift in Sources */,
 				54DF91C11C7758B800577EDD /* JXcore.m in Sources */,
 				548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */,
 				548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */,

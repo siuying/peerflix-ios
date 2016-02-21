@@ -75,8 +75,7 @@ class TorrentViewModel {
 
     private let disposeBag = DisposeBag()
 
-    init(play: Observable<Void>, dependency: (torrent: TorrentService, router: Router)) {
-        let (torrent, router) = dependency
+    init(play: Observable<Void>, torrent: TorrentService) {
         let torrentState = torrent.getState()
 
         // setup states

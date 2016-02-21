@@ -9,13 +9,10 @@
 import Foundation
 
 protocol ServiceFactory {
-    var router: Router { get }
     var torrent: TorrentService { get }
 }
 
 class DefaultServiceFactory: ServiceFactory {
     static let instance = DefaultServiceFactory()
-
-    let router: Router = DefaultRouter.instance
     let torrent: TorrentService = DefaultTorrentService.instance
 }

@@ -24,9 +24,6 @@ class SearchViewController: UIViewController {
     var torrent: TorrentService {
         return self.services.torrent
     }
-    var router: Router {
-        return self.services.router
-    }
 
     let disposeBag = DisposeBag()
 
@@ -50,7 +47,7 @@ class SearchViewController: UIViewController {
 
         self.viewModel = SearchViewModel(
             input: (query: query, openItem: openItem),
-            dependency: (torrent: self.torrent, router: self.router)
+            torrent: self.torrent
         )
         
         // Show loading indicator until service is loaded
