@@ -2,7 +2,7 @@ var TorrentFinder = require('torrent-finder')
 var MetadataHelper = require('../helpers/MetadataHelper')
 
 var SearchEngines = [
-  new TorrentFinder.Piratebay({baseUrl: 'https://thepiratebay.la/'}),
+  new TorrentFinder.Piratebay({baseUrl: 'https://thepiratebay.se/'}),
   new TorrentFinder.Kickass(),
   new TorrentFinder.Dmhy(),
   new TorrentFinder.Nyaa()
@@ -21,6 +21,7 @@ var MetadataService = {
       }
 
       searcher.search(query).then((torrents) => {
+        console.log("search results", torrents)
         response.serveJSON({success: true, query: query, engine: engineCode, torrents: torrents})
       }).catch((error) => {
         response.serveJSON({success: false, error: error})
