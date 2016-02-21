@@ -28,7 +28,7 @@ struct TorrentState {
         init(json: JSON) throws {
             self.name = try json.string("name", ifNull: true) ?? ""
             self.size = try json.double("length", ifNull: true) ?? 0
-            self.URL = try json.string("url", ifNull: true).flatMap({ NSURL(string: $0) })
+            self.URL = try json.string("url", ifNotFound: true).flatMap({ NSURL(string: $0) })
         }
         
         // return true if the file looks like a video file

@@ -13,6 +13,8 @@ protocol Router {
     func setup() -> UIWindow
 
     func openTorrent()
+    
+    func openVideo(URL: NSURL)
 }
 
 class DefaultRouter: Router {
@@ -20,6 +22,7 @@ class DefaultRouter: Router {
     
     var navController: UINavigationController!
     var torrent: TorrentService
+    var mediaPlayer: IJKMediaPlayback?
 
     init(torrent: TorrentService = DefaultTorrentService.instance) {
         self.torrent = torrent
@@ -36,6 +39,12 @@ class DefaultRouter: Router {
     }
 
     func openTorrent() {
-        self.navController.pushViewController(TorrentViewController(torrent: self.torrent), animated: true)
+        self.navController.pushViewController(TorrentViewController(torrent: self.torrent, router: self), animated: true)
+    }
+    
+    func openVideo(URL: NSURL) {
+        print("openVideo \(URL.absoluteString)")
+        self.mediaPlayer = IJKAVMoviePlayerController(contentURL: URL)
+        self.mediaPlayer!.prepareToPlay()
     }
 }

@@ -21,31 +21,18 @@ func formatPercent(value: Double) -> String {
     return numberFormatter.stringFromNumber(value * 100.0) ?? ""
 }
 
-class TorrentViewModel {
-    let name: Observable<String>
-    let size: Observable<String>
-
-    let downloadSpeed: Observable<String>
-    let downloaded: Observable<String>
-    let files: Observable<[String]>
-    let playable: Observable<Bool>
-
-    init(torrent: TorrentService) {
-        let torrentState = torrent.getState()
-        
-
-        self.name = torrentState
+func configureTorrentState(torrentState: Observable<TorrentState>)
+    -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
+        let name = torrentState
             .map({ $0.filename ?? $0.torrentURL?.absoluteString ?? "" })
             .observeOn(MainScheduler.instance)
-
-        self.size = Observable.just("")
-        self.files = Observable.just([])
-        self.downloadSpeed = torrentState
+        let size = Observable.just("")
+        let files:Observable<[String]> = Observable.just([])
+        let downloadSpeed = torrentState
             .map({ $0.downloadSpeed ?? 0 })
             .map({ "\(formatFileSize($0)) M/s" })
             .observeOn(MainScheduler.instance)
-
-        self.downloaded = torrentState
+        let downloaded = torrentState
             .map({ ($0.downloaded, $0.size) })
             .map({ (downloaded, size) -> String in
                 if let downloaded = downloaded, let size = size {
@@ -56,9 +43,47 @@ class TorrentViewModel {
                 }
             })
             .observeOn(MainScheduler.instance)
-
-        self.playable = torrentState
+        let playable = torrentState
             .map({ $0.status == .Listening || $0.status == .Finished })
             .observeOn(MainScheduler.instance)
+        let URL = torrentState
+            .map({ $0.videoURL })
+            .asObservable()
+        
+        return (name: name, size: size, files: files, downloadSpeed: downloadSpeed, downloaded: downloaded, playable: playable, URL: URL)
+}
+
+class TorrentViewModel {
+    let name: Observable<String>
+    let size: Observable<String>
+    let downloadSpeed: Observable<String>
+    let downloaded: Observable<String>
+    let files: Observable<[String]>
+    let playable: Observable<Bool>
+    let URL: Observable<NSURL?>
+    
+    let disposeBag = DisposeBag()
+
+    init(play: Observable<Void>, dependency: (torrent: TorrentService, router: Router)) {
+        let (torrent, router) = dependency
+        let torrentState = torrent.getState()
+
+        // setup states
+        (self.name, self.size, self.files, self.downloadSpeed, self.downloaded, self.playable, self.URL) = configureTorrentState(torrentState)
+
+        self.configurePlay(play, URL: self.URL.filterNil(), router: router)
+    }
+    
+    
+    func configurePlay(play: Observable<Void>, URL: Observable<NSURL>, router: Router) {
+        Observable
+            .combineLatest(play, URL) { (play, URL) -> NSURL in
+                return URL
+            }
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { (URL) -> Void in
+                router.openVideo(URL)
+            }
+            .addDisposableTo(self.disposeBag)
     }
 }

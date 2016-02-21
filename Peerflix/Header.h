@@ -7,3 +7,4 @@
 //
 
 #import "JXcore.h"
+#import <IJKMediaFramework/IJKMediaFramework.h>

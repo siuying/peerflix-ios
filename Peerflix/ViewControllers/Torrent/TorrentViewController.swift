@@ -13,6 +13,8 @@ import RxSwift
 class TorrentViewController: UIViewController {
     var viewModel: TorrentViewModel!
     var torrent: TorrentService!
+    var router: Router!
+
     let disposeBag = DisposeBag()
 
     var titleLabel : UILabel!
@@ -20,9 +22,10 @@ class TorrentViewController: UIViewController {
     var downloadSpeedLabel : UILabel!
     var playButton : UIButton!
 
-    init(torrent: TorrentService) {
+    init(torrent: TorrentService, router: Router) {
         super.init(nibName: nil, bundle: nil)
         self.torrent = torrent
+        self.router = router
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -84,8 +87,10 @@ class TorrentViewController: UIViewController {
         self.playButton.contentHorizontalAlignment = .Center
         self.playButton.setContentHuggingPriority(751, forAxis: .Vertical)
         stack.addArrangedSubview(self.playButton)
+        
+        let play = self.playButton.rx_tap.asObservable()
 
-        self.viewModel = TorrentViewModel(torrent: self.torrent)
+        self.viewModel = TorrentViewModel(play: play, dependency: (torrent: self.torrent, router: self.router))
         self.viewModel.name
             .bindTo(self.titleLabel.rx_text)
             .addDisposableTo(self.disposeBag)
