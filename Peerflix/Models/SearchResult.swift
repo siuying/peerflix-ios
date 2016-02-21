@@ -38,7 +38,13 @@ extension SearchResult: JSONDecodable {
 extension SearchResult.Torrent: JSONDecodable {
     init(json: JSON) throws {
         self.name = try json.string("name", ifNotFound: true) ?? ""
-        self.size = try json.string("size", ifNotFound: true) ?? ""
+        
+        do {
+            self.size = try json.string("size") ?? ""
+        } catch _ as JSON.Error {
+            let size = try json.int("size")
+            self.size = formatFileSize(Double(size)) + " M"
+        }
         
         self.seeders = try json.int("seeders", ifNotFound: true) ?? 0
         self.leechers = try json.int("leechers", ifNotFound: true) ?? 0
