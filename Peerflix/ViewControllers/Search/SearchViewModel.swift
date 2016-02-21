@@ -82,41 +82,27 @@ class SearchViewModel: SearchViewModelType {
     func configureSection(loaded loaded: Observable<Bool>, query: Observable<String>, torrent: TorrentService) -> Observable<[SearchResultSection]>  {
 
         let searchResult:Variable<[SearchResult.Torrent]> = Variable([])
-        
+        let engineChanged = torrent.getSearchEngine().distinctUntilChanged()
+
         // only query after service loaded
-        let queryUntilLoaded: Observable<String> =  Observable
+        let queryChanged: Observable<String> =  Observable
             .combineLatest(loaded, query) { (loaded, query) -> (Bool, String) in
                 return (loaded, query)
             }
             .filter({ (loaded, _) in loaded })
             .map({ $1 })
-        
-        queryUntilLoaded
-            .filter({ $0.unicodeScalars.count > 3 })            // only search longer query
-            .debounce(1.0, scheduler: MainScheduler.instance)   // prevent query too much
-            .flatMapLatest({
-                torrent
-                    .search($0)                                 // perform search
-                    .catchErrorJustReturn(SearchResult.error)   // ignore errors
-            })
-            .map({$0.torrents})                                 // map result
-            .bindTo(searchResult)                               // bind result
-            .addDisposableTo(self.disposeBag)
-        
-        let currentQuery: Variable<String> = Variable("")
-        query.bindTo(currentQuery)
-            .addDisposableTo(self.disposeBag)
-        
-        Observable.combineLatest(currentQuery.asObservable(), torrent.getSearchEngine()
-            .distinctUntilChanged()) { (query, engine) -> String in
+            .distinctUntilChanged()
+
+        // search when query or engine changed
+        Observable.combineLatest(queryChanged, engineChanged) { (query, engine) -> String in
                 return query
             }
             .filter({ $0.unicodeScalars.count > 3 })
-            .distinctUntilChanged()
+            .debounce(1.0, scheduler: MainScheduler.instance)   // prevent query too much
             .asObservable()
-            .flatMapLatest({ _ -> Observable<SearchResult> in
+            .flatMapLatest({ currentQuery -> Observable<SearchResult> in
                 torrent
-                    .search(currentQuery.value)                 // perform search
+                    .search(currentQuery)                 // perform search
                     .catchErrorJustReturn(SearchResult.error)   // ignore errors
             })
             .map({$0.torrents})                                 // map result

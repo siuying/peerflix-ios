@@ -51,11 +51,11 @@ struct TorrentState {
     }
     
     init(json: JSON) throws {
-        self.torrentURL = try json.string("torrentUrl", ifNull: true).flatMap({ NSURL(string: $0) })
-        self.videoURL = try json.string("videoUrl", ifNull: true).flatMap({ NSURL(string: $0) })
+        self.torrentURL = (try? json.string("torrentUrl")).flatMap({ NSURL(string: $0) })
+        self.videoURL = (try? json.string("videoUrl")).flatMap({ NSURL(string: $0) })
         self.status = Status(rawValue: try json.string("status")) ?? Status.Idle
 
-        self.filename = try json.string("filename", ifNull: true)
+        self.filename = try? json.string("filename")
 
         self.size = try? json.double("size")
         self.downloadSpeed = try? json.double("downloadSpeed")

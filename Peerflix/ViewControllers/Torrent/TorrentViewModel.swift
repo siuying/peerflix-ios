@@ -9,19 +9,6 @@
 import Foundation
 import RxSwift
 
-func formatFileSize(sizeInBytes: Double) -> String {
-    let numberFormatter = NSNumberFormatter()
-    numberFormatter.positiveFormat = "0.#"
-    return numberFormatter.stringFromNumber(sizeInBytes/(1024*1024)) ?? ""
-}
-
-func formatPercent(value: Double) -> String {
-    let numberFormatter = NSNumberFormatter()
-    numberFormatter.positiveFormat = "0"
-    return numberFormatter.stringFromNumber(value * 100.0) ?? ""
-}
-
-
 func configureTorrentState(torrent: TorrentService, torrentState: Observable<TorrentState>)
     -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
         let torrentFilename = torrent
