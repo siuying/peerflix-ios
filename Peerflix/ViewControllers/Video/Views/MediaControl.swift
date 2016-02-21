@@ -27,6 +27,7 @@ private let Formatter : NSDateComponentsFormatter = {
 class MediaControl: UIControl {
     weak var delegatePlayer: IJKMediaPlayback?
     @IBOutlet var overlayPanel: UIView!
+    @IBOutlet var topPanel: UIView!
     @IBOutlet var bottomPanel: UIView!
     
     @IBOutlet var playButton: UIButton!

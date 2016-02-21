@@ -83,12 +83,15 @@ class VideoPlayerController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.player.prepareToPlay()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.player.shutdown()
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
