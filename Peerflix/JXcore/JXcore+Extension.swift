@@ -20,6 +20,7 @@ extension JXcore {
         App.prepareTemporaryDirectory()
         let temp = App.temporaryDirectory()
         JXcore.callEventCallback("SetTemp", withParams: [temp])
+        JXcore.callEventCallback("SetHost", withParams: [NetHelper.getWifiAddress()])
 
         JXcore.addNativeBlock({ (messages, _) -> Void in
             // log error

@@ -45,6 +45,7 @@
 		54E409D01C79918E00B6704D /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E409CF1C79918E00B6704D /* libbz2.tbd */; };
 		54E409D31C799CB900B6704D /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D21C799CB900B6704D /* Segue.swift */; };
 		54E409D51C799DCF00B6704D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D41C799DCF00B6704D /* App.swift */; };
+		54E409D91C79B2F500B6704D /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E409D81C79B2F500B6704D /* NetHelper.m */; };
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
@@ -130,6 +131,8 @@
 		54E409CF1C79918E00B6704D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		54E409D21C799CB900B6704D /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		54E409D41C799DCF00B6704D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		54E409D71C79B2F500B6704D /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetHelper.h; sourceTree = "<group>"; };
+		54E409D81C79B2F500B6704D /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				54E409D41C799DCF00B6704D /* App.swift */,
+				54E409D71C79B2F500B6704D /* NetHelper.h */,
+				54E409D81C79B2F500B6704D /* NetHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -668,6 +673,7 @@
 				548DF9571C78409C00C572E1 /* TorrentService.swift in Sources */,
 				548DF95C1C78452F00C572E1 /* SearchResult.swift in Sources */,
 				548DF9691C78675C00C572E1 /* TorrentServiceAPI.swift in Sources */,
+				54E409D91C79B2F500B6704D /* NetHelper.m in Sources */,
 				548DF9731C786EA000C572E1 /* SearchResultCell.swift in Sources */,
 				547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */,
 			);

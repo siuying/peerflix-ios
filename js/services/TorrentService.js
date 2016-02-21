@@ -8,21 +8,32 @@ var Mobile = require('../helpers/Mobile')
 var TorrentStates = require('../constants/TorrentStates')
 var Constants = require('../constants/Constants')
 
+var _temp = "/tmp/torrent-stream"
+var _host = "127.0.0.1"
+
+// set the temp folder. needs the iOS temp folder as we cant write to /tmp
+var setTemp = Mobile('SetTemp')
+if (setTemp.register) {
+  setTemp.register(function(path) {
+    _temp = path
+  })
+}
+
+// set the host to listened to
+// required to allow network connect to us
+var setHost = Mobile('SetHost')
+if (setHost.register) {
+  setHost.register(function(host) {
+    _host = host
+  })
+}
+
 // Streaming torrent to client
 function TorrentService (callback) {
   var _callback = callback
   var _engine = null
   var _engineRemoveListener = null
   var _refreshTorrent = null
-  var _temp = "/tmp/torrent-stream"
-
-  var setTemp = Mobile('SetTemp')
-  if (setTemp.register) {
-    setTemp.register(function(path) {
-      console.log("temp folder:", path)
-      _temp = path
-    })
-  }
 
   var service = {
     state: {
@@ -164,8 +175,7 @@ function TorrentService (callback) {
         store.state.invalid++
       })
       engine.server.on('listening', () => {
-        var host = address()
-        var videoUrl = `http://${host}:${engine.server.address().port}/`
+        var videoUrl = `http://${_host}:${engine.server.address().port}/`
         store.state.status = TorrentStates.Listening
         store.state.videoUrl = videoUrl
         store.state.files = engine.files.map((file, index) => {
