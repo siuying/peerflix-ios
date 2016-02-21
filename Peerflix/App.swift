@@ -30,13 +30,4 @@ class App {
             print("error delete temp folder: \(e)")
         }
     }
-    
-    static func cleanTemporaryDirectory() {
-        let manager = NSFileManager.defaultManager()
-        do {
-            try manager.removeItemAtPath(self.temporaryDirectory())
-        } catch let e {
-            print("error delete temp folder: \(e)")
-        }
-    }
 }

@@ -31,6 +31,11 @@ class DefaultWireframe: Wireframe {
     }
 
     func cleanup() {
-        App.cleanTemporaryDirectory()
+        let manager = NSFileManager.defaultManager()
+        do {
+            try manager.removeItemAtPath(App.temporaryDirectory())
+        } catch let e {
+            print("error delete temp folder: \(e)")
+        }
     }
 }
