@@ -15,7 +15,7 @@ There is a [blog post](http://reality.hk/2016/02/21/making-peerflix-for-ios-or-h
 1. Checkout project ``git clone project-url``
 2. Download and install [JXcore](http://jxcore.com/downloads/), its just a binary.
 3. Install npm package with JXcore: ``jx install``
-4. Setup IJKPlayer ``./bin/setup_ijkplayer``, this will checkout submodules and
+4. Setup IJKPlayer ``bash ./bin/setup_ijkplayer``, this will checkout submodules and
 static libraries.
 5. Open workspace ``Peerflix.xcworkspace`` and Run!
 
