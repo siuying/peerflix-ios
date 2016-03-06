@@ -9,7 +9,7 @@ try {
   var APIKeys = require('../constants/ApiKeys')
 } catch (e) {
   // use default api key
-  throw 'Please copy ./app/browser/constant/APIKeys.detault.js to ./app/browser/constant/APIKeys.js and set all services API keys!'
+  console.warn('Please copy ./app/browser/constant/APIKeys.detault.js to ./app/browser/constant/APIKeys.js and set all services API keys!')
 }
 
 function cleanupName (name) {
