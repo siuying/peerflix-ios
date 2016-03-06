@@ -3,4 +3,4 @@
 git submodule update --init
 cd vendor/ijkplayer
 
-./download-ios.sh
+bash ./download-ios.sh
