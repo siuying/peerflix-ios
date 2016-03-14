@@ -1,0 +1,3 @@
+- Support AirPlay
+- Add more basic buttons: Play/Pause button is a must
+- Add subtitles support
