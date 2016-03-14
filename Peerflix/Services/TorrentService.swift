@@ -41,7 +41,7 @@ class DefaultTorrentService: TorrentService {
     init() {
         let state: Variable<TorrentState> = Variable(TorrentState())
         let error: Variable<ErrorType?> = Variable(nil)
-        self.engine = Variable(TorrentServiceAPI.SearchEngine.Kickass)
+        self.engine = Variable(TorrentServiceAPI.SearchEngine.PirateBay)
         self.state = state.asObservable().shareReplay(1)
         self.error = error.asObservable().shareReplay(1)
         self.selectedTorrent = Variable(nil)

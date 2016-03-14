@@ -95,7 +95,7 @@ class SearchViewController: UIViewController {
     }
     
     private func showSearchOptions() {
-        let engines : [TorrentServiceAPI.SearchEngine] = [.DMHY, .PirateBay, .Nyaa, .Kickass]
+        let engines : [TorrentServiceAPI.SearchEngine] = [.DMHY, .PirateBay, .Nyaa]
         let alert = UIAlertController(title: "Select a Search Engine", message: nil, preferredStyle: .Alert)
         for engine in engines {
             alert.addAction(UIAlertAction(title: engine.title, style: .Default, handler: { [weak self] (_) -> Void in
