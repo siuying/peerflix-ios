@@ -82,20 +82,6 @@
 			remoteGlobalIDString = 547C00AE1C7619FB00425CD7;
 			remoteInfo = TorrentStream;
 		};
-		54A8D05F1C79636A009D2D85 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFramework;
-		};
-		54A8D0611C79636A009D2D85 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFrameworkTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -119,7 +105,6 @@
 		548DF9721C786EA000C572E1 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		548DF9741C786FC100C572E1 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		54A8D04A1C795AA2009D2D85 /* Interface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interface.playground; sourceTree = "<group>"; };
-		54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = ijkplayer/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
 		54C341D21C96D8C400EB8C19 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
 		54C341D61C96DD0200EB8C19 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		54C341DE1C96DD9E00EB8C19 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -375,15 +360,6 @@
 			path = Playgrounds;
 			sourceTree = "<group>";
 		};
-		54A8D05B1C79636A009D2D85 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				54A8D0601C79636A009D2D85 /* IJKMediaFramework.framework */,
-				54A8D0621C79636A009D2D85 /* IJKMediaFrameworkTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		54DF91BE1C7758B800577EDD /* JXcore */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				54C341D21C96D8C400EB8C19 /* MobileVLCKit.framework */,
-				54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */,
 				54DF91C31C7775AC00577EDD /* jxcore */,
 			);
 			path = vendor;
@@ -564,12 +539,6 @@
 			mainGroup = 547C00A61C7619FB00425CD7;
 			productRefGroup = 547C00B01C7619FB00425CD7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 54A8D05B1C79636A009D2D85 /* Products */;
-					ProjectRef = 54A8D0511C7960E7009D2D85 /* IJKMediaPlayer.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				547C00AE1C7619FB00425CD7 /* Peerflix */,
@@ -577,23 +546,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		54A8D0601C79636A009D2D85 /* IJKMediaFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IJKMediaFramework.framework;
-			remoteRef = 54A8D05F1C79636A009D2D85 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		54A8D0621C79636A009D2D85 /* IJKMediaFrameworkTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 54A8D0611C79636A009D2D85 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		547C00AD1C7619FB00425CD7 /* Resources */ = {
