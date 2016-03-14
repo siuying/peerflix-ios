@@ -85,7 +85,6 @@ class MediaControl: UIControl {
         let time = (player.time.value?.doubleValue ?? 0) / 1000
         let remain = (player.remainingTime?.value?.doubleValue ?? 0) / 1000
         let duration = time - remain
-        print("time = \(time), remain: \(remain), duration: \(duration)")
 
         // duration
         let intDuration = Int(duration + 0.5)
@@ -142,7 +141,6 @@ class MediaControl: UIControl {
 
 extension MediaControl: VLCMediaPlayerDelegate {
     func mediaPlayerTimeChanged(aNotification: NSNotification!) {
-        print("notification: \(aNotification)")
         self.refresh()
     }
 }

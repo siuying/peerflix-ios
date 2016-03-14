@@ -76,7 +76,6 @@ class VideoPlayerController: UIViewController {
             .rx_controlEvent(.TouchUpInside)
             .subscribeNext { [weak mediaControl, weak player] (_) -> Void in
                 if let mediaControl = mediaControl, let player = player {
-                    print("set progress \(mediaControl.mediaProgressSlider.value)")
                     player.time = VLCTime(int: Int32(mediaControl.mediaProgressSlider.value * 1000))
                     mediaControl.endDragMediaSlider()
                 }
