@@ -21,7 +21,8 @@ class VideoPlayerController: UIViewController {
         return self.services.torrent
     }
     
-    var player: IJKMediaPlayback!
+    var playerOutputView: UIView!
+    var player: VLCMediaPlayer!
     
     deinit {
         print("deinit VideoPlayerController")
@@ -30,18 +31,12 @@ class VideoPlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        IJKFFMoviePlayerController.checkIfFFmpegVersionMatch(true)
-        
-        let options = IJKFFOptions.optionsByDefault()
-        options.setPlayerOptionIntValue(1, forKey: "videotoolbox")
-        self.player = IJKFFMoviePlayerController(contentURL: self.videoURL, withOptions: options)
-        self.player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        self.player.view.frame = self.videoView.bounds
-        self.player.shouldAutoplay = true
-        self.player.scalingMode = .AspectFit
-        self.player.allowsMediaAirPlay = true
-        self.videoView.addSubview(self.player.view)
-        self.mediaControl.delegatePlayer = self.player
+        self.player = VLCMediaPlayer()
+        self.player.media = VLCMedia(URL: self.videoURL)
+        self.player.play()
+        self.player.drawable = self.videoView
+        self.player.delegate = self.mediaControl
+        self.mediaControl.player = self.player
         
         let player = self.player
         let mediaControl = self.mediaControl
@@ -81,7 +76,8 @@ class VideoPlayerController: UIViewController {
             .rx_controlEvent(.TouchUpInside)
             .subscribeNext { [weak mediaControl, weak player] (_) -> Void in
                 if let mediaControl = mediaControl, let player = player {
-                    player.currentPlaybackTime = Double(mediaControl.mediaProgressSlider.value)
+                    print("set progress \(mediaControl.mediaProgressSlider.value)")
+                    player.time = VLCTime(int: Int32(mediaControl.mediaProgressSlider.value * 1000))
                     mediaControl.endDragMediaSlider()
                 }
             }
@@ -112,12 +108,12 @@ class VideoPlayerController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.player.prepareToPlay()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.player.shutdown()
+        self.player.pause()
+        self.player.stop()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 

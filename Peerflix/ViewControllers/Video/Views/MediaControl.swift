@@ -25,7 +25,8 @@ private let Formatter : NSDateComponentsFormatter = {
 }()
 
 class MediaControl: UIControl {
-    weak var delegatePlayer: IJKMediaPlayback?
+    weak var player: VLCMediaPlayer?
+
     @IBOutlet var overlayPanel: UIView!
     @IBOutlet var topPanel: UIView!
     @IBOutlet var bottomPanel: UIView!
@@ -74,15 +75,19 @@ class MediaControl: UIControl {
     }
     
     @objc func refresh() {
-        guard let player = self.delegatePlayer else {
+        guard let player = self.player else {
             self.currentTimeLabel.text = "--:--"
             self.totalDurationLabel.text = "--:--"
             self.mediaProgressSlider.value = 0
             return
         }
         
+        let time = (player.time.value?.doubleValue ?? 0) / 1000
+        let remain = (player.remainingTime?.value?.doubleValue ?? 0) / 1000
+        let duration = time - remain
+        print("time = \(time), remain: \(remain), duration: \(duration)")
+
         // duration
-        let duration = player.duration
         let intDuration = Int(duration + 0.5)
         if intDuration > 0 {
             self.mediaProgressSlider.maximumValue = Float(duration)
@@ -97,18 +102,19 @@ class MediaControl: UIControl {
         }
         
         //position
-        let position = self.mediaSliderBeingDragged ? Double(self.mediaProgressSlider.value) : player.currentPlaybackTime
-        let intPosition = Int(position + 0.5)
-        if intPosition > 0 {
-            if intPosition < 3600 {
-                self.currentTimeLabel.text = Formatter.stringFromTimeInterval(position) ?? ""
+        if !self.mediaSliderBeingDragged {
+            let intPosition = Int(time + 0.5)
+            if intPosition > 0 {
+                if intPosition < 3600 {
+                    self.currentTimeLabel.text = Formatter.stringFromTimeInterval(time) ?? ""
+                } else {
+                    self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(time) ?? ""
+                }
+                self.mediaProgressSlider.value = Float(time)
             } else {
-                self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(position) ?? ""
-            }
-            self.mediaProgressSlider.value = Float(position)
-        } else {
-            self.mediaProgressSlider.value = 0
-            self.currentTimeLabel.text = "--:--"
+                self.mediaProgressSlider.value = 0
+                self.currentTimeLabel.text = "--:--"
+            }            
         }
 
         NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "refresh", object: nil)
@@ -131,5 +137,12 @@ class MediaControl: UIControl {
     
     private func cancelDelayedHide() {
         NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "hide", object: nil)
+    }
+}
+
+extension MediaControl: VLCMediaPlayerDelegate {
+    func mediaPlayerTimeChanged(aNotification: NSNotification!) {
+        print("notification: \(aNotification)")
+        self.refresh()
     }
 }

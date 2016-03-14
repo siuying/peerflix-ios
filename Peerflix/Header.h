@@ -8,5 +8,4 @@
 
 #import "JXcore.h"
 #import "NetHelper.h"
-
-#import <IJKMediaFramework/IJKMediaFramework.h>
+#import <MobileVLCKit/MobileVLCKit.h>
