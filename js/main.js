@@ -17,6 +17,8 @@ if (process.natives) {
   process.setPaths();
   jxcore.tasks.register(process.setPaths);
 
+  console.log("versions", process.versions)
+
   process.on('uncaughtException', function (e) {
     Error.captureStackTrace(e);
     Mobile('OnError').call(e.message, JSON.stringify(e.stack));
