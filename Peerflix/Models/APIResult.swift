@@ -15,6 +15,7 @@ struct APIResult {
 
 extension APIResult: JSONDecodable {
     init(json: JSON) throws {
-        self.success = try json.bool("success", ifNotFound: true) ?? false
+        self.success = try json.getBool(at: "success", or: false)
+
     }
 }

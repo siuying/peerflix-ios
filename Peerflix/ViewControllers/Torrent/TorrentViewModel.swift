@@ -61,8 +61,8 @@ class TorrentViewModel {
     let downloaded: Observable<String>
     let files: Observable<[String]>
     let playable: Observable<Bool>
-    let URL: Observable<NSURL?>
-    let videoURL: Variable<NSURL?>
+    let URL: Observable<URL?>
+    let videoURL: Variable<URL?>
 
     fileprivate let disposeBag = DisposeBag()
 

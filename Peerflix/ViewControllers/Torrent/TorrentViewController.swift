@@ -31,23 +31,23 @@ class TorrentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let play = self.playButton.rx_tap.asObservable()
+        let play = self.playButton.rx.tap.asObservable()
 
         self.viewModel = TorrentViewModel(play: play, torrent: self.torrent)
         self.viewModel.name
-            .bindTo(self.titleLabel.rx_text)
+            .bindTo(self.titleLabel.rx.text)
             .addDisposableTo(self.disposeBag)
 
         self.viewModel.downloaded
-            .bindTo(self.downloadedLabel.rx_text)
+            .bindTo(self.downloadedLabel.rx.text)
             .addDisposableTo(self.disposeBag)
         
         self.viewModel.downloadSpeed
-            .bindTo(self.downloadSpeedLabel.rx_text)
+            .bindTo(self.downloadSpeedLabel.rx.text)
             .addDisposableTo(self.disposeBag)
         
         self.viewModel.playable
-            .bindTo(self.playButton.rx_enabled)
+            .bindTo(self.playButton.rx.isEnabled)
             .addDisposableTo(self.disposeBag)
    }
 
@@ -77,7 +77,8 @@ extension TorrentViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // when pop to SearchViewController, deselect any torrent
         if viewController is SearchViewController {
-            torrent.stopTorrent()
+            _ = torrent.stopTorrent()
+                .subscribe()
         }
     }
 }
