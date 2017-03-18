@@ -13,8 +13,8 @@ import RxSwift
 import RxCocoa
 #endif
 
-public class RxTableViewSectionedReloadDataSource<S: SectionModelType>
-    : RxTableViewSectionedDataSource<S>
+open class RxTableViewSectionedReloadDataSource<S: SectionModelType>
+    : TableViewSectionedDataSource<S>
     , RxTableViewDataSourceType {
     public typealias Element = [S]
 
@@ -22,15 +22,13 @@ public class RxTableViewSectionedReloadDataSource<S: SectionModelType>
         super.init()
     }
 
-    public func tableView(tableView: UITableView, observedEvent: Event<Element>) {
-        switch observedEvent {
-        case .Next(let element):
-            setSections(element)
+    open func tableView(_ tableView: UITableView, observedEvent: Event<Element>) {
+        UIBindingObserver(UIElement: self) { dataSource, element in
+            #if DEBUG
+                self._dataSourceBound = true
+            #endif
+            dataSource.setSections(element)
             tableView.reloadData()
-        case .Error(let error):
-            bindingErrorToInterface(error)
-        case .Completed:
-            break
-        }
+        }.on(observedEvent)
     }
 }

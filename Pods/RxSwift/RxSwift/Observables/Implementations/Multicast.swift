@@ -1,23 +1,21 @@
 //
 //  Multicast.swift
-//  Rx
+//  RxSwift
 //
 //  Created by Krunoslav Zaher on 2/27/15.
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
-class MulticastSink<S: SubjectType, O: ObserverType>: Sink<O>, ObserverType {
+final class MulticastSink<S: SubjectType, O: ObserverType>: Sink<O>, ObserverType {
     typealias Element = O.E
     typealias ResultType = Element
     typealias MutlicastType = Multicast<S, O.E>
     
     private let _parent: MutlicastType
     
-    init(parent: MutlicastType, observer: O) {
+    init(parent: MutlicastType, observer: O, cancel: Cancelable) {
         _parent = parent
-        super.init(observer: observer)
+        super.init(observer: observer, cancel: cancel)
     }
     
     func run() -> Disposable {
@@ -30,42 +28,42 @@ class MulticastSink<S: SubjectType, O: ObserverType>: Sink<O>, ObserverType {
             let subscription = observable.subscribe(self)
             let connection = connectable.connect()
                 
-            return BinaryDisposable(subscription, connection)
+            return Disposables.create(subscription, connection)
         }
         catch let e {
-            forwardOn(.Error(e))
+            forwardOn(.error(e))
             dispose()
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
     
-    func on(event: Event<ResultType>) {
+    func on(_ event: Event<ResultType>) {
         forwardOn(event)
         switch event {
-            case .Next: break
-            case .Error, .Completed:
+            case .next: break
+            case .error, .completed:
                 dispose()
         }
     }
 }
 
-class Multicast<S: SubjectType, R>: Producer<R> {
+final class Multicast<S: SubjectType, R>: Producer<R> {
     typealias SubjectSelectorType = () throws -> S
     typealias SelectorType = (Observable<S.E>) throws -> Observable<R>
     
-    private let _source: Observable<S.SubjectObserverType.E>
-    private let _subjectSelector: SubjectSelectorType
-    private let _selector: SelectorType
+    fileprivate let _source: Observable<S.SubjectObserverType.E>
+    fileprivate let _subjectSelector: SubjectSelectorType
+    fileprivate let _selector: SelectorType
     
-    init(source: Observable<S.SubjectObserverType.E>, subjectSelector: SubjectSelectorType, selector: SelectorType) {
+    init(source: Observable<S.SubjectObserverType.E>, subjectSelector: @escaping SubjectSelectorType, selector: @escaping SelectorType) {
         _source = source
         _subjectSelector = subjectSelector
         _selector = selector
     }
     
-    override func run<O: ObserverType where O.E == R>(observer: O) -> Disposable {
-        let sink = MulticastSink(parent: self, observer: observer)
-        sink.disposable = sink.run()
-        return sink
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == R {
+        let sink = MulticastSink(parent: self, observer: observer, cancel: cancel)
+        let subscription = sink.run()
+        return (sink: sink, subscription: subscription)
     }
 }

@@ -8,91 +8,42 @@
 
 import Foundation
 
-public struct AnimatableSectionModel<Section: Hashable, ItemType: Hashable>
-    : Hashable
-    , AnimatableSectionModelType
-    , CustomStringConvertible {
-    public typealias Item = IdentitifiableValue<ItemType>
-    public typealias Identity = Section
-
+public struct AnimatableSectionModel<Section: IdentifiableType, ItemType: IdentifiableType & Equatable> {
     public var model: Section
-    
     public var items: [Item]
 
-    public var identity: Section {
-        get {
-            return model
-        }
-    }
-    
     public init(model: Section, items: [ItemType]) {
         self.model = model
-        self.items = items.map(IdentitifiableValue.init)
+        self.items = items
     }
     
+}
+
+extension AnimatableSectionModel
+    : AnimatableSectionModelType {
+    public typealias Item = ItemType
+    public typealias Identity = Section.Identity
+
+    public var identity: Section.Identity {
+        return model.identity
+    }
+
     public init(original: AnimatableSectionModel, items: [Item]) {
         self.model = original.model
         self.items = items
     }
     
-    public var description: String {
-        get {
-            return "HashableSectionModel(model: \"\(self.model)\", items: \(items))"
-        }
-    }
-    
     public var hashValue: Int {
-        get {
-            return self.model.hashValue
-        }
+        return self.model.identity.hashValue
     }
 }
 
-public func == <S, I>(lhs: AnimatableSectionModel<S, I>, rhs: AnimatableSectionModel<S, I>) -> Bool {
-    return lhs.model == rhs.model
-}
 
-@available(*, deprecated=0.2, message="Please use AnimatableSectionModel or your own model implementing `AnimatableSectionModelType`")
-public struct HashableSectionModel<Section: Hashable, ItemType: Hashable>
-    : Hashable
-    , AnimatableSectionModelType
-    , CustomStringConvertible {
-    public typealias Item = IdentitifiableValue<ItemType>
-    public typealias Identity = Section
+extension AnimatableSectionModel
+    : CustomStringConvertible {
 
-    public var model: Section
-    
-    public var items: [Item]
-
-    public var identity: Section {
-        get {
-            return model
-        }
-    }
-    
-    public init(model: Section, items: [ItemType]) {
-        self.model = model
-        self.items = items.map(IdentitifiableValue.init)
-    }
-    
-    public init(original: HashableSectionModel, items: [Item]) {
-        self.model = original.model
-        self.items = items
-    }
-    
     public var description: String {
-        get {
-            return "HashableSectionModel(model: \"\(self.model)\", items: \(items))"
-        }
+        return "HashableSectionModel(model: \"\(self.model)\", items: \(items))"
     }
-    
-    public var hashValue: Int {
-        get {
-            return self.model.hashValue
-        }
-    }
-}
 
-public func == <S, I>(lhs: HashableSectionModel<S, I>, rhs: HashableSectionModel<S, I>) -> Bool {
-    return lhs.model == rhs.model
 }

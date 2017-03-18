@@ -10,14 +10,14 @@ import Foundation
 
 // MARK: - Deserialize JSON
 
-/// Protocol describing a backend parser that can produce `JSON` from `NSData`.
+/// Protocol describing a backend parser that can produce `JSON` from `Data`.
 public protocol JSONParserType {
 
-    /// Creates an instance of `JSON` from `NSData`.
-    /// - parameter data: An instance of `NSData` to use to create `JSON`.
+    /// Creates an instance of `JSON` from `Data`.
+    /// - parameter data: An instance of `Data` to use to create `JSON`.
     /// - throws: An error that may arise from calling `JSONObjectWithData(_:options:)` on `NSJSONSerialization` with the given data.
     /// - returns: An instance of `JSON`.
-    static func createJSONFromData(data: NSData) throws -> JSON
+    static func createJSON(from data: Data) throws -> JSON
 
 }
 
@@ -25,54 +25,81 @@ extension JSON {
 
     /// Create `JSON` from UTF-8 `data`. By default, parses using the
     /// Swift-native `JSONParser` backend.
-    public init(data: NSData, usingParser parser: JSONParserType.Type = JSONParser.self) throws {
-        self = try parser.createJSONFromData(data)
+    public init(data: Data, usingParser parser: JSONParserType.Type = JSONParser.self) throws {
+        self = try parser.createJSON(from: data)
     }
 
     /// Create `JSON` from UTF-8 `string`.
     public init(jsonString: Swift.String, usingParser parser: JSONParserType.Type = JSONParser.self) throws {
-        self = try parser.createJSONFromData((jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding) ?? NSData())
+        self = try parser.createJSON(from: jsonString.data(using: Swift.String.Encoding.utf8) ?? Data())
     }
 }
 
 // MARK: - NSJSONSerialization
 
-extension NSJSONSerialization: JSONParserType {
+extension JSONSerialization: JSONParserType {
 
-    // MARK: Decode NSData
+    // MARK: Decode Data
 
     /// Use the built-in, Objective-C based JSON parser to create `JSON`.
-    /// - parameter data: An instance of `NSData`.
+    /// - parameter data: An instance of `Data`.
     /// - returns: An instance of `JSON`.
-    /// - throws: An error that may arise if the `NSData` cannot be parsed into an object.
-    public static func createJSONFromData(data: NSData) throws -> JSON {
-        return makeJSON(try NSJSONSerialization.JSONObjectWithData(data, options: []))
+    /// - throws: An error that may arise if the `Data` cannot be parsed into an object.
+    public static func createJSON(from data: Data) throws -> JSON {
+        return makeJSON(with: try JSONSerialization.jsonObject(with: data, options: []))
     }
 
     // MARK: Make JSON
 
     /// Makes a `JSON` object by matching its argument to a case in the `JSON` enum.
-    /// - parameter object: The instance of `AnyObject` returned from serializing the JSON.
+    /// - parameter object: The instance of `Any` returned from serializing the JSON.
     /// - returns: An instance of `JSON` matching the JSON given to the function.
-    private static func makeJSON(object: AnyObject) -> JSON {
+    private static func makeJSON(with object: Any) -> JSON {
         switch object {
         case let n as NSNumber:
-            switch n {
-            case _ where CFNumberGetType(n) == .CharType || CFGetTypeID(n) == CFBooleanGetTypeID():
-                return .Bool(n.boolValue)
-            case _ where !CFNumberIsFloatType(n):
-                return .Int(n.integerValue)
-            default:
-                return .Double(n.doubleValue)
+            let numberType = CFNumberGetType(n)
+            switch numberType {
+            case .charType:
+                return .bool(n.boolValue)
+
+            case .shortType, .intType, .longType, .cfIndexType, .nsIntegerType, .sInt8Type, .sInt16Type, .sInt32Type:
+                return .int(n.intValue)
+
+            case .sInt64Type, .longLongType /* overflows 32-bit Int */:
+                #if /* 32-bit arch */ arch(arm) || arch(i386)
+                    // Why double, when the Freddy parser would bump to String?
+                    //
+                    // Returning Double avoids making the type depend on whether you're running
+                    // 32-bit or 64-bit code when using the NSJSONSerialization parser.
+                    // NSJSONSerialization appears to bump numbers larger than Int.max to Double on
+                    // 64-bit platforms but use .SInt64Type on 32-bit platforms.
+                    // If we returned a String here, you'd get a String value on 32-bit,
+                    // but a Double value on 64-bit. Instead, we return Double.
+                    //
+                    // This means that, if you switch parsers,
+                    // you'll have to switch from .double to .string for pulling out
+                    // overflowing values, but if you stick with a single parser,
+                    // you at least won't have architecture-dependent lookups!
+                    return .double(n.doubleValue)
+                #else
+                    return .int(n.intValue)
+                #endif
+
+            case .float32Type, .float64Type, .floatType, .doubleType, .cgFloatType:
+                return .double(n.doubleValue)
             }
-        case let arr as [AnyObject]:
+
+        case let arr as [Any]:
             return makeJSONArray(arr)
-        case let dict as [Swift.String: AnyObject]:
+
+        case let dict as [Swift.String: Any]:
             return makeJSONDictionary(dict)
+
         case let s as Swift.String:
-            return .String(s)
+            return .string(s)
+
         default:
-            return .Null
+            return .null
         }
     }
 
@@ -81,8 +108,8 @@ extension NSJSONSerialization: JSONParserType {
     /// Makes a `JSON` array from the object passed in.
     /// - parameter jsonArray: The array to transform into a `JSON`.
     /// - returns: An instance of `JSON` matching the array.
-    private static func makeJSONArray(jsonArray: [AnyObject]) -> JSON {
-        return .Array(jsonArray.map(makeJSON))
+    private static func makeJSONArray(_ jsonArray: [Any]) -> JSON {
+        return .array(jsonArray.map(makeJSON))
     }
 
     // MARK: Make a JSON Dictionary
@@ -90,50 +117,10 @@ extension NSJSONSerialization: JSONParserType {
     /// Makes a `JSON` dictionary from the Cocoa dictionary passed in.
     /// - parameter jsonDict: The dictionary to transform into `JSON`.
     /// - returns: An instance of `JSON` matching the dictionary.
-    private static func makeJSONDictionary(jsonDict: [Swift.String: AnyObject]) -> JSON {
+    private static func makeJSONDictionary(_ jsonDict: [Swift.String: Any]) -> JSON {
         return JSON(jsonDict.lazy.map { (key, value) in
-            (key, makeJSON(value))
+            (key, makeJSON(with: value))
         })
     }
 
-}
-
-// MARK: - Serialize JSON
-
-extension JSON {
-
-    /// Attempt to serialize `JSON` into an `NSData`.
-    /// - returns: A byte-stream containing the `JSON` ready for wire transfer.
-    /// - throws: Errors that arise from `NSJSONSerialization`.
-    /// - see: Foundation.NSJSONSerialization
-    public func serialize() throws -> NSData {
-        let obj: AnyObject = toNSJSONSerializationObject()
-        return try NSJSONSerialization.dataWithJSONObject(obj, options: [])
-    }
-
-    /// A function to help with the serialization of `JSON`.
-    /// - returns: An `AnyObject` suitable for `NSJSONSerialization`'s use.
-    private func toNSJSONSerializationObject() -> AnyObject {
-        switch self {
-        case .Array(let jsonArray):
-            return jsonArray.map { $0.toNSJSONSerializationObject() }
-        case .Dictionary(let jsonDictionary):
-            var cocoaDictionary = Swift.Dictionary<Swift.String, AnyObject>(minimumCapacity: jsonDictionary.count)
-            for (key, json) in jsonDictionary {
-                cocoaDictionary[key] = json.toNSJSONSerializationObject()
-            }
-            return cocoaDictionary
-        case .String(let str):
-            return str
-        case .Double(let num):
-            return num
-        case .Int(let int):
-            return int
-        case .Bool(let b):
-            return b
-        case .Null:
-            return NSNull()
-        }
-
-    }
 }

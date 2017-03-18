@@ -8,125 +8,54 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>Freddy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>MarqueeLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-Peerflix.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-PeerflixTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>RxCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>RxDataSources.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>RxOptional.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>3308F93E19986F56FE1B15A400098953</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>435EE32BCE0840D49376E33524E98B6B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>45B96BAABC238FAA2D3AF14A9B71C0CB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>72FD542B51DCCB6A8EFAED471BE26BF2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8D8235958A976CCB57E6F7C86BCB001E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA045BC8C1180917EB73F097B8508A20</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB97EA2F980304473975859362507CD6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE9FE67AC40EE5B7DE1003B43536DBE3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0EA0DBE4CC14BB311124892C749C9B3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

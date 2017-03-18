@@ -6,38 +6,36 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 // count version
 
-class SkipCountSink<ElementType, O: ObserverType where O.E == ElementType> : Sink<O>, ObserverType {
-    typealias Parent = SkipCount<ElementType>
-    typealias Element = ElementType
+final class SkipCountSink<O: ObserverType> : Sink<O>, ObserverType {
+    typealias Element = O.E
+    typealias Parent = SkipCount<Element>
     
     let parent: Parent
     
     var remaining: Int
     
-    init(parent: Parent, observer: O) {
+    init(parent: Parent, observer: O, cancel: Cancelable) {
         self.parent = parent
         self.remaining = parent.count
-        super.init(observer: observer)
+        super.init(observer: observer, cancel: cancel)
     }
     
-    func on(event: Event<Element>) {
+    func on(_ event: Event<Element>) {
         switch event {
-        case .Next(let value):
+        case .next(let value):
             
             if remaining <= 0 {
-                forwardOn(.Next(value))
+                forwardOn(.next(value))
             }
             else {
                 remaining -= 1
             }
-        case .Error:
+        case .error:
             forwardOn(event)
             self.dispose()
-        case .Completed:
+        case .completed:
             forwardOn(event)
             self.dispose()
         }
@@ -45,7 +43,7 @@ class SkipCountSink<ElementType, O: ObserverType where O.E == ElementType> : Sin
     
 }
 
-class SkipCount<Element>: Producer<Element> {
+final class SkipCount<Element>: Producer<Element> {
     let source: Observable<Element>
     let count: Int
     
@@ -54,17 +52,17 @@ class SkipCount<Element>: Producer<Element> {
         self.count = count
     }
     
-    override func run<O : ObserverType where O.E == Element>(observer: O) -> Disposable {
-        let sink = SkipCountSink(parent: self, observer: observer)
-        sink.disposable = source.subscribe(sink)
+    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
+        let sink = SkipCountSink(parent: self, observer: observer, cancel: cancel)
+        let subscription = source.subscribe(sink)
 
-        return sink
+        return (sink: sink, subscription: subscription)
     }
 }
 
 // time version
 
-class SkipTimeSink<ElementType, O: ObserverType where O.E == ElementType> : Sink<O>, ObserverType {
+final class SkipTimeSink<ElementType, O: ObserverType> : Sink<O>, ObserverType where O.E == ElementType {
     typealias Parent = SkipTime<ElementType>
     typealias Element = ElementType
 
@@ -73,21 +71,21 @@ class SkipTimeSink<ElementType, O: ObserverType where O.E == ElementType> : Sink
     // state
     var open = false
     
-    init(parent: Parent, observer: O) {
+    init(parent: Parent, observer: O, cancel: Cancelable) {
         self.parent = parent
-        super.init(observer: observer)
+        super.init(observer: observer, cancel: cancel)
     }
     
-    func on(event: Event<Element>) {
+    func on(_ event: Event<Element>) {
         switch event {
-        case .Next(let value):
+        case .next(let value):
             if open {
-                forwardOn(.Next(value))
+                forwardOn(.next(value))
             }
-        case .Error:
+        case .error:
             forwardOn(event)
             self.dispose()
-        case .Completed:
+        case .completed:
             forwardOn(event)
             self.dispose()
         }
@@ -100,16 +98,16 @@ class SkipTimeSink<ElementType, O: ObserverType where O.E == ElementType> : Sink
     func run() -> Disposable {
         let disposeTimer = parent.scheduler.scheduleRelative((), dueTime: self.parent.duration) {
             self.tick()
-            return NopDisposable.instance
+            return Disposables.create()
         }
         
         let disposeSubscription = parent.source.subscribe(self)
         
-        return BinaryDisposable(disposeTimer, disposeSubscription)
+        return Disposables.create(disposeTimer, disposeSubscription)
     }
 }
 
-class SkipTime<Element>: Producer<Element> {
+final class SkipTime<Element>: Producer<Element> {
     let source: Observable<Element>
     let duration: RxTimeInterval
     let scheduler: SchedulerType
@@ -120,9 +118,9 @@ class SkipTime<Element>: Producer<Element> {
         self.duration = duration
     }
     
-    override func run<O : ObserverType where O.E == Element>(observer: O) -> Disposable {
-        let sink = SkipTimeSink(parent: self, observer: observer)
-        sink.disposable = sink.run()
-        return sink
+    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
+        let sink = SkipTimeSink(parent: self, observer: observer, cancel: cancel)
+        let subscription = sink.run()
+        return (sink: sink, subscription: subscription)
     }
 }

@@ -8,16 +8,34 @@
 
 import Foundation
 
-public struct IdentitifiableValue<Value: Hashable> : IdentifiableType, Equatable {
-    public typealias Identity = Value
-
+public struct IdentifiableValue<Value: Hashable> {
     public let value: Value
+}
+
+extension IdentifiableValue
+    : IdentifiableType {
+
+    public typealias Identity = Value
 
     public var identity : Identity {
         return value
     }
 }
 
-public func == <V: Hashable>(lhs: IdentitifiableValue<V>, rhs: IdentitifiableValue<V>) -> Bool {
+extension IdentifiableValue
+    : Equatable
+    , CustomStringConvertible
+    , CustomDebugStringConvertible {
+
+    public var description: String {
+        return "\(value)"
+    }
+
+    public var debugDescription: String {
+        return "\(value)"
+    }
+}
+
+public func == <V: Hashable>(lhs: IdentifiableValue<V>, rhs: IdentifiableValue<V>) -> Bool {
     return lhs.value == rhs.value
 }

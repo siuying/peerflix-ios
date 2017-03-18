@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D7B93A82F3BB77DCCBB2ECD0'
+               BlueprintIdentifier = '68E005C048D620AC1BE6C560BC115B92'
                BlueprintName = 'Pods-Peerflix'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_Peerflix.framework'>
+               BuildableName = 'Pods-Peerflix.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

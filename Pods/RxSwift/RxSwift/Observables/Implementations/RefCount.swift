@@ -1,28 +1,26 @@
 //
 //  RefCount.swift
-//  Rx
+//  RxSwift
 //
 //  Created by Krunoslav Zaher on 3/5/15.
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
-class RefCountSink<CO: ConnectableObservableType, O: ObserverType where CO.E == O.E>
+final class RefCountSink<CO: ConnectableObservableType, O: ObserverType>
     : Sink<O>
-    , ObserverType {
+    , ObserverType where CO.E == O.E {
     typealias Element = O.E
     typealias Parent = RefCount<CO>
     
     private let _parent: Parent
 
-    init(parent: Parent, observer: O) {
+    init(parent: Parent, observer: O, cancel: Cancelable) {
         _parent = parent
-        super.init(observer: observer)
+        super.init(observer: observer, cancel: cancel)
     }
     
     func run() -> Disposable {
-        let subscription = _parent._source.subscribeSafe(self)
+        let subscription = _parent._source.subscribe(self)
         
         _parent._lock.lock(); defer { _parent._lock.unlock() } // {
             if _parent._count == 0 {
@@ -34,12 +32,16 @@ class RefCountSink<CO: ConnectableObservableType, O: ObserverType where CO.E == 
             }
         // }
         
-        return AnonymousDisposable {
+        return Disposables.create {
             subscription.dispose()
             self._parent._lock.lock(); defer { self._parent._lock.unlock() } // {
                 if self._parent._count == 1 {
-                    self._parent._connectableSubscription!.dispose()
                     self._parent._count = 0
+                    guard let connectableSubscription = self._parent._connectableSubscription else {
+                        return
+                    }
+
+                    connectableSubscription.dispose()
                     self._parent._connectableSubscription = nil
                 }
                 else if self._parent._count > 1 {
@@ -52,33 +54,33 @@ class RefCountSink<CO: ConnectableObservableType, O: ObserverType where CO.E == 
         }
     }
 
-    func on(event: Event<Element>) {
+    func on(_ event: Event<Element>) {
         switch event {
-        case .Next:
+        case .next:
             forwardOn(event)
-        case .Error, .Completed:
+        case .error, .completed:
             forwardOn(event)
             dispose()
         }
     }
 }
 
-class RefCount<CO: ConnectableObservableType>: Producer<CO.E> {
-    private let _lock = NSRecursiveLock()
+final class RefCount<CO: ConnectableObservableType>: Producer<CO.E> {
+    fileprivate let _lock = RecursiveLock()
     
     // state
-    private var _count = 0
-    private var _connectableSubscription = nil as Disposable?
+    fileprivate var _count = 0
+    fileprivate var _connectableSubscription = nil as Disposable?
     
-    private let _source: CO
+    fileprivate let _source: CO
     
     init(source: CO) {
         _source = source
     }
     
-    override func run<O: ObserverType where O.E == CO.E>(observer: O) -> Disposable {
-        let sink = RefCountSink(parent: self, observer: observer)
-        sink.disposable = sink.run()
-        return sink
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == CO.E {
+        let sink = RefCountSink(parent: self, observer: observer, cancel: cancel)
+        let subscription = sink.run()
+        return (sink: sink, subscription: subscription)
     }
 }

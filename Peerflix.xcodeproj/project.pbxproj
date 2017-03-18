@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41255F59034F318094638487 /* Pods_Peerflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */; };
+		44E0F710284F5640E78C91DD /* Pods_Peerflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4532BFF62D5CF308E6266969 /* Pods_Peerflix.framework */; };
 		547C00B31C7619FB00425CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547C00B21C7619FB00425CD7 /* AppDelegate.swift */; };
 		547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547C00B91C7619FB00425CD7 /* Assets.xcassets */; };
 		547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547C00BB1C7619FB00425CD7 /* LaunchScreen.storyboard */; };
@@ -65,13 +65,13 @@
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
 		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
-		54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */; };
-		54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */; };
-		54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */; };
-		54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */; };
+		54F7F90E1C78CB7A00FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		54F7F90F1C78CB7A00FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		54F7F9121C78CB8200FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		54F7F9131C78CB8200FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9201C79508300FB3530 /* VideoPlayerController.swift */; };
 		54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9231C79511F00FB3530 /* MediaControl.swift */; };
-		C361897D172135CA4569CD3C /* Pods_PeerflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */; };
+		5D5CCDA829AB6D0713C58DEF /* Pods_PeerflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B8BAD6DFAE40F0F8F18E92 /* Pods_PeerflixTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +85,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerflixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		061D210A71824DE454BC793B /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
+		21EDF83B62078A475F11BBA2 /* Pods-Peerflix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.debug.xcconfig"; sourceTree = "<group>"; };
+		4532BFF62D5CF308E6266969 /* Pods_Peerflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peerflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00AF1C7619FB00425CD7 /* Peerflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peerflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		547C00B21C7619FB00425CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		547C00B91C7619FB00425CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,13 +155,11 @@
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
 		54F7F8DF1C78B25800FB3530 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
-		54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.debug.xcconfig"; sourceTree = "<group>"; };
-		54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
-		54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
-		54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.release.xcconfig"; sourceTree = "<group>"; };
 		54F7F9201C79508300FB3530 /* VideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		54F7F9231C79511F00FB3530 /* MediaControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaControl.swift; sourceTree = "<group>"; };
-		CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peerflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D00D5B120D269DAB5D1CE5B /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
+		900F79EACFE5D946C87536F2 /* Pods-PeerflixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6B8BAD6DFAE40F0F8F18E92 /* Pods_PeerflixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerflixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 				54DF91DC1C7775AC00577EDD /* libsnappy.a in Frameworks */,
 				54DF91DD1C7775AC00577EDD /* libsqlite3.a in Frameworks */,
 				54DF91D81C7775AC00577EDD /* libleveldb.a in Frameworks */,
-				41255F59034F318094638487 /* Pods_Peerflix.framework in Frameworks */,
+				44E0F710284F5640E78C91DD /* Pods_Peerflix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C361897D172135CA4569CD3C /* Pods_PeerflixTests.framework in Frameworks */,
+				5D5CCDA829AB6D0713C58DEF /* Pods_PeerflixTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,21 +225,10 @@
 				54E409CD1C79916800B6704D /* VideoToolbox.framework */,
 				54E409CB1C79913900B6704D /* libz.1.tbd */,
 				54DF91E01C7775D200577EDD /* libstdc++.6.tbd */,
-				CA3FC2395D3392A5A3D320F2 /* Pods_Peerflix.framework */,
-				0D7C02B9AE6BB1EA229BBB03 /* Pods_PeerflixTests.framework */,
+				4532BFF62D5CF308E6266969 /* Pods_Peerflix.framework */,
+				A6B8BAD6DFAE40F0F8F18E92 /* Pods_PeerflixTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2CA3C24EF44BBE591CE8F797 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */,
-				54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */,
-				54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */,
-				54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		547C00A61C7619FB00425CD7 = {
@@ -248,11 +237,11 @@
 				1D3C152D0B33FF848E2FD63B /* Frameworks */,
 				547C00B11C7619FB00425CD7 /* Peerflix */,
 				547C00C61C7619FB00425CD7 /* PeerflixTests */,
-				2CA3C24EF44BBE591CE8F797 /* Pods */,
 				547C00B01C7619FB00425CD7 /* Products */,
 				54DF91C21C77759200577EDD /* vendor */,
 				54F7F8DF1C78B25800FB3530 /* js */,
 				54F7F8DD1C78B25100FB3530 /* node_modules */,
+				8FBB9F9DD8BB8B6AB7DAD5CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -465,6 +454,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8FBB9F9DD8BB8B6AB7DAD5CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21EDF83B62078A475F11BBA2 /* Pods-Peerflix.debug.xcconfig */,
+				8D00D5B120D269DAB5D1CE5B /* Pods-Peerflix.release.xcconfig */,
+				061D210A71824DE454BC793B /* Pods-PeerflixTests.debug.xcconfig */,
+				900F79EACFE5D946C87536F2 /* Pods-PeerflixTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -472,12 +472,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 547C00CC1C7619FB00425CD7 /* Build configuration list for PBXNativeTarget "Peerflix" */;
 			buildPhases = (
-				6F1B30FC18D0BF79B68B5972 /* Check Pods Manifest.lock */,
+				F5F79103B63121451EBE3B3F /* [CP] Check Pods Manifest.lock */,
 				547C00AB1C7619FB00425CD7 /* Sources */,
 				547C00AC1C7619FB00425CD7 /* Frameworks */,
 				547C00AD1C7619FB00425CD7 /* Resources */,
-				0FDB4CA3B907E7963BF50684 /* Embed Pods Frameworks */,
-				4CAF72E8DD2BB731E4125FB4 /* Copy Pods Resources */,
+				8161EFD20B02C0E8866B79EF /* [CP] Embed Pods Frameworks */,
+				2B55447EAFED736F3D80C6FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -492,12 +492,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 547C00CF1C7619FB00425CD7 /* Build configuration list for PBXNativeTarget "PeerflixTests" */;
 			buildPhases = (
-				D7C4577D5C58868401B0E6A0 /* Check Pods Manifest.lock */,
+				F38F4E2DC8DC5ACFA3AAE0F3 /* [CP] Check Pods Manifest.lock */,
 				547C00BF1C7619FB00425CD7 /* Sources */,
 				547C00C01C7619FB00425CD7 /* Frameworks */,
 				547C00C11C7619FB00425CD7 /* Resources */,
-				0ED5DD5981E8AE92652B8C04 /* Embed Pods Frameworks */,
-				E51DF03034239E689BA82B6D /* Copy Pods Resources */,
+				003C0842E29B05CAEE0C8401 /* [CP] Embed Pods Frameworks */,
+				A63CC45F19624FFD3B2F73DC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -552,9 +552,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F7F9131C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig in Resources */,
+				54F7F9131C78CB8200FB3530 /* BuildFile in Resources */,
 				54E409E01C79CC8B00B6704D /* logo@2x.png in Resources */,
-				54F7F9121C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig in Resources */,
+				54F7F9121C78CB8200FB3530 /* BuildFile in Resources */,
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				54E409ED1C7A0F1700B6704D /* logo@3x.png in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
@@ -564,8 +564,8 @@
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54E409DF1C79CC8B00B6704D /* logo.png in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
-				54F7F90F1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig in Resources */,
-				54F7F90E1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig in Resources */,
+				54F7F90F1C78CB7A00FB3530 /* BuildFile in Resources */,
+				54F7F90E1C78CB7A00FB3530 /* BuildFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,14 +579,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0ED5DD5981E8AE92652B8C04 /* Embed Pods Frameworks */ = {
+		003C0842E29B05CAEE0C8401 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,29 +594,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0FDB4CA3B907E7963BF50684 /* Embed Pods Frameworks */ = {
+		2B55447EAFED736F3D80C6FF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CAF72E8DD2BB731E4125FB4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,49 +609,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6F1B30FC18D0BF79B68B5972 /* Check Pods Manifest.lock */ = {
+		8161EFD20B02C0E8866B79EF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D7C4577D5C58868401B0E6A0 /* Check Pods Manifest.lock */ = {
+		A63CC45F19624FFD3B2F73DC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E51DF03034239E689BA82B6D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38F4E2DC8DC5ACFA3AAE0F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5F79103B63121451EBE3B3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -817,7 +817,7 @@
 		};
 		547C00CD1C7619FB00425CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54F7F90C1C78CB7A00FB3530 /* Pods-Peerflix.debug.xcconfig */;
+			baseConfigurationReference = 21EDF83B62078A475F11BBA2 /* Pods-Peerflix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -839,7 +839,7 @@
 		};
 		547C00CE1C7619FB00425CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54F7F90D1C78CB7A00FB3530 /* Pods-Peerflix.release.xcconfig */;
+			baseConfigurationReference = 8D00D5B120D269DAB5D1CE5B /* Pods-Peerflix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -861,7 +861,7 @@
 		};
 		547C00D01C7619FB00425CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54F7F9101C78CB8200FB3530 /* Pods-PeerflixTests.debug.xcconfig */;
+			baseConfigurationReference = 061D210A71824DE454BC793B /* Pods-PeerflixTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PeerflixTests/Info.plist;
@@ -874,7 +874,7 @@
 		};
 		547C00D11C7619FB00425CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54F7F9111C78CB8200FB3530 /* Pods-PeerflixTests.release.xcconfig */;
+			baseConfigurationReference = 900F79EACFE5D946C87536F2 /* Pods-PeerflixTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PeerflixTests/Info.plist;

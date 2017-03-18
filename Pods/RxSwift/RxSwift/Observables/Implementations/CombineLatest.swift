@@ -1,17 +1,15 @@
 //
 //  CombineLatest.swift
-//  Rx
+//  RxSwift
 //
 //  Created by Krunoslav Zaher on 3/21/15.
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 protocol CombineLatestProtocol : class {
-    func next(index: Int)
-    func fail(error: ErrorType)
-    func done(index: Int)
+    func next(_ index: Int)
+    func fail(_ error: Swift.Error)
+    func done(_ index: Int)
 }
 
 class CombineLatestSink<O: ObserverType>
@@ -19,7 +17,7 @@ class CombineLatestSink<O: ObserverType>
     , CombineLatestProtocol {
     typealias Element = O.E
    
-    let _lock = NSRecursiveLock()
+    let _lock = RecursiveLock()
 
     private let _arity: Int
     private var _numberOfValues = 0
@@ -27,19 +25,19 @@ class CombineLatestSink<O: ObserverType>
     private var _hasValue: [Bool]
     private var _isDone: [Bool]
    
-    init(arity: Int, observer: O) {
+    init(arity: Int, observer: O, cancel: Cancelable) {
         _arity = arity
-        _hasValue = [Bool](count: arity, repeatedValue: false)
-        _isDone = [Bool](count: arity, repeatedValue: false)
+        _hasValue = [Bool](repeating: false, count: arity)
+        _isDone = [Bool](repeating: false, count: arity)
         
-        super.init(observer: observer)
+        super.init(observer: observer, cancel: cancel)
     }
     
     func getResult() throws -> Element {
-        abstractMethod()
+        rxAbstractMethod()
     }
     
-    func next(index: Int) {
+    func next(_ index: Int) {
         if !_hasValue[index] {
             _hasValue[index] = true
             _numberOfValues += 1
@@ -48,10 +46,10 @@ class CombineLatestSink<O: ObserverType>
         if _numberOfValues == _arity {
             do {
                 let result = try getResult()
-                forwardOn(.Next(result))
+                forwardOn(.next(result))
             }
             catch let e {
-                forwardOn(.Error(e))
+                forwardOn(.error(e))
                 dispose()
             }
         }
@@ -66,18 +64,18 @@ class CombineLatestSink<O: ObserverType>
             }
             
             if allOthersDone {
-                forwardOn(.Completed)
+                forwardOn(.completed)
                 dispose()
             }
         }
     }
     
-    func fail(error: ErrorType) {
-        forwardOn(.Error(error))
+    func fail(_ error: Swift.Error) {
+        forwardOn(.error(error))
         dispose()
     }
     
-    func done(index: Int) {
+    func done(_ index: Int) {
         if _isDone[index] {
             return
         }
@@ -86,13 +84,13 @@ class CombineLatestSink<O: ObserverType>
         _numberOfDone += 1
 
         if _numberOfDone == _arity {
-            forwardOn(.Completed)
+            forwardOn(.completed)
             dispose()
         }
     }
 }
 
-class CombineLatestObserver<ElementType>
+final class CombineLatestObserver<ElementType>
     : ObserverType
     , LockOwnerType
     , SynchronizedOnType {
@@ -101,12 +99,12 @@ class CombineLatestObserver<ElementType>
     
     private let _parent: CombineLatestProtocol
     
-    let _lock: NSRecursiveLock
+    let _lock: RecursiveLock
     private let _index: Int
     private let _this: Disposable
     private let _setLatestValue: ValueSetter
     
-    init(lock: NSRecursiveLock, parent: CombineLatestProtocol, index: Int, setLatestValue: ValueSetter, this: Disposable) {
+    init(lock: RecursiveLock, parent: CombineLatestProtocol, index: Int, setLatestValue: @escaping ValueSetter, this: Disposable) {
         _lock = lock
         _parent = parent
         _index = index
@@ -114,19 +112,19 @@ class CombineLatestObserver<ElementType>
         _setLatestValue = setLatestValue
     }
     
-    func on(event: Event<Element>) {
+    func on(_ event: Event<Element>) {
         synchronizedOn(event)
     }
 
-    func _synchronized_on(event: Event<Element>) {
+    func _synchronized_on(_ event: Event<Element>) {
         switch event {
-        case .Next(let value):
+        case .next(let value):
             _setLatestValue(value)
             _parent.next(_index)
-        case .Error(let error):
+        case .error(let error):
             _this.dispose()
             _parent.fail(error)
-        case .Completed:
+        case .completed:
             _this.dispose()
             _parent.done(_index)
         }

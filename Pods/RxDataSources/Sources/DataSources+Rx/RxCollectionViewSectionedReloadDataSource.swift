@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 #endif
 
-public class RxCollectionViewSectionedReloadDataSource<S: SectionModelType>
+open class RxCollectionViewSectionedReloadDataSource<S: SectionModelType>
     : CollectionViewSectionedDataSource<S>
     , RxCollectionViewDataSourceType {
     
@@ -23,15 +23,14 @@ public class RxCollectionViewSectionedReloadDataSource<S: SectionModelType>
         super.init()
     }
 
-    public func collectionView(collectionView: UICollectionView, observedEvent: Event<Element>) {
-        switch observedEvent {
-        case .Next(let element):
-            setSections(element)
+    open func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) {
+        UIBindingObserver(UIElement: self) { dataSource, element in
+            #if DEBUG
+                self._dataSourceBound = true
+            #endif
+            dataSource.setSections(element)
             collectionView.reloadData()
-        case .Error(let error):
-            bindingErrorToInterface(error)
-        case .Completed:
-            break
-        }
+            collectionView.collectionViewLayout.invalidateLayout()
+        }.on(observedEvent)
     }
 }

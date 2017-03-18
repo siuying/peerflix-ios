@@ -1,17 +1,19 @@
 PODS:
-  - Alamofire (3.2.0)
-  - Freddy (2.0.2)
-  - MarqueeLabel (2.5.0)
-  - Nimble (3.1.0)
-  - RxCocoa (2.2.0):
-    - RxSwift (~> 2.2)
-  - RxDataSources (0.5):
-    - RxCocoa (~> 2.2)
-    - RxSwift (~> 2.2)
-  - RxOptional (1.2.0):
-    - RxCocoa (~> 2.0)
-    - RxSwift (~> 2.0)
-  - RxSwift (2.2.0)
+  - Alamofire (4.4.0)
+  - Freddy (3.0.0)
+  - MarqueeLabel (3.0.1):
+    - MarqueeLabel/ObjC (= 3.0.1)
+  - MarqueeLabel/ObjC (3.0.1)
+  - Nimble (6.0.1)
+  - RxCocoa (3.3.1):
+    - RxSwift (~> 3.3)
+  - RxDataSources (1.0.3):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxOptional (3.1.3):
+    - RxCocoa
+    - RxSwift
+  - RxSwift (3.3.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -24,13 +26,15 @@ DEPENDENCIES:
   - RxSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  Freddy: e53713b8d5be02dbf5f4132c44d899d99eb09a6b
-  MarqueeLabel: 6b8ff6915c0536c5099ac30992b7d72f9807df20
-  Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
-  RxCocoa: 42efb7a7145a8d1d5878e94ce48a580d29e0c796
-  RxDataSources: dc37b814dd4efd761e1e65521b977677e4197614
-  RxOptional: f98a09c3b5bd853651eb7822cf0ffa847908f1c1
-  RxSwift: b8a749f2204c6c7a5c29b306a9c3bc11d5b87c5b
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Freddy: 367f994c88a90dd3987293b4b1bec94a4530745a
+  MarqueeLabel: 80ba85d2b76a9f5fa6c13de337db80bcd94feb1d
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
+  RxOptional: b97b59183af80d1e729ac9e51d09a10be668d6a8
+  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 6e98ee2b18e8c67f3ba7f16974de653832cf2eb9
+
+COCOAPODS: 1.2.0

@@ -13,33 +13,54 @@ import RxSwift
 import RxCocoa
 #endif
 
-public class RxTableViewSectionedAnimatedDataSource<S: SectionModelType>
-    : RxTableViewSectionedDataSource<S>
+open class RxTableViewSectionedAnimatedDataSource<S: AnimatableSectionModelType>
+    : TableViewSectionedDataSource<S>
     , RxTableViewDataSourceType {
     
-    public typealias Element = [Changeset<S>]
-    public var animationConfiguration: AnimationConfiguration? = nil
+    public typealias Element = [S]
+    public var animationConfiguration = AnimationConfiguration()
+
+    var dataSet = false
 
     public override init() {
         super.init()
     }
 
-    public func tableView(tableView: UITableView, observedEvent: Event<Element>) {
-        switch observedEvent {
-        case .Next(let element):
-            for c in element {
-                setSections(c.finalSections)
-                if c.reloadData {
-                    tableView.reloadData()
-                }
-                else {
-                  tableView.performBatchUpdates(c, animationConfiguration: self.animationConfiguration)
+    open func tableView(_ tableView: UITableView, observedEvent: Event<Element>) {
+        UIBindingObserver(UIElement: self) { dataSource, newSections in
+            #if DEBUG
+                self._dataSourceBound = true
+            #endif
+            if !self.dataSet {
+                self.dataSet = true
+                dataSource.setSections(newSections)
+                tableView.reloadData()
+            }
+            else {
+                DispatchQueue.main.async {
+                    // if view is not in view hierarchy, performing batch updates will crash the app
+                    if tableView.window == nil {
+                        dataSource.setSections(newSections)
+                        tableView.reloadData()
+                        return
+                    }
+                    let oldSections = dataSource.sectionModels
+                    do {
+                        let differences = try differencesForSectionedView(initialSections: oldSections, finalSections: newSections)
+
+                        for difference in differences {
+                            dataSource.setSections(difference.finalSections)
+
+                            tableView.performBatchUpdates(difference, animationConfiguration: self.animationConfiguration)
+                        }
+                    }
+                    catch let e {
+                        rxDebugFatalError(e)
+                        self.setSections(newSections)
+                        tableView.reloadData()
+                    }
                 }
             }
-        case .Error(let error):
-            bindingErrorToInterface(error)
-        case .Completed:
-            break
-        }
+        }.on(observedEvent)
     }
 }
