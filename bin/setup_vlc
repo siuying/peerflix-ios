@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cd vendor && \
-  curl "http://nightlies.videolan.org/build/ios/last" -o MobileVLC.zip && \
+  curl "http://nightlies.videolan.org/build/iOS/last/MobileVLCKit-REPLACEWITHVERSION.zip" -o MobileVLC.zip && \
   unzip MobileVLC.zip

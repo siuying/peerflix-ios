@@ -8,3 +8,4 @@ dist
 Peerflix.xcworkspace/xcshareddata
 vendor/MobileVLCKit-binary
 vendor/*.zip
+.DS_Store
