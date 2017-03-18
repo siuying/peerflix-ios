@@ -28,7 +28,7 @@ struct TorrentState {
         init(json: JSON) throws {
             self.name = try json.getString(at: "name")
             self.size = (try? json.getDouble(at: "length", or: 0)) ?? 0
-            self.URL = (try? json.getString(at: "url")).flatMap({ Foundation.URL(string: $0) })
+            self.URL = (try? json.getString(at: "url", or: "")).flatMap({ Foundation.URL(string: $0) })
         }
         
         // return true if the file looks like a video file
@@ -61,6 +61,7 @@ struct TorrentState {
         self.downloadSpeed = try? json.getDouble(at: "downloadSpeed")
         self.uploaded = try? json.getDouble(at: "uploaded")
         self.downloaded = try? json.getDouble(at: "downloaded")
-        self.files = try json.getArray(at: "files", or: []).map(File.init)
+
+        self.files = (try? json.getArray(at: "files", or: [])).flatMap { try? $0.map(File.init) }
     }
 }
