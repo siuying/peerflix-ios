@@ -23,6 +23,8 @@
 		548DF9731C786EA000C572E1 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9721C786EA000C572E1 /* SearchResultCell.swift */; };
 		548DF9751C786FC100C572E1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DF9741C786FC100C572E1 /* SearchViewModel.swift */; };
 		54AFA7E01E7D5AE600E33EE9 /* DynamicMobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AFA7DF1E7D5AE600E33EE9 /* DynamicMobileVLCKit.framework */; };
+		54AFA7E21E7D81B600E33EE9 /* DynamicMobileVLCKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54AFA7DF1E7D5AE600E33EE9 /* DynamicMobileVLCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		54AFA7E61E7D88B300E33EE9 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54AFA7E51E7D88B200E33EE9 /* js */; };
 		54C341DF1C96DD9E00EB8C19 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C341DE1C96DD9E00EB8C19 /* AVFoundation.framework */; };
 		54C341E11C96DDA400EB8C19 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C341E01C96DDA400EB8C19 /* CFNetwork.framework */; };
 		54C341E31C96DDAA00EB8C19 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C341E21C96DDAA00EB8C19 /* OpenGLES.framework */; };
@@ -64,7 +66,6 @@
 		54F7F8D91C7896A600FB3530 /* TorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */; };
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
-		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
 		54F7F90E1C78CB7A00FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54F7F90F1C78CB7A00FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54F7F9121C78CB8200FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -83,6 +84,19 @@
 			remoteInfo = TorrentStream;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54AFA7E11E7D81A800E33EE9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				54AFA7E21E7D81B600E33EE9 /* DynamicMobileVLCKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		061D210A71824DE454BC793B /* Pods-PeerflixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeerflixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeerflixTests/Pods-PeerflixTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +122,7 @@
 		548DF9741C786FC100C572E1 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		54A8D04A1C795AA2009D2D85 /* Interface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interface.playground; sourceTree = "<group>"; };
 		54AFA7DF1E7D5AE600E33EE9 /* DynamicMobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DynamicMobileVLCKit.framework; sourceTree = "<group>"; };
+		54AFA7E51E7D88B200E33EE9 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
 		54C341D61C96DD0200EB8C19 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		54C341DE1C96DD9E00EB8C19 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		54C341E01C96DDA400EB8C19 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -154,7 +169,6 @@
 		54F7F8D81C7896A600FB3530 /* TorrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewController.swift; sourceTree = "<group>"; };
 		54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentViewModel.swift; sourceTree = "<group>"; };
 		54F7F8DD1C78B25100FB3530 /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
-		54F7F8DF1C78B25800FB3530 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
 		54F7F9201C79508300FB3530 /* VideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		54F7F9231C79511F00FB3530 /* MediaControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaControl.swift; sourceTree = "<group>"; };
 		8D00D5B120D269DAB5D1CE5B /* Pods-Peerflix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peerflix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peerflix/Pods-Peerflix.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,7 +253,7 @@
 				547C00C61C7619FB00425CD7 /* PeerflixTests */,
 				547C00B01C7619FB00425CD7 /* Products */,
 				54DF91C21C77759200577EDD /* vendor */,
-				54F7F8DF1C78B25800FB3530 /* js */,
+				54AFA7E51E7D88B200E33EE9 /* js */,
 				54F7F8DD1C78B25100FB3530 /* node_modules */,
 				8FBB9F9DD8BB8B6AB7DAD5CB /* Pods */,
 			);
@@ -478,6 +492,7 @@
 				547C00AD1C7619FB00425CD7 /* Resources */,
 				8161EFD20B02C0E8866B79EF /* [CP] Embed Pods Frameworks */,
 				2B55447EAFED736F3D80C6FF /* [CP] Copy Pods Resources */,
+				54AFA7E11E7D81A800E33EE9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -559,11 +574,11 @@
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				54E409ED1C7A0F1700B6704D /* logo@3x.png in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
-				54F7F8E01C78B25800FB3530 /* js in Resources */,
 				54E409C61C796CFA00B6704D /* Main.storyboard in Resources */,
 				54F7F8DE1C78B25100FB3530 /* node_modules in Resources */,
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54E409DF1C79CC8B00B6704D /* logo.png in Resources */,
+				54AFA7E61E7D88B300E33EE9 /* js in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
 				54F7F90F1C78CB7A00FB3530 /* (null) in Resources */,
 				54F7F90E1C78CB7A00FB3530 /* (null) in Resources */,
