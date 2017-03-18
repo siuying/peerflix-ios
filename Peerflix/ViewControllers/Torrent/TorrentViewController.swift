@@ -14,8 +14,8 @@ class TorrentViewController: UIViewController {
     var viewModel: TorrentViewModel!
     var services: ServiceFactory = DefaultServiceFactory.instance
 
-    private let disposeBag = DisposeBag()
-    private var torrent: TorrentService {
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate var torrent: TorrentService {
         return self.services.torrent
     }
 
@@ -51,30 +51,30 @@ class TorrentViewController: UIViewController {
             .addDisposableTo(self.disposeBag)
    }
 
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        guard let segueId = segue.identifier else {
            return
        }
     
        if segueId == Segue.PlayVideo.rawValue {
-           let vc = segue.destinationViewController as! VideoPlayerController
+           let vc = segue.destination as! VideoPlayerController
            vc.videoURL = self.viewModel.videoURL.value
        }
    }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.delegate = self
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.navigationController?.delegate = nil
     }
 }
 
 extension TorrentViewController: UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // when pop to SearchViewController, deselect any torrent
         if viewController is SearchViewController {
             torrent.stopTorrent()

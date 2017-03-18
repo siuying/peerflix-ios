@@ -35,10 +35,10 @@ enum TorrentServiceAPI: URLRequestConvertible {
         }
     }
     
-    case Search(String, SearchEngine)
-    case Play(String)
-    case Stop()
-    case Select(String)
+    case search(String, SearchEngine)
+    case play(String)
+    case stop()
+    case select(String)
     
     var method: Alamofire.Method {
         return .GET
@@ -46,13 +46,13 @@ enum TorrentServiceAPI: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .Search:
+        case .search:
             return "/search"
-        case .Play:
+        case .play:
             return "/torrent/play"
-        case .Stop:
+        case .stop:
             return "/torrent/stop"
-        case .Select:
+        case .select:
             return "/torrent/select"
         }
     }
@@ -60,22 +60,22 @@ enum TorrentServiceAPI: URLRequestConvertible {
     // MARK: URLRequestConvertible
     
     var URLRequest: NSMutableURLRequest {
-        let URL = NSURL(string: TorrentServiceAPI.baseURLString)!
-        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        let URL = Foundation.URL(string: TorrentServiceAPI.baseURLString)!
+        let mutableURLRequest = NSMutableURLRequest(url: URL.appendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
         
         switch self {
-        case .Search(let query, let engine):
+        case .search(let query, let engine):
             return Alamofire.ParameterEncoding
                 .URL
                 .encode(mutableURLRequest, parameters: ["query": query, "engine": engine.rawValue])
                 .0
-        case .Play(let url):
+        case .play(let url):
             return Alamofire.ParameterEncoding
                 .URL
                 .encode(mutableURLRequest, parameters: ["url": url])
                 .0
-        case .Select(let filename):
+        case .select(let filename):
             return Alamofire.ParameterEncoding
                 .URL
                 .encode(mutableURLRequest, parameters: ["filename": filename])

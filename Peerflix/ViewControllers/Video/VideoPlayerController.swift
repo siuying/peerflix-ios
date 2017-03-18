@@ -14,10 +14,10 @@ class VideoPlayerController: UIViewController {
     @IBOutlet var mediaControl: MediaControl!
     @IBOutlet var videoView: UIView!
     
-    var videoURL: NSURL?
+    var videoURL: URL?
     var services: ServiceFactory = DefaultServiceFactory.instance
-    private let disposeBag = DisposeBag()
-    private var torrent: TorrentService {
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate var torrent: TorrentService {
         return self.services.torrent
     }
     
@@ -48,31 +48,31 @@ class VideoPlayerController: UIViewController {
                 }
             }
             .addDisposableTo(self.disposeBag)
-        self.mediaControl.userInteractionEnabled = true
+        self.mediaControl.isUserInteractionEnabled = true
         self.mediaControl.addGestureRecognizer(gesture)
 
-        mediaControl.mediaProgressSlider
+        mediaControl?.mediaProgressSlider
             .rx_controlEvent(.TouchDown)
             .subscribeNext { [weak mediaControl] (_) -> Void in
                 mediaControl?.beginDragMediaSlider()
             }
             .addDisposableTo(self.disposeBag)
         
-        mediaControl.mediaProgressSlider
+        mediaControl?.mediaProgressSlider
             .rx_controlEvent(.TouchCancel)
             .subscribeNext { [weak mediaControl] (_) -> Void in
                 mediaControl?.endDragMediaSlider()
             }
             .addDisposableTo(self.disposeBag)
 
-        mediaControl.mediaProgressSlider
+        mediaControl?.mediaProgressSlider
             .rx_controlEvent(.TouchUpOutside)
             .subscribeNext { [weak mediaControl] (_) -> Void in
                 mediaControl?.endDragMediaSlider()
             }
             .addDisposableTo(self.disposeBag)
         
-        mediaControl.mediaProgressSlider
+        mediaControl?.mediaProgressSlider
             .rx_controlEvent(.TouchUpInside)
             .subscribeNext { [weak mediaControl, weak player] (_) -> Void in
                 if let mediaControl = mediaControl, let player = player {
@@ -82,14 +82,14 @@ class VideoPlayerController: UIViewController {
             }
             .addDisposableTo(self.disposeBag)
         
-        mediaControl.mediaProgressSlider
+        mediaControl?.mediaProgressSlider
             .rx_value
             .subscribeNext {  [weak mediaControl] (_) -> Void in
                 mediaControl?.continueDragMediaSlider()
             }
             .addDisposableTo(self.disposeBag)
         
-        mediaControl.doneButton
+        mediaControl?.doneButton
             .rx_tap
             .subscribeNext { [weak self] _ in
                 if let vc = self {
@@ -99,24 +99,24 @@ class VideoPlayerController: UIViewController {
             .addDisposableTo(self.disposeBag)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.player.pause()
         self.player.stop()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .all
     }
 }

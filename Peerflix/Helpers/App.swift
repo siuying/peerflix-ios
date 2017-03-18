@@ -18,14 +18,14 @@ class App {
     }
     
     static func temporaryDirectory() -> String {
-        return NSTemporaryDirectory().stringByAppendingString("Peerflix")
+        return NSTemporaryDirectory() + "Peerflix"
     }
     
     static func prepareTemporaryDirectory() {
         let dir = temporaryDirectory()
-        let manager = NSFileManager.defaultManager()
+        let manager = FileManager.default
         do {
-            try manager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)
+            try manager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
         } catch let e {
             print("error delete temp folder: \(e)")
         }

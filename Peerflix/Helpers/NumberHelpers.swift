@@ -8,14 +8,14 @@
 
 import Foundation
 
-func formatFileSize(sizeInBytes: Double) -> String {
-    let numberFormatter = NSNumberFormatter()
+func formatFileSize(_ sizeInBytes: Double) -> String {
+    let numberFormatter = NumberFormatter()
     numberFormatter.positiveFormat = "0.#"
-    return numberFormatter.stringFromNumber(sizeInBytes/(1024*1024)) ?? ""
+    return numberFormatter.string(from: sizeInBytes/(1024*1024)) ?? ""
 }
 
-func formatPercent(value: Double) -> String {
-    let numberFormatter = NSNumberFormatter()
+func formatPercent(_ value: Double) -> String {
+    let numberFormatter = NumberFormatter()
     numberFormatter.positiveFormat = "0"
-    return numberFormatter.stringFromNumber(value * 100.0) ?? ""
+    return numberFormatter.string(from: value * 100.0) ?? ""
 }

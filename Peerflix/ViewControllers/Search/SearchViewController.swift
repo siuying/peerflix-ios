@@ -94,14 +94,14 @@ class SearchViewController: UIViewController {
             .addDisposableTo(self.disposeBag)
     }
     
-    private func showSearchOptions() {
+    fileprivate func showSearchOptions() {
         let engines : [TorrentServiceAPI.SearchEngine] = [.DMHY, .PirateBay, .Nyaa]
-        let alert = UIAlertController(title: "Select a Search Engine", message: nil, preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Select a Search Engine", message: nil, preferredStyle: .alert)
         for engine in engines {
-            alert.addAction(UIAlertAction(title: engine.title, style: .Default, handler: { [weak self] (_) -> Void in
+            alert.addAction(UIAlertAction(title: engine.title, style: .default, handler: { [weak self] (_) -> Void in
                 self?.torrent.setSearchEngine(engine)
             }))
         }
-        self.navigationController?.presentViewController(alert, animated: true, completion: nil)
+        self.navigationController?.present(alert, animated: true, completion: nil)
     }
 }

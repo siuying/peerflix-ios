@@ -19,15 +19,15 @@ protocol TorrentService {
 
     func getSearchEngine() -> Observable<TorrentServiceAPI.SearchEngine>
 
-    func search(query: String) -> Observable<SearchResult>
+    func search(_ query: String) -> Observable<SearchResult>
 
-    func selectFile(filename: String) -> Observable<APIResult>
+    func selectFile(_ filename: String) -> Observable<APIResult>
 
-    func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult>
+    func playTorrent(_ torrent: SearchResult.Torrent) -> Observable<APIResult>
 
     func stopTorrent() -> Observable<APIResult>
     
-    func setSearchEngine(engine: TorrentServiceAPI.SearchEngine)
+    func setSearchEngine(_ engine: TorrentServiceAPI.SearchEngine)
 }
 
 class DefaultTorrentService: TorrentService {
@@ -81,7 +81,7 @@ class DefaultTorrentService: TorrentService {
         return self.engine.asObservable()
     }
     
-    func search(query: String) -> Observable<SearchResult> {
+    func search(_ query: String) -> Observable<SearchResult> {
         print("search: \(query), engine: \(self.engine.value.rawValue)")
         return Alamofire.request(TorrentServiceAPI.Search(query, self.engine.value))
             .rx_reponseJSON()
@@ -90,13 +90,13 @@ class DefaultTorrentService: TorrentService {
             }
     }
     
-    func selectFile(filename: String) -> Observable<APIResult> {
+    func selectFile(_ filename: String) -> Observable<APIResult> {
         return Alamofire.request(TorrentServiceAPI.Select(filename))
             .rx_reponseJSON()
             .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func playTorrent(torrent: SearchResult.Torrent) -> Observable<APIResult> {
+    func playTorrent(_ torrent: SearchResult.Torrent) -> Observable<APIResult> {
         guard let URL = torrent.URL else {
             return Observable.empty()
         }
@@ -113,7 +113,7 @@ class DefaultTorrentService: TorrentService {
             .map({ try $0.decode(type: APIResult.self) })
     }
     
-    func setSearchEngine(engine: TorrentServiceAPI.SearchEngine) {
+    func setSearchEngine(_ engine: TorrentServiceAPI.SearchEngine) {
         self.engine.value = engine
     }
 }

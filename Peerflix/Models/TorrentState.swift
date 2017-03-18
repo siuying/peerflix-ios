@@ -19,10 +19,10 @@ struct TorrentState {
     }
     
     struct File {
-        static let FileExtensionRegexp : NSRegularExpression! = try! NSRegularExpression(pattern: "\\.(mp4|avi|divx|wmv|mkv|asf|wma|mov|3gp|rm|flv|ogg|ogm|mp3|pva|es|ps|ts|pva)", options: [.CaseInsensitive])
+        static let FileExtensionRegexp : NSRegularExpression! = try! NSRegularExpression(pattern: "\\.(mp4|avi|divx|wmv|mkv|asf|wma|mov|3gp|rm|flv|ogg|ogm|mp3|pva|es|ps|ts|pva)", options: [.caseInsensitive])
         
         let name : String
-        let URL : NSURL?
+        let URL : Foundation.URL?
         let size : Double
         
         init(json: JSON) throws {
@@ -33,12 +33,12 @@ struct TorrentState {
         
         // return true if the file looks like a video file
         var isVideo : Bool {
-            return File.FileExtensionRegexp.firstMatchInString(name, options: [], range: NSMakeRange(0, (name as NSString).length)) != nil
+            return File.FileExtensionRegexp.firstMatch(in: name, options: [], range: NSMakeRange(0, (name as NSString).length)) != nil
         }
     }
     
-    var torrentURL : NSURL?
-    var videoURL : NSURL?
+    var torrentURL : URL?
+    var videoURL : URL?
     var status = Status.Init
     var filename : String?
     var size : Double?

@@ -22,7 +22,7 @@ class DefaultWireframe: Wireframe {
     let disposeBag = DisposeBag()
 
     func setup() {
-        NSNotificationCenter.defaultCenter()
+        NotificationCenter.defaultCenter()
             .rx_notification(UIApplicationWillTerminateNotification)
             .subscribeNext { (_) -> Void in
                 self.cleanup()
@@ -31,9 +31,9 @@ class DefaultWireframe: Wireframe {
     }
 
     func cleanup() {
-        let manager = NSFileManager.defaultManager()
+        let manager = FileManager.default
         do {
-            try manager.removeItemAtPath(App.temporaryDirectory())
+            try manager.removeItem(atPath: App.temporaryDirectory())
         } catch let e {
             print("error delete temp folder: \(e)")
         }

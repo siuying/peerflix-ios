@@ -20,7 +20,7 @@ struct SearchResult {
         let size : String
         let seeders : Int
         let leechers : Int
-        let URL : NSURL?
+        let URL : Foundation.URL?
     }
     
     static let error = SearchResult(engine: "", query: "", torrents: [], success: false)

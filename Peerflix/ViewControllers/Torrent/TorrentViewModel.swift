@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-func configureTorrentState(torrent: TorrentService, torrentState: Observable<TorrentState>)
+func configureTorrentState(_ torrent: TorrentService, torrentState: Observable<TorrentState>)
     -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
         let torrentFilename = torrent
             .getSelectedTorrent()
@@ -64,7 +64,7 @@ class TorrentViewModel {
     let URL: Observable<NSURL?>
     let videoURL: Variable<NSURL?>
 
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
 
     init(play: Observable<Void>, torrent: TorrentService) {
         let torrentState = torrent.getState().shareReplay(1)

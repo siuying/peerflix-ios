@@ -56,7 +56,7 @@ class SearchViewModel: SearchViewModelType {
     var loaded: Observable<Bool>!
     var sections: Observable<[SearchResultSection]>!
 
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
 
     init(
         input: (query: Observable<String>, openItem: Observable<SearchResult.Torrent>),
@@ -79,7 +79,7 @@ class SearchViewModel: SearchViewModelType {
         self.configActions(openItem, torrent: torrent)
     }
     
-    func configureSection(loaded loaded: Observable<Bool>, query: Observable<String>, torrent: TorrentService) -> Observable<[SearchResultSection]>  {
+    func configureSection(loaded: Observable<Bool>, query: Observable<String>, torrent: TorrentService) -> Observable<[SearchResultSection]>  {
 
         let searchResult:Variable<[SearchResult.Torrent]> = Variable([])
         let engineChanged = torrent.getSearchEngine().distinctUntilChanged()
@@ -116,7 +116,7 @@ class SearchViewModel: SearchViewModelType {
             .shareReplay(1)
     }
     
-    func configActions(openItem: Observable<SearchResult.Torrent>, torrent: TorrentService) {
+    func configActions(_ openItem: Observable<SearchResult.Torrent>, torrent: TorrentService) {
         let request = openItem
             .flatMapLatest({ torrent.playTorrent($0) })
 

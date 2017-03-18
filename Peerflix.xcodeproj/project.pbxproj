@@ -65,10 +65,10 @@
 		54F7F8DB1C7896E400FB3530 /* TorrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F8DA1C7896E400FB3530 /* TorrentViewModel.swift */; };
 		54F7F8DE1C78B25100FB3530 /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DD1C78B25100FB3530 /* node_modules */; };
 		54F7F8E01C78B25800FB3530 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 54F7F8DF1C78B25800FB3530 /* js */; };
-		54F7F90E1C78CB7A00FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		54F7F90F1C78CB7A00FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		54F7F9121C78CB8200FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		54F7F9131C78CB8200FB3530 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		54F7F90E1C78CB7A00FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		54F7F90F1C78CB7A00FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		54F7F9121C78CB8200FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		54F7F9131C78CB8200FB3530 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54F7F9211C79508300FB3530 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9201C79508300FB3530 /* VideoPlayerController.swift */; };
 		54F7F9241C79511F00FB3530 /* MediaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F7F9231C79511F00FB3530 /* MediaControl.swift */; };
 		5D5CCDA829AB6D0713C58DEF /* Pods_PeerflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B8BAD6DFAE40F0F8F18E92 /* Pods_PeerflixTests.framework */; };
@@ -521,6 +521,7 @@
 				TargetAttributes = {
 					547C00AE1C7619FB00425CD7 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0820;
 					};
 					547C00C21C7619FB00425CD7 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -552,9 +553,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F7F9131C78CB8200FB3530 /* BuildFile in Resources */,
+				54F7F9131C78CB8200FB3530 /* (null) in Resources */,
 				54E409E01C79CC8B00B6704D /* logo@2x.png in Resources */,
-				54F7F9121C78CB8200FB3530 /* BuildFile in Resources */,
+				54F7F9121C78CB8200FB3530 /* (null) in Resources */,
 				547C00BD1C7619FB00425CD7 /* LaunchScreen.storyboard in Resources */,
 				54E409ED1C7A0F1700B6704D /* logo@3x.png in Resources */,
 				547C00BA1C7619FB00425CD7 /* Assets.xcassets in Resources */,
@@ -564,8 +565,8 @@
 				54DF91D31C7775AC00577EDD /* JXCORE_LICENSE in Resources */,
 				54E409DF1C79CC8B00B6704D /* logo.png in Resources */,
 				54DF91DF1C7775AC00577EDD /* releaseLogs.txt in Resources */,
-				54F7F90F1C78CB7A00FB3530 /* BuildFile in Resources */,
-				54F7F90E1C78CB7A00FB3530 /* BuildFile in Resources */,
+				54F7F90F1C78CB7A00FB3530 /* (null) in Resources */,
+				54F7F90E1C78CB7A00FB3530 /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +835,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hk.ignition.Peerflix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Peerflix/Header.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -856,6 +858,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hk.ignition.Peerflix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Peerflix/Header.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

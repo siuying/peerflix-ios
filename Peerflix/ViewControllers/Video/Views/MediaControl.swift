@@ -8,19 +8,19 @@
 
 import UIKit
 
-private let LongFormatter : NSDateComponentsFormatter = {
-    let formatter = NSDateComponentsFormatter()
-    formatter.allowedUnits = [.Hour, .Minute, .Second]
-    formatter.zeroFormattingBehavior = [.Pad]
-    formatter.unitsStyle = .Positional
+private let LongFormatter : DateComponentsFormatter = {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute, .second]
+    formatter.zeroFormattingBehavior = [.pad]
+    formatter.unitsStyle = .positional
     return formatter
 }()
 
-private let Formatter : NSDateComponentsFormatter = {
-    let formatter = NSDateComponentsFormatter()
-    formatter.allowedUnits = [.Minute, .Second]
-    formatter.zeroFormattingBehavior = [.Pad]
-    formatter.unitsStyle = .Positional
+private let Formatter : DateComponentsFormatter = {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.minute, .second]
+    formatter.zeroFormattingBehavior = [.pad]
+    formatter.unitsStyle = .positional
     return formatter
 }()
 
@@ -40,10 +40,10 @@ class MediaControl: UIControl {
     @IBOutlet var mediaProgressSlider: UISlider!
     
     var overlayHidden: Bool {
-        return self.overlayPanel.hidden
+        return self.overlayPanel.isHidden
     }
 
-    private var mediaSliderBeingDragged = false
+    fileprivate var mediaSliderBeingDragged = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,23 +51,23 @@ class MediaControl: UIControl {
     }
 
     func showNoFade() {
-        self.overlayPanel.hidden = false
+        self.overlayPanel.isHidden = false
         self.cancelDelayedHide()
         self.refresh()
     }
     
     func showAndFade() {
         self.showNoFade()
-        self.performSelector("hide", withObject: nil, afterDelay: 5.0)
+        self.perform(#selector(MediaControl.hide), with: nil, afterDelay: 5.0)
     }
     
     func hide() {
-        self.overlayPanel.hidden = true
+        self.overlayPanel.isHidden = true
         self.cancelDelayedHide()
     }
     
     func toggleVisibility() {
-        if self.overlayPanel.hidden {
+        if self.overlayPanel.isHidden {
             self.showAndFade()
         } else {
             self.hide()
@@ -116,9 +116,9 @@ class MediaControl: UIControl {
             }            
         }
 
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "refresh", object: nil)
-        if !self.overlayPanel.hidden {
-            self.performSelector("refresh", withObject: nil, afterDelay: 0.5)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(MediaControl.refresh), object: nil)
+        if !self.overlayPanel.isHidden {
+            self.perform(#selector(MediaControl.refresh), with: nil, afterDelay: 0.5)
         }
     }
     
@@ -134,13 +134,13 @@ class MediaControl: UIControl {
         self.refresh()
     }
     
-    private func cancelDelayedHide() {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "hide", object: nil)
+    fileprivate func cancelDelayedHide() {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(MediaControl.hide), object: nil)
     }
 }
 
 extension MediaControl: VLCMediaPlayerDelegate {
-    func mediaPlayerTimeChanged(aNotification: NSNotification!) {
+    func mediaPlayerTimeChanged(_ aNotification: Notification!) {
         self.refresh()
     }
 }

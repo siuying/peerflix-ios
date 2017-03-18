@@ -10,9 +10,9 @@ import UIKit
 import MarqueeLabel
 
 class InfiniteMarqueeLabel : MarqueeLabel {
-    override func labelReturnedToHome(finished: Bool) {
+    override func labelReturned(toHome finished: Bool) {
         self.holdScrolling = false
-        super.restartLabel()
+        super.restart()
     }
 }
 
@@ -28,7 +28,7 @@ class SearchResultCell : UITableViewCell {
         self.detailLabel.text = ""
     }
     
-    func bindViewModel(model: SearchResult.Torrent) {
+    func bindViewModel(_ model: SearchResult.Torrent) {
         self.titleLabel.text = model.name
         self.detailLabel.text = "Size: \(model.size) / Seeders: \(model.seeders) / Leechers: \(model.leechers)"
     }
