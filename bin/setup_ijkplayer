@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-git submodule update --init
-cd vendor/ijkplayer
-
-bash ./download-ios.sh

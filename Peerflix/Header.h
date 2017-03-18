@@ -8,4 +8,4 @@
 
 #import "JXcore.h"
 #import "NetHelper.h"
-#import <MobileVLCKit/MobileVLCKit.h>
+#import <DynamicMobileVLCKit/VLCMediaPlayer.h>

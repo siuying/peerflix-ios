@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cd vendor && \
-  curl "http://nightlies.videolan.org/build/iOS/last/MobileVLCKit-REPLACEWITHVERSION.zip" -o MobileVLC.zip && \
-  unzip MobileVLC.zip
+  curl "https://lib.ignition.hk/vlc/DynamicMobileVLCKit-21a9c0a.framework.tgz" -o DynamicMobileVLCKit.tgz && \
+  tar vxfz DynamicMobileVLCKit.tgz

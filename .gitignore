@@ -6,6 +6,7 @@ js/constants/ApiKeys.js
 *.jx
 dist
 Peerflix.xcworkspace/xcshareddata
-vendor/MobileVLCKit-binary
-vendor/*.zip
+vendor/*.tgz
+vendor/DynamicMobileVLCKit.framework
+vendor/DynamicMobileVLCKit.framework.dSYM
 .DS_Store
