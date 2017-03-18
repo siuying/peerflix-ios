@@ -26,9 +26,9 @@ struct TorrentState {
         let size : Double
         
         init(json: JSON) throws {
-            self.name = try json.string("name", ifNull: true) ?? ""
-            self.size = (try? json.double("length")) ?? 0
-            self.URL = try json.string("url", ifNotFound: true).flatMap({ NSURL(string: $0) })
+            self.name = try json.getString(at: "name")
+            self.size = (try? json.getDouble(at: "length", or: 0)) ?? 0
+            self.URL = (try? json.getString(at: "url")).flatMap({ Foundation.URL(string: $0) })
         }
         
         // return true if the file looks like a video file
@@ -51,16 +51,16 @@ struct TorrentState {
     }
     
     init(json: JSON) throws {
-        self.torrentURL = (try? json.string("torrentUrl")).flatMap({ NSURL(string: $0) })
-        self.videoURL = (try? json.string("videoUrl")).flatMap({ NSURL(string: $0) })
-        self.status = Status(rawValue: try json.string("status")) ?? Status.Idle
+        self.torrentURL = (try? json.getString(at: "torrentUrl")).flatMap({ Foundation.URL(string: $0) })
+        self.videoURL = (try? json.getString(at: "videoUrl")).flatMap({ Foundation.URL(string: $0) })
+        self.status = Status(rawValue: try json.getString(at: "status")) ?? Status.Idle
 
-        self.filename = try? json.string("filename")
+        self.filename = try? json.getString(at: "filename")
 
-        self.size = try? json.double("size")
-        self.downloadSpeed = try? json.double("downloadSpeed")
-        self.uploaded = try? json.double("uploaded")
-        self.downloaded = try? json.double("downloaded")
-        self.files = try json.array("files", ifNull: true).flatMap({ try $0.map({try File(json: $0)}) })
+        self.size = try? json.getDouble(at: "size")
+        self.downloadSpeed = try? json.getDouble(at: "downloadSpeed")
+        self.uploaded = try? json.getDouble(at: "uploaded")
+        self.downloaded = try? json.getDouble(at: "downloaded")
+        self.files = try json.getArray(at: "files", or: []).map(File.init)
     }
 }

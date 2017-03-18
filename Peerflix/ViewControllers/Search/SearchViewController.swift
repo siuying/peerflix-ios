@@ -38,12 +38,11 @@ class SearchViewController: UIViewController {
         self.tableView.tableHeaderView = self.searchBar
 
         let query: Observable<String> = self.searchBar
-            .rx_text
-            .asObservable()
-            .map({ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) })
+            .rx.text.asObservable()
+            .map({ $0?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? "" })
             .shareReplay(1)
         
-        let openItem: Observable<SearchResult.Torrent> = self.tableView.rx_modelSelected(SearchResult.Torrent.self)
+        let openItem: Observable<SearchResult.Torrent> = self.tableView.rx.modelSelected(SearchResult.Torrent.self)
             .asObservable()
 
         self.viewModel = SearchViewModel(
@@ -54,7 +53,7 @@ class SearchViewController: UIViewController {
         // set search engine
         self.viewModel
             .engine
-            .subscribeNext({ (title) -> Void in
+            .subscribe(onNext: { (title) -> Void in
                 self.settingButton.title = title
             })
             .addDisposableTo(self.disposeBag)
@@ -64,7 +63,7 @@ class SearchViewController: UIViewController {
         self.viewModel
             .loaded
             .startWith(false)
-            .subscribeNext({ (loaded) -> Void in
+            .subscribe(onNext: { loaded in
                 if loaded {
                     self.initIndicator.stopAnimating()
                 } else {
@@ -76,21 +75,21 @@ class SearchViewController: UIViewController {
         // Convert Sections into table view data source
         
         let datasource = RxTableViewSectionedAnimatedDataSource<SearchResultSection>()
-        datasource.configureCell = { (table, indexPath, element) in
-            let cell = table.dequeueReusableCellWithIdentifier(SearchResultCell.CellID, forIndexPath: indexPath) as! SearchResultCell
+        datasource.configureCell = { (ds, table, indexPath, element) in
+            let cell = table.dequeueReusableCell(withIdentifier: SearchResultCell.CellID, for: indexPath) as! SearchResultCell
             cell.bindViewModel(element)
             return cell
         }
         self
             .viewModel
             .sections
-            .bindTo(self.tableView.rx_itemsAnimatedWithDataSource(datasource))
+            .bindTo(self.tableView.rx.items(dataSource: datasource))
             .addDisposableTo(self.disposeBag)
         
         // settings
         
-        self.settingButton.rx_tap
-            .subscribeNext(self.showSearchOptions)
+        self.settingButton.rx.tap
+            .subscribe(onNext:self.showSearchOptions)
             .addDisposableTo(self.disposeBag)
     }
     

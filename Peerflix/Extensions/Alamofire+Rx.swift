@@ -11,27 +11,28 @@ import Alamofire
 import RxSwift
 import Freddy
 
-extension Request {
-    func rx_reponseJSON() -> Observable<JSON> {
+extension DataRequest: ReactiveCompatible {
+}
+
+extension Reactive where Base: DataRequest {
+    func responseJSON() -> Observable<JSON> {
         return Observable.create({ (observer) -> Disposable in
-            let request = self.responseData({ (response: Response<NSData, NSError>) -> Void in
-                switch response.result {
-                case .Failure(let error):
+            let request = self.base.responseData(completionHandler: { (data) in
+                if let error = data.error {
                     observer.onError(error)
-                case .Success(let data):
+                } else if let data = data.data {
                     do {
                         let json = try JSON(data: data)
                         observer.onNext(json)
                         observer.onCompleted()
-                    } catch let error {
+                    } catch {
                         observer.onError(error)
                     }
+                } else {
+                    fatalError("unexpected")
                 }
             })
-
-            return AnonymousDisposable {
-                request.cancel()
-            }
+            return Disposables.create { request.cancel() }
         })
     }
 }

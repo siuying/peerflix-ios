@@ -91,9 +91,9 @@ class MediaControl: UIControl {
         if intDuration > 0 {
             self.mediaProgressSlider.maximumValue = Float(duration)
             if intDuration < 3600 {
-                self.totalDurationLabel.text = Formatter.stringFromTimeInterval(duration) ?? ""
+                self.totalDurationLabel.text = Formatter.string(from: duration) ?? ""
             } else {
-                self.totalDurationLabel.text = LongFormatter.stringFromTimeInterval(duration) ?? ""
+                self.totalDurationLabel.text = LongFormatter.string(from: duration) ?? ""
             }
         } else {
             self.mediaProgressSlider.maximumValue = 0
@@ -105,9 +105,9 @@ class MediaControl: UIControl {
             let intPosition = Int(time + 0.5)
             if intPosition > 0 {
                 if intPosition < 3600 {
-                    self.currentTimeLabel.text = Formatter.stringFromTimeInterval(time) ?? ""
+                    self.currentTimeLabel.text = Formatter.string(from: time) ?? ""
                 } else {
-                    self.currentTimeLabel.text = LongFormatter.stringFromTimeInterval(time) ?? ""
+                    self.currentTimeLabel.text = LongFormatter.string(from: time) ?? ""
                 }
                 self.mediaProgressSlider.value = Float(time)
             } else {

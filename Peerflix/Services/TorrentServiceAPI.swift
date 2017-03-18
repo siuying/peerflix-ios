@@ -40,8 +40,8 @@ enum TorrentServiceAPI: URLRequestConvertible {
     case stop()
     case select(String)
     
-    var method: Alamofire.Method {
-        return .GET
+    var method: Alamofire.HTTPMethod {
+        return .get
     }
     
     var path: String {
@@ -59,29 +59,22 @@ enum TorrentServiceAPI: URLRequestConvertible {
     
     // MARK: URLRequestConvertible
     
-    var URLRequest: NSMutableURLRequest {
-        let URL = Foundation.URL(string: TorrentServiceAPI.baseURLString)!
-        let mutableURLRequest = NSMutableURLRequest(url: URL.appendingPathComponent(path))
-        mutableURLRequest.HTTPMethod = method.rawValue
-        
-        switch self {
-        case .search(let query, let engine):
-            return Alamofire.ParameterEncoding
-                .URL
-                .encode(mutableURLRequest, parameters: ["query": query, "engine": engine.rawValue])
-                .0
-        case .play(let url):
-            return Alamofire.ParameterEncoding
-                .URL
-                .encode(mutableURLRequest, parameters: ["url": url])
-                .0
-        case .select(let filename):
-            return Alamofire.ParameterEncoding
-                .URL
-                .encode(mutableURLRequest, parameters: ["filename": filename])
-                .0            
-        default:
-            return mutableURLRequest
-        }
+    func asURLRequest() throws -> URLRequest {
+        let url = URL(string: TorrentServiceAPI.baseURLString)!.appendingPathComponent(path)
+        let parameters: Parameters = {
+            switch self {
+            case .search(let query, let engine):
+                return ["query": query, "engine": engine.rawValue]
+            case .play(let url):
+                return ["url": url]
+            case .select(let filename):
+                return ["filename": filename]
+            default:
+                return [:]
+            }
+        }()
+
+        let request = try URLRequest(url: url, method: .get)
+        return try URLEncoding.default.encode(request, with: parameters)
     }
 }

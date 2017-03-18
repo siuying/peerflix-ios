@@ -35,12 +35,12 @@ class DefaultTorrentService: TorrentService {
 
     var selectedTorrent: Variable<SearchResult.Torrent?>
     var engine: Variable<TorrentServiceAPI.SearchEngine>
-    var state: Observable<TorrentState>!
-    var error: Observable<ErrorType?>!
+    var state: Observable<TorrentState>
+    var error: Observable<Error?>
     
     init() {
         let state: Variable<TorrentState> = Variable(TorrentState())
-        let error: Variable<ErrorType?> = Variable(nil)
+        let error: Variable<Error?> = Variable(nil)
         self.engine = Variable(TorrentServiceAPI.SearchEngine.PirateBay)
         self.state = state.asObservable().shareReplay(1)
         self.error = error.asObservable().shareReplay(1)
@@ -48,6 +48,11 @@ class DefaultTorrentService: TorrentService {
 
         JXcore.setup()
         JXcore.addNativeBlock({ (params, callbackId) -> Void in
+            guard let params = params else {
+                print("unexpected, params is nil")
+                return
+            }
+
             if params.count < 1 {
                 print("unexpected params count: \(params)")
                 return
@@ -59,9 +64,10 @@ class DefaultTorrentService: TorrentService {
             }
             
             do {
-                let json = try JSON(data: jsonStr.dataUsingEncoding(NSUTF8StringEncoding)!)
-                state.value = try TorrentState(json: json)
-                
+                if let data = jsonStr.data(using: .utf8) {
+                    let json = try JSON(data: data)
+                    state.value = try TorrentState(json: json)
+                }
             } catch let e {
                 print("JSON parsing error: \(e)")
                 error.value = e
@@ -83,16 +89,16 @@ class DefaultTorrentService: TorrentService {
     
     func search(_ query: String) -> Observable<SearchResult> {
         print("search: \(query), engine: \(self.engine.value.rawValue)")
-        return Alamofire.request(TorrentServiceAPI.Search(query, self.engine.value))
-            .rx_reponseJSON()
+        return Alamofire.request(TorrentServiceAPI.search(query, self.engine.value))
+            .rx.responseJSON()
             .map { (json) -> SearchResult in
                 return try json.decode(type: SearchResult.self)
             }
     }
     
     func selectFile(_ filename: String) -> Observable<APIResult> {
-        return Alamofire.request(TorrentServiceAPI.Select(filename))
-            .rx_reponseJSON()
+        return Alamofire.request(TorrentServiceAPI.select(filename))
+            .rx.responseJSON()
             .map({ try $0.decode(type: APIResult.self) })
     }
     
@@ -102,14 +108,14 @@ class DefaultTorrentService: TorrentService {
         }
 
         self.selectedTorrent.value = torrent
-        return Alamofire.request(TorrentServiceAPI.Play(URL.absoluteString))
-            .rx_reponseJSON()
+        return Alamofire.request(TorrentServiceAPI.play(URL.absoluteString))
+            .rx.responseJSON()
             .map({ try $0.decode(type: APIResult.self) })
     }
     
     func stopTorrent() -> Observable<APIResult> {
-        return Alamofire.request(TorrentServiceAPI.Stop())
-            .rx_reponseJSON()
+        return Alamofire.request(TorrentServiceAPI.stop())
+            .rx.responseJSON()
             .map({ try $0.decode(type: APIResult.self) })
     }
     

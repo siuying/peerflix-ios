@@ -121,7 +121,7 @@ class SearchViewModel: SearchViewModelType {
             .flatMapLatest({ torrent.playTorrent($0) })
 
         request
-            .subscribeError({ (error) -> Void in
+            .subscribe(onError: { (error) -> Void in
                 print("ERROR: \(error)")
             })
             .addDisposableTo(self.disposeBag)

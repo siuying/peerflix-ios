@@ -32,70 +32,70 @@ class VideoPlayerController: UIViewController {
         super.viewDidLoad()
 
         self.player = VLCMediaPlayer()
-        self.player.media = VLCMedia(URL: self.videoURL)
+        self.player.media = self.videoURL != nil ? VLCMedia(url: self.videoURL!) : VLCMedia()
         self.player.play()
         self.player.drawable = self.videoView
         self.player.delegate = self.mediaControl
         self.mediaControl.player = self.player
         
         let player = self.player
-        let mediaControl = self.mediaControl
+        let mediaControl: MediaControl! = self.mediaControl
         let gesture = UITapGestureRecognizer()
-        gesture.rx_event
-            .subscribeNext {[weak mediaControl] (g) -> Void in
-                if g.state == .Ended {
+        gesture.rx.event
+            .subscribe(onNext: {[weak mediaControl] (g) -> Void in
+                if g.state == .ended {
                     mediaControl?.toggleVisibility()
                 }
-            }
+            })
             .addDisposableTo(self.disposeBag)
         self.mediaControl.isUserInteractionEnabled = true
         self.mediaControl.addGestureRecognizer(gesture)
 
-        mediaControl?.mediaProgressSlider
-            .rx_controlEvent(.TouchDown)
-            .subscribeNext { [weak mediaControl] (_) -> Void in
+        mediaControl.mediaProgressSlider
+            .rx.controlEvent(.touchDown)
+            .subscribe(onNext: { [weak mediaControl] (_) -> Void in
                 mediaControl?.beginDragMediaSlider()
-            }
+            })
             .addDisposableTo(self.disposeBag)
         
-        mediaControl?.mediaProgressSlider
-            .rx_controlEvent(.TouchCancel)
-            .subscribeNext { [weak mediaControl] (_) -> Void in
+        mediaControl.mediaProgressSlider
+            .rx.controlEvent(.touchCancel)
+            .subscribe(onNext:  { [weak mediaControl] (_) -> Void in
                 mediaControl?.endDragMediaSlider()
-            }
+            })
             .addDisposableTo(self.disposeBag)
 
-        mediaControl?.mediaProgressSlider
-            .rx_controlEvent(.TouchUpOutside)
-            .subscribeNext { [weak mediaControl] (_) -> Void in
+        mediaControl.mediaProgressSlider
+            .rx.controlEvent(.touchUpOutside)
+            .subscribe(onNext:  { [weak mediaControl] (_) -> Void in
                 mediaControl?.endDragMediaSlider()
-            }
+            })
             .addDisposableTo(self.disposeBag)
         
-        mediaControl?.mediaProgressSlider
-            .rx_controlEvent(.TouchUpInside)
-            .subscribeNext { [weak mediaControl, weak player] (_) -> Void in
+        mediaControl.mediaProgressSlider
+            .rx.controlEvent(.touchUpInside)
+            .subscribe(onNext:  { [weak mediaControl, weak player] (_) -> Void in
                 if let mediaControl = mediaControl, let player = player {
                     player.time = VLCTime(int: Int32(mediaControl.mediaProgressSlider.value * 1000))
                     mediaControl.endDragMediaSlider()
                 }
-            }
+            })
             .addDisposableTo(self.disposeBag)
         
-        mediaControl?.mediaProgressSlider
-            .rx_value
-            .subscribeNext {  [weak mediaControl] (_) -> Void in
+        mediaControl.mediaProgressSlider
+            .rx.value
+            .subscribe(onNext:  {  [weak mediaControl] (_) -> Void in
                 mediaControl?.continueDragMediaSlider()
-            }
+            })
             .addDisposableTo(self.disposeBag)
         
-        mediaControl?.doneButton
-            .rx_tap
-            .subscribeNext { [weak self] _ in
+        mediaControl.doneButton
+            .rx.tap
+            .subscribe(onNext:  { [weak self] _ in
                 if let vc = self {
-                    vc.navigationController?.popViewControllerAnimated(true)
+                    _ = vc.navigationController?.popViewController(animated: true)
                 }
-            }
+            })
             .addDisposableTo(self.disposeBag)
     }
     

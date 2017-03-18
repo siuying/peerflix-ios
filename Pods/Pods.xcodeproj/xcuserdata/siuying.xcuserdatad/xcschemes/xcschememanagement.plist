@@ -27,7 +27,7 @@
 		<key>Pods-Peerflix.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-PeerflixTests.xcscheme</key>
 		<dict>

@@ -22,11 +22,11 @@ class DefaultWireframe: Wireframe {
     let disposeBag = DisposeBag()
 
     func setup() {
-        NotificationCenter.defaultCenter()
-            .rx_notification(UIApplicationWillTerminateNotification)
-            .subscribeNext { (_) -> Void in
+        NotificationCenter.default
+            .rx.notification(.UIApplicationWillTerminate)
+            .subscribe(onNext: { (_) -> Void in
                 self.cleanup()
-            }
+            })
             .addDisposableTo(self.disposeBag)
     }
 

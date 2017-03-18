@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 func configureTorrentState(_ torrent: TorrentService, torrentState: Observable<TorrentState>)
-    -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<NSURL?>) {
+    -> (name: Observable<String>, size: Observable<String>, files: Observable<[String]>, downloadSpeed: Observable<String>, downloaded: Observable<String>, playable: Observable<Bool>, URL: Observable<Foundation.URL?>) {
         let torrentFilename = torrent
             .getSelectedTorrent()
             .map({ $0?.name })
@@ -37,7 +37,7 @@ func configureTorrentState(_ torrent: TorrentService, torrentState: Observable<T
             .map({ ($0.downloaded, $0.size) })
             .map({ (downloaded, size) -> String in
                 if let downloaded = downloaded, let size = size {
-                    let completion = size == 0 ? 0 : [100, (downloaded / size)].minElement()!
+                    let completion = size == 0 ? 0 : [100, (downloaded / size)].min()!
                     return "\(formatFileSize(downloaded))M (\(formatPercent(completion))%)"
                 } else {
                     return ""
